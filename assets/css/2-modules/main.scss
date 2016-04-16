@@ -669,66 +669,6 @@
 
 		}
 
-/* Post */
-	.post {
-		padding: 3em 3em 1em 3em ;
-		background: #ffffff;
-		border: 1px solid rgba(160, 160, 160, 0.3);
-		margin: 0 0 3em 0;
-		position: relative;
-	}
-
-		.post > header {
-			display: flex;
-			border-bottom: solid 1px rgba(160, 160, 160, 0.3);
-			left: -3em;
-			margin: -3em 0 3em 0;
-			position: relative;
-			width: calc(100% + 6em);
-		}
-
-			.post > header .title {
-				flex-grow: 1;
-				padding: 3.75em 3em 3.3em 3em;
-			}
-
-				.post > header .title h2 {
-					font-weight: 900;
-					font-size: 1.5em;
-				}
-
-				.post > header .title > :last-child {
-					margin-bottom: 0;
-				}
-
-			.post > header .meta {
-				padding: 3.75em 3em 1.75em 3em ;
-				border-left: solid 1px rgba(160, 160, 160, 0.3);
-				min-width: 17em;
-				text-align: right;
-				width: 17em;
-			}
-
-				.post > header .meta > * {
-					margin: 0 0 1em 0;
-				}
-
-				.post > header .meta > :last-child {
-					margin-bottom: 0;
-				}
-
-				.post > header .meta .published {
-					color: #3c3b3b;
-					display: block;
-          font-family: "Raleway", Helvetica, sans-serif;
-					font-size: 0.7em;
-					font-weight: 800;
-					letter-spacing: 0.25em;
-					margin-top: 0.5em;
-					text-transform: uppercase;
-					white-space: nowrap;
-				}
-
 		@media screen and (max-width: 980px) {
 
 			.post {
