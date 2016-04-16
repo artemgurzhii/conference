@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    {% include head.html %}
+  </head>
+	<body>
+			<div id="wrapper">
+				{% include header.html %}
+        <div id="main">
+          <p>
+            Contact page
+          </p>
+          {{ content }}
+          
+        </div>
+        <section id="sidebar">
+          {% include intro.html %}
+          {% include miniposts.html %}
+          {% include about.html %}
+          {% include footer.html %}
+        </section>
+
+			</div>
+		{% include scripts.html %}
+	</body>
+</html>

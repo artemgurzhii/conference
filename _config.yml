@@ -1,9 +1,39 @@
-name: Test
-markdown: redcarpet
-highlighter: rouge
-description: Test
-exclude: ["node_modules", "gulpfile.js", "package.json", "config.codekit", "bower_components"]
+# project config
+name: Conference
+timezone: America/New_York
+encoding: "utf-8"
+title: conference
+year: 2016
+
+# social
+author: Artem Gurzhii
+email: artem.gurzhii@gmail.com
+github_username: artemgurzhii
+twitter_username: ArtemGurzhii
+
+exclude: ["node_modules", "gulpfile.js", "package.json", "config.codekit", "data.json", "Gemfile", "Gemfile.lock", "LICENSE", "ToDo.txt", "assets/js/common.js", "assets/css/1-tools", "assets/css/2-modules"]
 permalink: pretty
 sass:
-  sass_dir: css/min/main.min.css
+  sass_dir: assets/css/
   style: expanded
+
+# Serving | http://localhost:3000/conference/
+detach: false
+host: localhost
+port: 3000
+baseurl: ""
+url: "http://localhost:3000/" # the base hostname & protocol for site
+
+# Build settings
+markdown_ext: "markdown, md"
+highlighter: rouge
+markdown: redcarpet
+
+# Site settings
+description: Conferences
+
+# will require each of these gems automatically
+gems: [jekyll-paginate, jekyll]
+
+# how mauch items on each page
+paginate: 2

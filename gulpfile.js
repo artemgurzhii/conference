@@ -1,44 +1,38 @@
-var gulp             = require('gulp'),
-// rename css files after minification
-    rename           = require("gulp-rename"),
-// gulp sass
-    sass             = require("gulp-sass"),
-// minifying css files
+const gulp           = require('gulp'),
+    rename           = require('gulp-rename'),
+    babel            = require('gulp-babel'),
+    sass             = require('gulp-sass'),
     csso             = require('gulp-csso'),
-// css autoprefixer
     prefix           = require('gulp-autoprefixer'),
-// child_process
     cp               = require('child_process'),
-// gulp jade
-    jade             = require('gulp-jade'),
-// images minification
     imagemin         = require('imagemin'),
     imageminPngquant = require('imagemin-pngquant'),
-// browser synchronization
     browserSync      = require('browser-sync'),
-// searching for duplicating js files
     jscpd            = require('gulp-jscpd'),
-// minifying js files
     uglify           = require('gulp-uglify'),
-// concatenate js files
     concat           = require('gulp-concat'),
-// jshint
     jshint           = require('gulp-jshint'),
-// prevent pipe breaking
     plumber          = require('gulp-plumber'),
-// track only changed files
     changed          = require('gulp-changed'),
-//  gulp debug in terminal
-    debug            = require('gulp-debug');
+    webpack          = require('gulp-webpack'),
+    rmvHtmlComnts    = require('gulp-remove-html-comments'),
+    debug            = require('gulp-debug'),
+    colorShort       = require('postcss-color-short'),
+    pxtorem          = require('postcss-pxtorem'),
+    size             = require('postcss-size'),
+    cssMqpacker      = require('css-mqpacker'),
+    focus            = require('postcss-focus'),
+    jsonlint         = require('gulp-jsonlint'),
+    postcss          = require('gulp-postcss');
 
-// here is all assets directories
-var assetsDir = {
+const assetsDir = {
   // css
-  cssAll:  'assets/css/*.*',
-  css:     'assets/css/*.css',
-  sassAll: 'assets/css/*/*.sass',
-  sass:    'assets/css/main.sass',
-  cssMin:  'assets/css/min/',
+  cssAll:     'assets/css/*.*',
+  css:        'assets/css/*.css',
+  sassAll:    'assets/css/*/*.*',
+  sassAllAll: 'assets/css/*/*/*.*',
+  sass:       'assets/css/main.sass',
+  cssMin:     'assets/css/min/',
 
   // js
   jsAll:  'assets/js/*.*',
@@ -49,45 +43,48 @@ var assetsDir = {
   imagesAll: 'assets/img/*.*',
   imagesMin: 'assets/img/min/',
 
-  // html & jade
-  jadeAll:  '_jadefiles/*.jade',
-  includes: '_includes/',
+  // html
+  includes: '_includes/*.html',
   site:     '_site'
 }
 
-var jekyll = process.platform === 'win32' ? 'jekyll.bat' : 'jekyll',
+const jekyll = process.platform === 'win32' ? 'jekyll.bat' : 'jekyll',
   messages = {
     jekyllBuild: '<span style="color: grey">Running:</span> jekyll build'
 };
 
-// Build the Jekyll Site
-gulp.task('jekyll-build', function (done) {
+// task jekyll-build
+gulp.task('jekyll-build', (done) => {
   browserSync.notify(messages.jekyllBuild);
   return cp.spawn( jekyll , ['build'], {stdio: 'inherit'})
     .on('close', done);
 });
 
-// Rebuild Jekyll & do page reload
-gulp.task('jekyll-rebuild', ['jekyll-build'], function () {
-  browserSync.reload();
-});
+// task jekyll-rebuild
+gulp.task('jekyll-rebuild', ['jekyll-build'], () => browserSync.reload());
 
-// Wait for jekyll-build, then launch the Server
-gulp.task('browser-sync', ['jekyll-build'], function() {
+// task browser-sync
+gulp.task('browser-sync', ['jekyll-build'], () => {
   browserSync({
     server: {
       baseDir: assetsDir.site
     },
     host: "localhost",
-    // if you don't want to see notifications change true to false
-    notify: true
+    notify: false
   });
 });
 
-// this part response for sass converting in css
-// and minification, autoprefixer, renaming
-gulp.task('css', function() {
+// task css
+gulp.task('css', () => {
+  const processors = [
+    colorShort,
+    focus,
+    size,
+    pxtorem,
+    cssMqpacker
+  ];
   return gulp.src(assetsDir.sass)
+    .pipe(postcss(processors))
     .pipe(sass({
       includePaths: ['css'],
       onError: browserSync.notify
@@ -99,25 +96,29 @@ gulp.task('css', function() {
     .pipe(gulp.dest(assetsDir.cssMin));
 });
 
-// this part response for converting jade in html
-gulp.task('jade', function(){
-  return gulp.src(assetsDir.jadeAll)
-    .pipe(jade())
-    .pipe(debug({title: 'Checking:'}))
-    .pipe(gulp.dest(assetsDir.includes));
+// task html
+gulp.task('html', () => {
+  return gulp.src(assetsDir.includes)
+    .pipe(rmvHtmlComnts())
+    .pipe(gulp.dest(''));
 });
 
-// this part response for image minification
-gulp.task('image', function () {
+// task image
+gulp.task('image', () => {
   return gulp.src(assetsDir.imagesAll)
     .pipe(imageminPngquant({quality: '65-80', speed: 4})())
     .pipe(debug({title: 'Checking:'}))
     .pipe(gulp.dest(assetsDir.imagesMin));
 });
 
+
 // this part response for all stuff with js
-gulp.task('js', function() {
+gulp.task('js', () => {
   return gulp.src(assetsDir.jsMain)
+    //.pipe(webpack())
+    .pipe(babel({
+      presets: ['es2015']
+    }))
     .pipe(jscpd({
       'min-lines': 1,
       verbose    : true
@@ -127,25 +128,27 @@ gulp.task('js', function() {
     .pipe(concat(assetsDir.jsMin))
     .pipe(changed(assetsDir.jsAll))
     .pipe(uglify())
-    .pipe(gulp.dest(''))
     .pipe(debug({title: 'Checking:'}))
+    .pipe(gulp.dest(''))
 });
 
 // watch changes and run tasks
-gulp.task('watch', function () {
+gulp.task('watch', () => {
   gulp.watch(assetsDir.sassAll, ['css', 'jekyll-build', 'jekyll-rebuild']);
+  gulp.watch(assetsDir.sassAllAll, ['css', 'jekyll-build', 'jekyll-rebuild']);
+  gulp.watch(assetsDir.cssAll, ['css', 'jekyll-build', 'jekyll-rebuild']);
   gulp.watch(assetsDir.jsAll, ['js', 'jekyll-build', 'jekyll-rebuild']);
-  gulp.watch(assetsDir.jadeAll, ['jade', 'jekyll-build', 'jekyll-rebuild']);
+  gulp.watch(assetsDir.includes, ['jekyll-build', 'jekyll-rebuild']);
 });
 
 // Prevent pipe breaking caused by errors from gulp plugins
-gulp.task('plumber', function() {
-  return gulp.src(['css'], {read: false})
+gulp.task('plumber', () => {
+  return gulp.src(['css', 'js', 'html'], {read: false})
     .pipe(plumber())
     .pipe(debug({title: 'Checking:'}));
 });
 
-// default task
-gulp.task('default', function() {
-  gulp.start('image', 'plumber', 'browser-sync', 'watch', 'jade', 'css', 'js', 'jekyll-build', 'jekyll-rebuild');
+// task default
+gulp.task('default', () => {
+  gulp.start('image', 'plumber', 'browser-sync', 'watch', 'css', 'js', 'jekyll-build', 'jekyll-rebuild');
 });
