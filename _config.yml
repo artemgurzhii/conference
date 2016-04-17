@@ -33,7 +33,7 @@ markdown: kramdown
 description: Conferences
 
 # will require each of these gems automatically
-gems: [jekyll-paginate, jekyll]
+gems: [jekyll-paginate, jekyll, redcarpet, bundler]
 
-# how mauch items on each page
+# how much items on each page
 paginate: 2

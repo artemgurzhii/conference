@@ -3,45 +3,33 @@
   <head>
     {% include head.html %}
   </head>
-	<body>
-			<div id="wrapper">
-				{% include header.html %}
-
+  <body>
+    <div id="wrapper">
+      {% include header.html %}
         <div id="main">
           {{ content }}
           <ul class="actions pagination">
-
             {% if paginator.previous_page %}
-
               <li><a href="{{ paginator.previous_page_path }}" class="button big previous">Previous Page</a></li>
-
-              {% else %}
-
-              <li><a href="#" class="disabled button big previous">Previous Page</a></li>
-
+            {% else %}
+              <li><a href="" class="inactive_link button big previous">Previous Page</a></li>
             {% endif %}
-
-            <li>{{ paginator.page }} / {{ paginator.total_pages }}</li>
-
+              <li>{{ paginator.page }} / {{ paginator.total_pages }}</li>
             {% if paginator.next_page %}
-
               <li><a href="{{ paginator.next_page_path }}" class="button big next">Next Page</a></li>
-
-              {% else %}
-
-              <li><a href="#" class="disabled button big next">Next Page</a></li>
-
+            {% else %}
+              <li><a href="#" class="inactive_link button big next" disabled="disabled">Next Page</a></li>
             {% endif %}
           </ul>
         </div>
-        <section id="sidebar">
+        <aside id="sidebar">
           {% include intro.html %}
           {% include miniposts.html %}
           {% include about.html %}
           {% include footer.html %}
-        </section>
+        </aside>
 
-			</div>
-		{% include scripts.html %}
-	</body>
+      </div>
+    {% include scripts.html %}
+  </body>
 </html>
