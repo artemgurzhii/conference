@@ -27,8 +27,7 @@ url: "http://localhost:3000/" # the base hostname & protocol for site
 # Build settings
 markdown_ext: "markdown, md"
 highlighter: rouge
-markdown: redcarpet
-# markdown: kramdown
+markdown: kramdown
 
 # Site settings
 description: Conferences

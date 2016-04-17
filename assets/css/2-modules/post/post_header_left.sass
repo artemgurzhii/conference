@@ -11,6 +11,7 @@
     </div>
     <!-- LEFT TITLE -->
     <!-- RIGHT CATEGORY -->
+
     <div class="meta">
       <!-- TIME -->
       <time class="published" datetime="{{ post.date | date: "%F" }}">{{ post.date | date: "%B %d, %Y" }}</time>
@@ -23,3 +24,15 @@
   </header>
   <!-- POST HEADER -->
  */
+
+.post header .title
+  flex-grow: 1
+  padding: 2em 2.9em 1.5em
+
+  h2
+    font-weight: 900
+    font-size: 1.5em
+    margin-bottom: 0.5em
+
+  &:last-child
+    margin-bottom: 0
