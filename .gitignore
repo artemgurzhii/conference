@@ -1,3 +1,6 @@
-node_modules
 data.json
 ToDo.txt
+node_modules
+Gemfile.lock
+_posts
+assets/img
