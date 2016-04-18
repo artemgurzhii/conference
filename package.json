@@ -1,8 +1,8 @@
 {
   "name": "Conference",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "author": "Artem Gurzhii",
-  "description": "Conference",
+  "description": "Programming conferences for front-end and back-end devlopers",
   "main": "gulpfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
