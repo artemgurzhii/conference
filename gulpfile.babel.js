@@ -1,31 +1,31 @@
-const gulp           = require('gulp'),
-    rename           = require('gulp-rename'),
-    babel            = require('gulp-babel'),
-    sass             = require('gulp-sass'),
-    csso             = require('gulp-csso'),
-    prefix           = require('gulp-autoprefixer'),
-    cp               = require('child_process'),
-    imagemin         = require('imagemin'),
-    imageminPngquant = require('imagemin-pngquant'),
-    browserSync      = require('browser-sync'),
-    jscpd            = require('gulp-jscpd'),
-    uglify           = require('gulp-uglify'),
-    concat           = require('gulp-concat'),
-    jshint           = require('gulp-jshint'),
-    plumber          = require('gulp-plumber'),
-    changed          = require('gulp-changed'),
-    webpack          = require('gulp-webpack'),
-    rmvHtmlComnts    = require('gulp-remove-html-comments'),
-    debug            = require('gulp-debug'),
-    colorShort       = require('postcss-color-short'),
-    pxtorem          = require('postcss-pxtorem'),
-    size             = require('postcss-size'),
-    cssMqpacker      = require('css-mqpacker'),
-    focus            = require('postcss-focus'),
-    jsonlint         = require('gulp-jsonlint'),
-    postcss          = require('gulp-postcss');
+import gulp from             'gulp';
+import rename from           'gulp-rename';
+import babel from            'gulp-babel';
+import sass from             'gulp-sass';
+import csso from             'gulp-csso';
+import prefix from           'gulp-autoprefixer';
+import cp from               'child_process';
+import imagemin from         'imagemin';
+import imageminPngquant from 'imagemin-pngquant';
+import browserSync from      'browser-sync';
+import jscpd from            'gulp-jscpd';
+import uglify from           'gulp-uglify';
+import concat from           'gulp-concat';
+import jshint from           'gulp-jshint';
+import plumber from          'gulp-plumber';
+import changed from          'gulp-changed';
+import webpack from          'gulp-webpack';
+import rmvHtmlComnts from    'gulp-remove-html-comments';
+import debug from            'gulp-debug';
+import colorShort from       'postcss-color-short';
+import pxtorem from          'postcss-pxtorem';
+import size from             'postcss-size';
+import cssMqpacker from      'css-mqpacker';
+import focus from            'postcss-focus';
+import jsonlint from         'gulp-jsonlint';
+import postcss from          'gulp-postcss';
 
-const assetsDir = {
+const paths = {
   // css
   cssAll:     'assets/css/*.*',
   css:        'assets/css/*.css',
@@ -67,7 +67,7 @@ gulp.task('jekyll-rebuild', ['jekyll-build'], () => browserSync.reload());
 gulp.task('browser-sync', ['jekyll-build'], () => {
   browserSync({
     server: {
-      baseDir: assetsDir.site
+      baseDir: paths.site
     },
     host: "localhost",
     notify: false
@@ -83,7 +83,7 @@ gulp.task('css', () => {
     pxtorem,
     cssMqpacker
   ];
-  return gulp.src(assetsDir.sass)
+  return gulp.src(paths.sass)
     .pipe(postcss(processors))
     .pipe(sass({
       includePaths: ['css'],
@@ -93,28 +93,28 @@ gulp.task('css', () => {
     .pipe(csso())
     .pipe(rename({suffix: '.min'}))
     .pipe(debug({title: 'Checking:'}))
-    .pipe(gulp.dest(assetsDir.cssMin));
+    .pipe(gulp.dest(paths.cssMin));
 });
 
 // task html
 gulp.task('html', () => {
-  return gulp.src(assetsDir.includes)
+  return gulp.src(paths.includes)
     .pipe(rmvHtmlComnts())
     .pipe(gulp.dest(''));
 });
 
 // task image
 gulp.task('image', () => {
-  return gulp.src(assetsDir.imagesAll)
+  return gulp.src(paths.imagesAll)
     .pipe(imageminPngquant({quality: '65-80', speed: 4})())
     .pipe(debug({title: 'Checking:'}))
-    .pipe(gulp.dest(assetsDir.imagesMin));
+    .pipe(gulp.dest(paths.imagesMin));
 });
 
 
 // this part response for all stuff with js
 gulp.task('js', () => {
-  return gulp.src(assetsDir.jsMain)
+  return gulp.src(paths.jsMain)
     //.pipe(webpack())
     .pipe(babel({
       presets: ['es2015']
@@ -125,8 +125,8 @@ gulp.task('js', () => {
     }))
     .pipe(jshint())
     .pipe(jshint.reporter('default'))
-    .pipe(concat(assetsDir.jsMin))
-    .pipe(changed(assetsDir.jsAll))
+    .pipe(concat(paths.jsMin))
+    .pipe(changed(paths.jsAll))
     .pipe(uglify())
     .pipe(debug({title: 'Checking:'}))
     .pipe(gulp.dest(''))
@@ -134,11 +134,11 @@ gulp.task('js', () => {
 
 // watch changes and run tasks
 gulp.task('watch', () => {
-  gulp.watch(assetsDir.sassAll, ['css', 'jekyll-build', 'jekyll-rebuild']);
-  gulp.watch(assetsDir.sassAllAll, ['css', 'jekyll-build', 'jekyll-rebuild']);
-  gulp.watch(assetsDir.cssAll, ['css', 'jekyll-build', 'jekyll-rebuild']);
-  gulp.watch(assetsDir.jsAll, ['js', 'jekyll-build', 'jekyll-rebuild']);
-  gulp.watch(assetsDir.includes, ['jekyll-build', 'jekyll-rebuild']);
+  gulp.watch(paths.sassAll, ['css', 'jekyll-build', 'jekyll-rebuild']);
+  gulp.watch(paths.sassAllAll, ['css', 'jekyll-build', 'jekyll-rebuild']);
+  gulp.watch(paths.cssAll, ['css', 'jekyll-build', 'jekyll-rebuild']);
+  gulp.watch(paths.jsAll, ['js', 'jekyll-build', 'jekyll-rebuild']);
+  gulp.watch(paths.includes, ['jekyll-build', 'jekyll-rebuild']);
 });
 
 // Prevent pipe breaking caused by errors from gulp plugins
