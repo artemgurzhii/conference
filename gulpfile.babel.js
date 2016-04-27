@@ -1,154 +1,216 @@
-import gulp from             'gulp';
-import rename from           'gulp-rename';
-import babel from            'gulp-babel';
-import sass from             'gulp-sass';
-import csso from             'gulp-csso';
-import prefix from           'gulp-autoprefixer';
-import cp from               'child_process';
-import imagemin from         'imagemin';
+// Main
+import postcss          from 'gulp-postcss';
+import gulp             from 'gulp';
+
+// Gulp-plugins
+import rmvHtmlComnts    from 'gulp-remove-html-comments';
+import prefix           from 'gulp-autoprefixer';
+import sourcemaps       from 'gulp-sourcemaps';
+import jsonlint         from 'gulp-jsonlint';
+import htmlmin          from 'gulp-htmlmin';
+import plumber          from 'gulp-plumber';
+import changed          from 'gulp-changed';
+import rename           from 'gulp-rename';
+import concat           from 'gulp-concat';
+import jshint           from 'gulp-jshint';
+import notify           from 'gulp-notify';
+import babel            from 'gulp-babel';
+import jscpd            from 'gulp-jscpd';
+import debug            from 'gulp-debug';
+import uglify           from 'gulp-uglify';
+import sass             from 'gulp-sass';
+import csso             from 'gulp-csso';
+import gulpIf           from 'gulp-if';
+
+// Postcss-plugins
+import colorShort       from 'postcss-color-short';
+import pxtorem          from 'postcss-pxtorem';
+import focus            from 'postcss-focus';
+import size             from 'postcss-size';
+
+// Other
 import imageminPngquant from 'imagemin-pngquant';
-import browserSync from      'browser-sync';
-import jscpd from            'gulp-jscpd';
-import uglify from           'gulp-uglify';
-import concat from           'gulp-concat';
-import jshint from           'gulp-jshint';
-import plumber from          'gulp-plumber';
-import changed from          'gulp-changed';
-import webpack from          'gulp-webpack';
-import rmvHtmlComnts from    'gulp-remove-html-comments';
-import debug from            'gulp-debug';
-import colorShort from       'postcss-color-short';
-import pxtorem from          'postcss-pxtorem';
-import size from             'postcss-size';
-import cssMqpacker from      'css-mqpacker';
-import focus from            'postcss-focus';
-import jsonlint from         'gulp-jsonlint';
-import postcss from          'gulp-postcss';
+import combiner         from 'stream-combiner2';
+import cp               from 'child_process';
+import cssMqpacker      from 'css-mqpacker';
+import browserSync      from 'browser-sync';
+import imagemin         from 'imagemin';
+import del              from 'del';
+
+const isDevelopment = !process.env.NODE_ENV || process.env.NODE_ENV === 'devlopment'; // NODE_ENV=production gulp
 
 const paths = {
   // css
-  cssAll:     'assets/css/*.*',
-  css:        'assets/css/*.css',
-  sassAll:    'assets/css/*/*.*',
-  sassAllAll: 'assets/css/*/*/*.*',
-  sass:       'assets/css/main.sass',
-  cssMin:     'assets/css/min/',
+  css: {
+    sassAll:  'assets/css/*/*/*.*',
+    sassMain: 'assets/css/main.sass',
+    cssMin:   'assets/css/min/'
+  },
 
   // js
-  jsAll:  'assets/js/*.*',
-  jsMain: 'assets/js/*.js',
-  jsMin:  'assets/js/min/common.min.js',
+  js: {
+    jsMain: 'assets/js/*.js',
+    jsMin:  'assets/js/min/'
+  },
 
   //images
-  imagesAll: 'assets/img/*.*',
-  imagesMin: 'assets/img/min/',
+  img: {
+    imagesAll: 'assets/img/*.*',
+    imagesMin: 'assets/img/min/'
+  },
 
   // html
-  includes: '_includes/*.html',
-  site:     '_site'
+  html: {
+    includes: '_includes/*.html',
+    site:     '_site',
+    main:     '*.html'
+  }
 }
 
 const jekyll = process.platform === 'win32' ? 'jekyll.bat' : 'jekyll',
   messages = {
-    jekyllBuild: '<span style="color: grey">Running:</span> jekyll build'
+    build: '<span style="color: grey">Running:</span> jekyll build'
 };
 
-// task jekyll-build
-gulp.task('jekyll-build', (done) => {
-  browserSync.notify(messages.jekyllBuild);
-  return cp.spawn( jekyll , ['build'], {stdio: 'inherit'})
-    .on('close', done);
+// Assets
+// ========================
+gulp.task('assets:css', () => {
+  let processors = [
+      cssMqpacker,
+      colorShort,
+      pxtorem,
+      focus,
+      size
+    ]
+  let combined = combiner.obj([
+    gulp.src(paths.css.sassMain),
+      plumber(),
+      changed(paths.css.cssMin),
+      gulpIf(isDevelopment, sourcemaps.init()),
+      sass({
+        includePaths: ['assets/css/'],
+        onError: browserSync.notify
+      }),
+      postcss(processors),
+      prefix({ browsers: ['> 1%', 'ie 8', 'ie 7', 'ie 6'], cascade: false }),
+      csso(),
+      rename({suffix: '.min'}),
+      debug({title: 'Checking CSS:'}),
+      gulpIf(isDevelopment, sourcemaps.write('.')),
+      gulp.dest(paths.css.cssMin)
+  ])
+  combined.on('error', console.error.bind(console))
+  return combined;
+});
+gulp.task('assets:js', () => {
+  let combined = combiner.obj([
+    gulp.src(paths.js.jsMain),
+      plumber(),
+      changed(paths.js.jsMain),
+      babel({
+        presets: ['es2015']
+      }),
+      jshint(),
+      jshint.reporter('jshint-stylish'),
+      jscpd(),
+      concat(paths.js.jsMain),
+      uglify(),
+      rename({
+        dirname: paths.js.jsMin,
+        basename: "common",
+        suffix: ".min",
+        extname: ".js"
+      }),
+      debug({title: 'Checking JavaScript:'}),
+    gulp.dest('./')
+  ])
+  combined.on('error', console.error.bind(console))
+  return combined;
+});
+gulp.task('assets:json', () => {
+  let combined = combiner.obj([
+    gulp.src('*.json'),
+      plumber(),
+      jsonlint(),
+      jsonlint.reporter(),
+      jsonlint.failOnError(),
+      debug({title: 'Checking JSON:'}),
+    gulp.dest('.')
+  ])
+  combined.on('error', console.error.bind(console))
+  return combined;
+});
+gulp.task('assets:image', () => {
+  let combined = combiner.obj([
+    gulp.src(paths.img.imagesAll),
+      imageminPngquant({quality: '50', speed: 40})(),
+      debug({title: 'Checking Images:'}),
+    gulp.dest(paths.img.imagesMin)
+  ])
+  combined.on('error', console.error.bind(console))
+  return combined;
 });
 
-// task jekyll-rebuild
-gulp.task('jekyll-rebuild', ['jekyll-build'], () => browserSync.reload());
-
-// task browser-sync
-gulp.task('browser-sync', ['jekyll-build'], () => {
-  browserSync({
+// Browser
+// ========================
+gulp.task('browser:build', done => {
+  browserSync.notify(messages.build);
+  return cp.spawn( jekyll , ['build'], {stdio: 'inherit'})
+    .on('close', done)
+});
+gulp.task('browser:rebuild', () => browserSync.reload());
+gulp.task('browser:sync', () => {
+  browserSync.init({
     server: {
-      baseDir: paths.site
+      baseDir: paths.html.site
     },
     host: "localhost",
     notify: false
-  });
+  })
+  gulp.watch(paths.css.sassMain, gulp.series('assets:css', 'browser:build', 'browser:rebuild'));
+  gulp.watch(paths.css.sassAll, gulp.series('assets:css', 'browser:build', 'browser:rebuild'));
+  gulp.watch(paths.js.jsMain, gulp.series('assets:js', 'browser:build', 'browser:rebuild'));
+  gulp.watch(paths.html.includes, gulp.series('browser:build', 'browser:rebuild'));
+  gulp.watch(paths.html.main, gulp.series('browser:build', 'browser:rebuild'));
 });
 
-// task css
-gulp.task('css', () => {
-  const processors = [
-    colorShort,
-    focus,
-    size,
-    pxtorem,
-    cssMqpacker
-  ];
-  return gulp.src(paths.sass)
-    .pipe(postcss(processors))
-    .pipe(sass({
-      includePaths: ['css'],
-      onError: browserSync.notify
-    }))
-    .pipe(prefix(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], { cascade: true }))
-    .pipe(csso())
-    .pipe(rename({suffix: '.min'}))
-    .pipe(debug({title: 'Checking:'}))
-    .pipe(gulp.dest(paths.cssMin));
+// Cleen
+// ========================
+gulp.task('clean:del', done => {
+  return del(paths.html.site)
+  done();
 });
 
-// task html
-gulp.task('html', () => {
-  return gulp.src(paths.includes)
-    .pipe(rmvHtmlComnts())
-    .pipe(gulp.dest(''));
+// DEPLOY
+// html
+gulp.task('deploy:html', () => {
+  let combined = combiner.obj([
+    gulp.src(paths.html.includes),
+      rmvHtmlComnts(),
+      htmlmin({collapseWhitespace: true}),
+      debug({title: 'Checking HTML:'}),
+    gulp.dest(paths.html.includes)
+  ])
+  combined.on('error', console.error.bind(console))
+  return combined;
 });
 
-// task image
-gulp.task('image', () => {
-  return gulp.src(paths.imagesAll)
-    .pipe(imageminPngquant({quality: '65-80', speed: 4})())
-    .pipe(debug({title: 'Checking:'}))
-    .pipe(gulp.dest(paths.imagesMin));
+// image
+gulp.task('deploy:image', () => {
+  let combined = combiner.obj([
+    gulp.src(paths.img.imagesAll),
+      imageminPngquant({quality: '100', speed: 1})(),
+      debug({title: 'Checking Images:'}),
+    gulp.dest(paths.img.imagesMin)
+  ])
+  combined.on('error', console.error.bind(console))
+  return combined;
 });
 
-
-// this part response for all stuff with js
-gulp.task('js', () => {
-  return gulp.src(paths.jsMain)
-    //.pipe(webpack())
-    .pipe(babel({
-      presets: ['es2015']
-    }))
-    .pipe(jscpd({
-      'min-lines': 1,
-      verbose    : true
-    }))
-    .pipe(jshint())
-    .pipe(jshint.reporter('default'))
-    .pipe(concat(paths.jsMin))
-    .pipe(changed(paths.jsAll))
-    .pipe(uglify())
-    .pipe(debug({title: 'Checking:'}))
-    .pipe(gulp.dest(''))
-});
-
-// watch changes and run tasks
-gulp.task('watch', () => {
-  gulp.watch(paths.sassAll, ['css', 'jekyll-build', 'jekyll-rebuild']);
-  gulp.watch(paths.sassAllAll, ['css', 'jekyll-build', 'jekyll-rebuild']);
-  gulp.watch(paths.cssAll, ['css', 'jekyll-build', 'jekyll-rebuild']);
-  gulp.watch(paths.jsAll, ['js', 'jekyll-build', 'jekyll-rebuild']);
-  gulp.watch(paths.includes, ['jekyll-build', 'jekyll-rebuild']);
-});
-
-// Prevent pipe breaking caused by errors from gulp plugins
-gulp.task('plumber', () => {
-  return gulp.src(['css', 'js', 'html'], {read: false})
-    .pipe(plumber())
-    .pipe(debug({title: 'Checking:'}));
-});
-
-// task default
-gulp.task('default', () => {
-  gulp.start('image', 'plumber', 'browser-sync', 'watch', 'css', 'js', 'jekyll-build', 'jekyll-rebuild');
-});
+const browser = gulp.parallel('browser:build', 'browser:rebuild', 'browser:sync');
+const assets = gulp.parallel('assets:js', 'assets:css', 'assets:json', 'assets:image');
+const clean = gulp.parallel('clean:del');
+const build = gulp.series(clean, gulp.parallel(assets, browser));
+const deploy = gulp.parallel('deploy:image', 'deploy:html');
+export { build, clean, assets, browser, deploy };
+export default build;
