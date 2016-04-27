@@ -10,8 +10,7 @@ email: artem.gurzhii@gmail.com
 github_username: artemgurzhii
 twitter_username: ArtemGurzhii
 
-exclude: ["node_modules", "gulpfile.js", "package.json", "config.codekit", "data.json", "Gemfile", "Gemfile.lock", "LICENSE", "ToDo.txt", "assets/js/common.js", "assets/css/1-tools", "assets/css/2-modules"]
-permalink: pretty
+exclude: ["node_modules", "gulpfile.babel.js", "package.json", "config.codekit", "data.json", "Gemfile", "Gemfile.lock", "LICENSE", "ToDo.txt", "assets/js/common.js", "assets/css/1-tools", "assets/css/2-modules"]
 sass:
   sass_dir: assets/css/
   style: expanded
