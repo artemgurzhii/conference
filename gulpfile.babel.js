@@ -64,6 +64,11 @@ const paths = {
     includes: '_includes/*.html',
     site:     '_site',
     main:     '*.html'
+  },
+
+  // markdowm
+  markdown: {
+    posts: '_posts/*.md'
   }
 }
 
@@ -172,6 +177,7 @@ gulp.task('browser:sync', () => {
   gulp.watch(paths.js.jsMain, gulp.series('assets:js', 'browser:build', 'browser:rebuild'));
   gulp.watch(paths.html.includes, gulp.series('browser:build', 'browser:rebuild'));
   gulp.watch(paths.html.main, gulp.series('browser:build', 'browser:rebuild'));
+  gulp.watch(paths.markdown.posts, gulp.series('browser:build', 'browser:rebuild'));
 });
 
 // Cleen
