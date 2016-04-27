@@ -39,7 +39,9 @@ title: Conference
 
     <!-- POST BODY -->
     {% if post.image %}
-    <a href="{{ post.url }}" class="image featured"><img src="{{ post.image }}" alt="{% for tag in post.tags %}{{ tag }} {% endfor %}conference programming development" title="{% for tag in post.tags %}{{ tag }} {% endfor %}conference programming development"/></a>
+    <a href="{{ post.url }}" class="image featured">
+      <img src="{{ "/assets/img/min/TAG.EXT" | replace: "TAG", post.tags[0] | replace: "EXT", post.img_extension | prepend: site.baseurl }}" alt="{{ post.tags }}" />
+    </a>
     {% endif %}
 
     {{ post.excerpt }}
