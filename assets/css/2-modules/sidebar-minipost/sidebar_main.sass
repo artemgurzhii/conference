@@ -1,0 +1,45 @@
+.sidebar-posts-all
+  margin: 0 0 2em 0
+
+  &:last-child
+    margin-bottom: 0
+
+.sidebar-post
+  display: flex
+  flex-direction: column-reverse
+  border-top: 1px solid $post_border
+  padding-top: 20px
+
+  &:last-child
+    border-bottom: 1px solid $post_border
+    margin-bottom: 20px
+
+  .image
+    overflow: hidden
+    width: 100%
+
+    img
+      width: 100%
+
+  header
+    padding: 1.25em
+    min-height: 4em
+    position: relative
+    flex-grow: 1
+
+    .sidebar-conf-title
+      font-size: 1em
+      margin: 0
+
+    .published-time
+      display: block
+      font-family: inherit
+      font-size: 0.8em
+      font-weight: 400
+      letter-spacing: 0.25em
+      text-transform: uppercase
+
+    .sidebar-post-category
+      position: absolute
+      right: 2em
+      top: 1.1em

@@ -1,0 +1,33 @@
+ul
+  margin: 0 0 2em 0
+  padding-left: 1em
+
+  li
+    padding-left: 0.5em
+
+  &.icons
+    cursor: default
+    list-style: none
+    padding-left: 0
+
+    li
+      display: inline-block
+      padding: 0 1em 0 0
+
+      &:last-child
+        padding-right: 0
+
+      > *
+        text-decoration: none
+        border: 0
+
+        &:before
+          -moz-osx-font-smoothing: grayscale
+          -webkit-font-smoothing: antialiased
+          font-family: FontAwesome
+          font-style: normal
+          font-weight: normal
+          text-transform: none !important
+
+        .label
+          display: none

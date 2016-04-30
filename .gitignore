@@ -1,9 +1,6 @@
-data.json
 ToDo.txt
 node_modules
 Gemfile.lock
-_posts
-assets/img
 
 ### OSX ###
 .DS_Store
@@ -15,7 +12,6 @@ assets/img
 *.css.map
 
 ### Jekyll ###
-_site/
 .sass-cache/
 .jekyll-metadata
 
@@ -44,3 +40,6 @@ jspm_packages
 
 # Optional npm cache directory
 .npm
+
+
+LICENSE

@@ -6,7 +6,7 @@ table
 
   td
     width: 50%
-    color: #000
+    color: $black
 
   caption
     font-size: 1.1em
@@ -14,25 +14,21 @@ table
     margin-bottom: 1em
 
   tr:nth-child(odd)
-    background-color: #efefef!important
+    background-color: $post_page_background_even!important
 
   tr:nth-child(even)
-    background-color: #ddd!important
-
-.post-page-image
-  width: 500px
-  margin: 0 auto
+    background-color: $post_page_background_odd!important
 
 #main
   h2
     font-size: 1.5em
     margin: 3em 0 1em 0
-    border: 1px solid #a29a9a
+    border: 1px solid $post_page_border
     border-radius: 5px
     text-align: center
 
     &:hover
-      background: #ddd
+      background: $post_page_background_even
 
 .list-unstyled
   padding-left: 0

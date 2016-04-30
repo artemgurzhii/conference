@@ -31,10 +31,10 @@ import size             from 'postcss-size';
 // Other
 import imageminPngquant from 'imagemin-pngquant';
 import combiner         from 'stream-combiner2';
+import imagemin         from 'gulp-imagemin';
 import cp               from 'child_process';
 import cssMqpacker      from 'css-mqpacker';
 import browserSync      from 'browser-sync';
-import imagemin         from 'imagemin';
 import del              from 'del';
 
 const isDevelopment = !process.env.NODE_ENV || process.env.NODE_ENV === 'devlopment'; // NODE_ENV=production gulp
@@ -68,7 +68,7 @@ const paths = {
 
   // markdowm
   markdown: {
-    posts: '_posts/*.md'
+    posts: '_posts/*.markdown'
   }
 }
 
@@ -112,14 +112,14 @@ gulp.task('assets:js', () => {
     gulp.src(paths.js.jsMain),
       plumber(),
       changed(paths.js.jsMain),
+      jshint(),
+      jshint.reporter('jshint-stylish'),
       babel({
         presets: ['es2015']
       }),
-      jshint(),
-      jshint.reporter('jshint-stylish'),
       jscpd(),
       concat(paths.js.jsMain),
-      uglify(),
+      //uglify(),
       rename({
         dirname: paths.js.jsMin,
         basename: "common",
@@ -148,7 +148,12 @@ gulp.task('assets:json', () => {
 gulp.task('assets:image', () => {
   let combined = combiner.obj([
     gulp.src(paths.img.imagesAll),
-      imageminPngquant({quality: '50', speed: 40})(),
+      changed(paths.img.imagesMin),
+      imagemin({
+        progressive: true,
+        svgoPlugins: [{removeViewBox: false}],
+        use: [imageminPngquant()]
+      }),
       debug({title: 'Checking Images:'}),
     gulp.dest(paths.img.imagesMin)
   ])

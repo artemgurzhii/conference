@@ -1,6 +1,5 @@
+# main
 name: Conference
-timezone: America/New_York
-encoding: "utf-8"
 title: conference
 year: 2016
 
@@ -10,28 +9,30 @@ email: artem.gurzhii@gmail.com
 github_username: artemgurzhii
 twitter_username: ArtemGurzhii
 
-exclude: ["node_modules", "gulpfile.babel.js", "package.json", "config.codekit", "data.json", "Gemfile", "Gemfile.lock", "LICENSE", "ToDo.txt", "assets/js/common.js", "assets/css/1-tools", "assets/css/2-modules"]
-sass:
-  sass_dir: assets/css/
-  style: expanded
-
-# Serving | http://localhost:3000/conference/
+# Serving
 detach: false
 host: localhost
-port: 3000
 baseurl: ""
-url: "http://localhost:3000/" # the base hostname & protocol for site
+permalink: pretty
+url: "http://localhost:3000/"
 
 # Build settings
-markdown_ext: "markdown, md"
-highlighter: rouge
 markdown: kramdown
+future: true
+exclude: ["node_modules", "gulpfile.babel.js", "package.json", "config.codekit", "data.json", "Gemfile", "Gemfile.lock", "LICENSE", "ToDo.txt", "assets/js/common.js", "assets/css/1-tools", "assets/css/2-modules"]
 
 # Site settings
 description: Conferences
+timezone: America/New_York
+encoding: "utf-8"
 
-# will require each of these gems automatically
-gems: [jekyll-paginate, jekyll, redcarpet, bundler]
+# Gems - will require each of these gems automatically
+gems: [jekyll-paginate, jekyll, kramdown, bundler]
 
 # how much items on each page
-paginate: 2
+paginate: 5
+
+# Other
+read_post: "Continue Reading"
+prev_page: "Previous Page"
+next_page: "Next Page"
