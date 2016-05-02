@@ -16,11 +16,11 @@ Gemfile.lock
 .jekyll-metadata
 
 
-# Gemfile.lock
-# .ruby-version
-# .ruby-gemset
-# Gemfile
-# jsRules.js
+Gemfile.lock
+.ruby-version
+.ruby-gemset
+Gemfile
+jsRules.js
 
 
 ## Environment normalization:
