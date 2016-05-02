@@ -3,6 +3,11 @@ layout: main
 title: Conference
 ---
 
+<div id="search-demo-container">
+  <input type="text" id="search-input" placeholder="search...">
+  <ul id="results-container"></ul>
+</div>
+
 {% for post in paginator.posts %}
   <article class="post">
 
@@ -26,7 +31,6 @@ title: Conference
 
     </header>
     <!-- POST HEADER -->
-
 
     <!-- POST BODY -->
     <div class="article-body">

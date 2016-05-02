@@ -8,6 +8,7 @@ author: Artem Gurzhii
 email: artem.gurzhii@gmail.com
 github_username: artemgurzhii
 twitter_username: ArtemGurzhii
+description: 'hellowovlsgasdg flodf dwdtn'
 
 # Serving
 detach: false
@@ -26,13 +27,13 @@ description: Conferences
 timezone: America/New_York
 encoding: "utf-8"
 
+# Other
+read_post: "Continue Reading"
+prev_page: "Previous Page"
+next_page: "Next Page"
+
 # Gems - will require each of these gems automatically
 gems: [jekyll-paginate, jekyll, kramdown, bundler]
 
 # how much items on each page
 paginate: 5
-
-# Other
-read_post: "Continue Reading"
-prev_page: "Previous Page"
-next_page: "Next Page"

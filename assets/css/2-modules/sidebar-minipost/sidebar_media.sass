@@ -3,7 +3,7 @@
     margin: 0 0 3em 0
     text-align: center
 
-    header
+    footer
       h2
         font-size: 2em
 
@@ -21,7 +21,7 @@
     .logo
     margin: 0 0 0.5em 0
 
-    header
+    footer
       h2
         font-size: 1.25em
 
@@ -72,20 +72,20 @@
       width: calc(100% + (3em * 2))
 
 
-      .post > header
+      .post > footer
         flex-direction: column
         padding: 3.75em 3em 1.25em 3em
         border-left: 0
 
 
-        .post > header .title
+        .post > footer .title
           -ms-flex: 0 1 auto
           margin: 0 0 2em 0
           padding: 0
           text-align: center
 
 
-        .post > header .meta
+        .post > footer .meta
           align-items: center
           display: flex
           justify-content: center
@@ -97,33 +97,33 @@
           width: 100%
 
 
-          .post > header .meta > *
+          .post > footer .meta > *
             border-left: 1px solid $post_border
             margin-left: 2em
             padding-left: 2em
 
 
-          .post > header .meta > :first-child
+          .post > footer .meta > :first-child
             border-left: 0
             margin-left: 0
             padding-left: 0
 
 
-          .post > header .meta .published
+          .post > footer .meta .published
             margin-bottom: 0
             margin-top: 0
 
 
-          .post > header .meta .author
+          .post > footer .meta .author
             flex-direction: row-reverse
             margin-bottom: 0
 
 
-            .post > header .meta .author .name
+            .post > footer .meta .author .name
               margin: 0 0 0 1.5em
 
 
-            .post > header .meta .author img
+            .post > footer .meta .author img
               width: 3.5em
 
 
@@ -138,14 +138,14 @@
       width: calc(100% + (1.5em * 2))
 
 
-      .post > header
+      .post > footer
         padding: 3em 1.5em 0.5em 1.5em
         left: -1.5em
         margin: -1.5em 0 1.5em 0
         width: calc(100% + 3em)
 
 
-        .post > header .title h2
+        .post > footer .title h2
           font-size: 1.1em
 
 
@@ -153,18 +153,18 @@
 
   @media screen and (max-width: 480px)
 
-    .post > header .meta
+    .post > footer .meta
       align-items: center
       flex-direction: column
 
 
-      .post > header .meta > *
+      .post > footer .meta > *
         border-left: 0
         margin: 1em 0 0 0
         padding-left: 0
 
 
-      .post > header .meta .author .name
+      .post > footer .meta .author .name
         display: none
 
 

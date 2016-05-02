@@ -112,7 +112,7 @@ gulp.task('assets:js', () => {
     gulp.src(paths.js.jsMain),
       plumber(),
       changed(paths.js.jsMain),
-      jshint(),
+      jshint({esversion: 6}),
       jshint.reporter('jshint-stylish'),
       babel({
         presets: ['es2015']
@@ -132,19 +132,19 @@ gulp.task('assets:js', () => {
   combined.on('error', console.error.bind(console))
   return combined;
 });
-gulp.task('assets:json', () => {
-  let combined = combiner.obj([
-    gulp.src('*.json'),
-      plumber(),
-      jsonlint(),
-      jsonlint.reporter(),
-      jsonlint.failOnError(),
-      debug({title: 'Checking JSON:'}),
-    gulp.dest('.')
-  ])
-  combined.on('error', console.error.bind(console))
-  return combined;
-});
+// gulp.task('assets:json', () => {
+//   let combined = combiner.obj([
+//     gulp.src('*.json'),
+//       plumber(),
+//       jsonlint(),
+//       jsonlint.reporter(),
+//       jsonlint.failOnError(),
+//       debug({title: 'Checking JSON:'}),
+//     gulp.dest('.')
+//   ])
+//   combined.on('error', console.error.bind(console))
+//   return combined;
+// });
 gulp.task('assets:image', () => {
   let combined = combiner.obj([
     gulp.src(paths.img.imagesAll),
@@ -219,7 +219,7 @@ gulp.task('deploy:image', () => {
 });
 
 const browser = gulp.parallel('browser:build', 'browser:rebuild', 'browser:sync');
-const assets = gulp.parallel('assets:js', 'assets:css', 'assets:json', 'assets:image');
+const assets = gulp.parallel('assets:js', 'assets:css', /*'assets:json',*/ 'assets:image');
 const clean = gulp.parallel('clean:del');
 const build = gulp.series(clean, gulp.parallel(assets, browser));
 const deploy = gulp.parallel('deploy:image', 'deploy:html');

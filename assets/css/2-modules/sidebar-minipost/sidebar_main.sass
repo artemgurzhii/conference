@@ -5,10 +5,9 @@
     margin-bottom: 0
 
 .sidebar-post
-  display: flex
-  flex-direction: column-reverse
   border-top: 1px solid $post_border
   padding-top: 20px
+  text-align: center
 
   &:last-child
     border-bottom: 1px solid $post_border
@@ -16,12 +15,12 @@
 
   .image
     overflow: hidden
-    width: 100%
 
     img
-      width: 100%
+      max-width: 100%
+      height: 120px
 
-  header
+  footer
     padding: 1.25em
     min-height: 4em
     position: relative
@@ -30,6 +29,7 @@
     .sidebar-conf-title
       font-size: 1em
       margin: 0
+      text-align: left
 
     .published-time
       display: block
@@ -38,6 +38,7 @@
       font-weight: 400
       letter-spacing: 0.25em
       text-transform: uppercase
+      text-align: left
 
     .sidebar-post-category
       position: absolute

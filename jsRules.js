@@ -96,3 +96,44 @@ Object.keys(obj).forEach(prop => console.log(prop));
     lastName: 'way'
   };
 })();
+
+
+
+// DOM
+ID
+$('#myElement');
+document.querySelector('#myElement');
+
+Class
+$('.myElement');
+document.querySelectorAll('.myElement');
+
+Tag
+$('div');
+document.querySelectorAll('div');
+
+Attribute
+$('[data-foo-bar="someval"]');
+document.querySelectorAll('[data-foo-bar="someval"]');
+
+PseudoClass
+$('#myForm :invalid');
+document.querySelectorAll('#myForm :invalid');
+
+Children
+$('#myParent').children();
+document.getElementById('myParent').children;
+$('#myParent > [ng-click]');
+document.querySelector('#myParent > [ng-click]');
+
+Descendants
+$('#myParent A');
+document.querySelectorAll('#myParent A');
+
+Excluding
+$('DIV:not(.ignore)');
+document.querySelectorAll('DIV:not(.ignore)');
+
+Multiple
+$('DIV, A, SCRIPT');
+document.querySelectorAll('DIV, A, SCRIPT');
