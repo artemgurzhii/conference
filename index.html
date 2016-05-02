@@ -4,8 +4,8 @@ title: Conference
 ---
 
 <div id="search-demo-container">
-  <input type="text" id="search-input" placeholder="search...">
-  <ul id="results-container"></ul>
+  <input type="text" class="search-input" placeholder="search...">
+  <ul class="search-results-container"></ul>
 </div>
 
 {% for post in paginator.posts %}
@@ -24,7 +24,7 @@ title: Conference
       <div class="meta-desc">
         <time class="published" datetime="{{ post.date | date: "%F" }}">{{ post.date | date: "%B %d, %Y" }}</time>
         {% if post.category %}
-          <a href="/{{ post.category_link }}">{{ post.category }}</a>
+          <a href="/{{ post.category | downcase }}">{{ post.category }}</a>
         {% endif %}
       </div>
       <!-- RIGHT CATEGORY -->
@@ -35,8 +35,8 @@ title: Conference
     <!-- POST BODY -->
     <div class="article-body">
       <a href="{{ post.url }}" class="image featured">
-        {% if post.img_extension %}
-          <img src="{{ "/assets/img/min/TAG.EXT" | replace: "TAG", post.tags[0] | replace: "EXT", post.img_extension | prepend: site.baseurl }}" alt="{{ post.tags | join="" }}"/>
+        {% if post.img_src %}
+          <img src="{{ "/assets/img/min/TAG.EXT" | replace: "TAG", post.img_src | replace: "EXT", post.img_extension | prepend: site.baseurl }}" alt="{{ post.tags | join="" }}"/>
         {% else %}
           <img src="{{ "/assets/img/min/TAG.svg" | replace: "TAG", post.tags[1] | prepend: site.baseurl }}" alt="{{ post.tags | join="" }}"/>
         {% endif %}

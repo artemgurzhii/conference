@@ -1,126 +1,21 @@
 ---
-layout: main
-title: Angular
-category: Front-end
-category_link: front-end
-tags: "angular javascript"
-duration: 4th - 6th
-img_extension: svg
-link: http://www.ng-conf.org
-location: Salt Lake City, UT
-theme: angular
-date: 2016-05-04 16:52:07
-price: $1200
+layout:   'main'
+category: 'Front-end'
+
+price:    '$1200'
+title:    'Angular'
+theme:    'angular'
+duration: '4th - 6th'
+date:     '2016-05-07 16:52:07'
+
+link:     'http://www.ng-conf.org'
+location: 'Salt Lake City, UT'
+
+img_src:       'angular'
+img_extension: 'svg'
+tags:          'angular javascript'
 ---
 
 Holy smokes are we cooking up something amazing this year. We are upgrading our venue, adding an extra day and packing in more amazing content than ever.
 
-[![angular javascript conferences programming](/assets/img/min/ng-conf.svg){:width="500px"}](http://www.ng-conf.org)
-
-1. Location - __Salt Lake City, UT__
-2. Price - __$1200__
-3. Date - __MAY 4TH - 6TH 2016__
-
-## SPEAKERS
-<table class="speakers">
-  <caption>ALEX CASTILLO</caption>
-  <tr>
-    <td>Alex is a software engineer at GrubHub and specializes in enterprise single-page applications. He is also the creator of AngularCSS and AngularBreakpoint.</td>
-  </tr>
-</table>
-
-## SCHEDULE
-<table>
-  <caption>TUESDAY MAY 3rd</caption>
-  <tr>
-    <td>9:00 AM - 5:00 PM</td>
-    <td>Optional Pre-Conf Workshop Day</td>
-  </tr>
-  <tr>
-    <td>5:00 PM - 9:00 PM</td>
-    <td>Registration</td>
-  </tr>
-</table>
-
-<table>
-  <caption>WEDNESDAY May 4th</caption>
-  <tr>
-    <td>7:30 AM - 9:00 AM</td>
-    <td>Registration</td>
-  </tr>
-  <tr>
-    <td>8:00 AM</td>
-    <td>Breakfast</td>
-  </tr>
-  <tr>
-    <td>9:00 AM</td>
-    <td>Conference Welcome</td>
-  </tr>
-  <tr>
-    <td>9:10 AM</td>
-    <td>Keynote</td>
-  </tr>
-  <tr>
-    <td>10:00 AM - 12:30 PM</td>
-    <td>Sessions</td>
-  </tr>
-  <tr>
-    <td>12:30 PM - 2:00 PM</td>
-    <td>Lunch</td>
-  </tr>
-  <tr>
-    <td>2:00 PM - 6:00 PM</td>
-    <td>Sessions</td>
-  </tr>
-  <tr>
-    <td>7:00 PM - 11:00 PM</td>
-    <td>“May the 4th be with you” party</td>
-  </tr>
-</table>
-
-<table>
-  <caption>THURSDAY MAY 5th</caption>
-  <tr>
-    <td>8:00 AM</td>
-    <td>Breakfast</td>
-  </tr>
-  <tr>
-    <td>9:00 AM - 6:00 PM</td>
-    <td>Un-conference “Fair” Day</td>
-  </tr>
-  <tr>
-    <td>7:00 PM - 11:00 PM</td>
-    <td>Game Night</td>
-  </tr>
-</table>
-
-<table>
-  <caption>FRIDAY MAY 6th</caption>
-  <tr>
-    <td>8:00 AM</td>
-    <td>Breakfast</td>
-  </tr>
-  <tr>
-    <td>9:00 AM</td>
-    <td>Keynote</td>
-  </tr>
-  <tr>
-    <td>10:00 AM - 12:30 PM</td>
-    <td>Sessions</td>
-  </tr>
-  <tr>
-    <td>12:30 PM - 2:00 PM</td>
-    <td>Lunch</td>
-  </tr>
-  <tr>
-    <td>2:00 PM - 6:00 PM</td>
-    <td>Sessions</td>
-  </tr>
-</table>
-<table>
-  <caption>SATURDAY MAY 7th</caption>
-  <tr>
-    <td>8:00 AM - 10:00 PM</td>
-    <td>Amusement Park Day</td>
-  </tr>
-</table>
+{% include posts/2016-05-04-ng-conf.html %}
