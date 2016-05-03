@@ -3,41 +3,29 @@ layout: contact
 title: Conference
 ---
 
-{% for post in paginator.posts %}
-  <article class="post">
-    <header>
-      <div class="title">
-        <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
-        <!-- <p>Lorem ipsum dolor amet nullam consequat etiam feugiat</p> -->
-      </div>
-      <div class="meta">
-        <time class="published" datetime="{{ post.date | date: "%F" }}">{{ post.date | date: "%B %d, %Y" }}</time>
-        {% for category in post.categories limit:1 %}
-          <a href="#">{{ category }}</a>
-        {% endfor %}
-        <!--
-        <a href="#" class="author"><span class="name">Jane Doe</span><img src="images/avatar.jpg" alt="" /></a>
-        -->
-      </div>
-    </header>
-    {% if post.image %}
-      <a href="{{ post.url }}" class="image featured"><img src="{{post.image}}" alt="" /></a>
-    {% endif %}
-    {{ post.excerpt }}
-    <footer>
-      <ul class="actions">
-        <li><a href="{{ post.url }}" class="button big">Continue Reading</a></li>
-      </ul>
-      <ul class="stats">
-        {% for tag in post.tags limit:3 %}
-          <li><a href="#">{{ tag }}</a></li>
-        {% endfor %}
-        <!--
-        <li><a href="#">General</a></li>
-        <li><a href="#" class="icon fa-heart">28</a></li>
-        <li><a href="#" class="icon fa-comment">128</a></li>
-        -->
-      </ul>
-    </footer>
-  </article>
-{% endfor %}
+<!--
+  <ul class="socials">
+    <li><i class="fa fa-facebook"></i></li>
+    <li><i class="fa fa-twitter"></i></li>
+    <li><i class="fa fa-github"></i></li>
+    <li><i class="fa fa-vk"></i></li>
+    <li><i class="fa fa-"></i></li>
+  </ul>
+-->
+
+<form action="https://formspree.io/artem.gurzhii@gmail.com" method="post">
+  <p class="contact-title">If you have any suggestions how to improve this project, please send me email</p>
+
+  <p>
+    <label>Name: *</label>
+    <input type="text" name="name" placeholder="Your name" required>
+  </p>
+
+  <p>
+    <label>Message: *</label>
+    <textarea cols="40" rows="5" name="message" required resize="false"></textarea>
+  </p>
+
+  <button type="submit">SEND</button>
+
+</form>
