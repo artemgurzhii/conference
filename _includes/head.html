@@ -3,12 +3,12 @@
   <meta charset="utf-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimal-ui"/>
-  <title>Conference</title>
-  <meta name="author" lang="en" content="Artem Gurzhii"/>
-  <meta name="copyright" lang="en" content="Artem Gurzhii"/>
-  <meta name="description" content="Programming conferences for front-end and back-end devlopers"/>
+  <title>{{ site.site_title }}</title>
+  <meta name="author" lang="en" content="{{ site.author }}"/>
+  <meta name="copyright" lang="en" content="{{ site.author }}"/>
+  <meta name="description" content="{{ site.site_description }}">
   <meta name="document-state" content="Dynamic"/>
-  <meta name="keywords" content="Front-end Back-end Conference CSS HTML JavaScript HTML5 CSS3 Ruby Jekyll"/>
+  <meta name="keywords" content="{{ site.site_keywords }}"/>
 
   <!-- ICONS -->
   <link rel="icon" href="{{ "/assets/img/min/favicon.png" | prepend: site.baseurl }}" sizes="16x16" type="image/png">
@@ -18,28 +18,28 @@
   <!-- ICONS -->
 
   <!-- FACEBOOK -->
-  <meta property="og:url" content="http://artemgurzhii.github.io/conference/">
+  <meta property="og:url" content="{{ site.baseurl }}">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Conferences">
+  <meta property="og:title" content="{{ site.site_title }}">
   <meta property="og:image" content="{{ "/assets/img/min/favicon.png" | prepend: site.baseurl }}">
-  <meta property="og:description" content="Programming conferences for front-end and back-end devlopers">
-  <meta property="og:site_name" content="Conferences">
+  <meta property="og:description" content="{{ site.site_description }}">
+  <meta property="og:site_name" content="{{ site.site_title }}">
   <meta property="og:locale" content="en_US">
-  <meta property="article:author" content="Artem Gurzhii">
+  <meta property="article:author" content="{{ site.author }}">
   <!-- FACEBOOK -->
 
   <!-- TWITTER -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:creator" content="@ArtemGurzhii">
-  <meta name="twitter:url" content="http://artemgurzhii.github.io/conference/">
-  <meta name="twitter:title" content="Conferences">
-  <meta name="twitter:description" content="Programming conferences for front-end and back-end devlopers">
+  <meta name="twitter:creator" content="@{{ site.author | replace: " ", "" }}">
+  <meta name="twitter:url" content="{{ site.baseurl }}">
+  <meta name="twitter:title" content="{{ site.site_title }}">
+  <meta name="twitter:description" content="{{ site.site_description }}">
   <meta name="twitter:image" content="{{ "/assets/img/min/favicon.png" | prepend: site.baseurl }}">
   <!-- TWITTER -->
 
   <!-- GOOGLE PLUS -->
-  <meta itemprop="name" content="Conferences"/>
-  <meta itemprop="description" content="Programming conferences for front-end and back-end devlopers"/>
+  <meta itemprop="name" content="{{ site.site_title }}"/>
+  <meta itemprop="description" content="{{ site.site_description }}">
   <meta itemprop="image" content="{{ "/assets/img/min/favicon.png" | prepend: site.baseurl }}"/>
   <!-- GOOGLE PLUS -->
 
@@ -62,7 +62,6 @@
   <!-- APPLE -->
 
   <!-- LINKS -->
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-hQpvDQiCJaD2H465dQfA717v7lu5qHWtDbWNPvaTJ0ID5xnPUlVXnKzq7b8YUkbN" crossorigin="anonymous">
   <link rel="stylesheet" href="{{ "/assets/css/min/main.min.css" | prepend: site.baseurl }}">
   <!-- LINKS -->
 
