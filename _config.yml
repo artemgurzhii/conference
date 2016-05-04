@@ -1,39 +1,40 @@
 # main
-name: Conference
-title: conference
+name: "Conference"
+title: "conference"
 year: 2016
 
 # social
-author: Artem Gurzhii
-email: artem.gurzhii@gmail.com
-github_username: artemgurzhii
-twitter_username: ArtemGurzhii
-description: 'hellowovlsgasdg flodf dwdtn'
+author: "Artem Gurzhii"
+email: "gyga98@mail.ru"
 
 # Serving
 detach: false
 host: localhost
 baseurl: ""
+# baseurl: "http://artemgurzhii.github.io/conference/"
 permalink: pretty
 url: "http://localhost:3000/"
 
 # Build settings
 markdown: kramdown
 future: true
-exclude: ["node_modules", "gulpfile.babel.js", "package.json", "config.codekit", "data.json", "Gemfile", "Gemfile.lock", "LICENSE", "ToDo.txt", "assets/js/common.js", "assets/css/1-tools", "assets/css/2-modules"]
+exclude: ["node_modules", "gulpfile.babel.js", "package.json", Gemfile", "Gemfile.lock", "LICENSE", "assets/js/common.js", "assets/js/modules", "assets/css/1-tools", "assets/css/2-modules", "assets/css/main.sass", "data/conferences.json"]
 
 # Site settings
 description: Conferences
 timezone: America/New_York
 encoding: "utf-8"
 
-# Other
-read_post: "Continue Reading"
-prev_page: "Previous Page"
-next_page: "Next Page"
-
 # Gems - will require each of these gems automatically
 gems: [jekyll-paginate, jekyll, kramdown, bundler]
 
 # how much items on each page
-paginate: 5
+paginate: 10
+
+# Other
+read_post: "Continue Reading"
+prev_page: "Previous Page"
+next_page: "Next Page"
+site_description: "Programming conferences for front-end and back-end devlopers"
+site_title: "Web Conferences"
+site_keywords: "Front-end Back-end Conference CSS HTML JavaScript HTML5 CSS3 Ruby Jekyll"
