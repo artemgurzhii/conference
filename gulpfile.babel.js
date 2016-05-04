@@ -3,7 +3,7 @@ import postcss          from 'gulp-postcss';
 import gulp             from 'gulp';
 
 // Gulp-plugins
-import rmvHtmlComnts    from 'gulp-remove-html-comments';
+import strip            from 'gulp-strip-comments';
 import prefix           from 'gulp-autoprefixer';
 import sourcemaps       from 'gulp-sourcemaps';
 import jsonlint         from 'gulp-jsonlint';
@@ -31,6 +31,7 @@ import size             from 'postcss-size';
 // Other
 import imageminPngquant from 'imagemin-pngquant';
 import combiner         from 'stream-combiner2';
+import webpack          from 'webpack-stream';
 import imagemin         from 'gulp-imagemin';
 import cp               from 'child_process';
 import cssMqpacker      from 'css-mqpacker';
@@ -49,8 +50,9 @@ const paths = {
 
   // js
   js: {
-    jsMain: 'assets/js/*.js',
-    jsMin:  'assets/js/min/'
+    jsMain:    'assets/js/common.js',
+    jsMin:     'assets/js/min/',
+    jsModules: 'assets/js/modules/*.js'
   },
 
   //images
@@ -62,6 +64,7 @@ const paths = {
   // html
   html: {
     includes: '_includes/*.html',
+    layouts:  '_layouts/*.html',
     site:     '_site',
     main:     '*.html',
     posts:    '_includes/posts/*.html'
@@ -70,6 +73,10 @@ const paths = {
   // markdowm
   markdown: {
     posts: '_posts/*.markdown'
+  },
+
+  json: {
+    jsonSearch: '_site/data/*.json'
   }
 }
 
@@ -80,6 +87,7 @@ const jekyll = process.platform === 'win32' ? 'jekyll.bat' : 'jekyll',
 
 // Assets
 // ========================
+// CSS
 gulp.task('assets:css', () => {
   let processors = [
       cssMqpacker,
@@ -99,8 +107,13 @@ gulp.task('assets:css', () => {
       }),
       postcss(processors),
       prefix({ browsers: ['> 1%', 'ie 8', 'ie 7', 'ie 6'], cascade: false }),
-      csso(),
-      rename({suffix: '.min'}),
+      // csso(),
+      rename({
+        dirname: paths.css.cssMin,
+        basename: "main",
+        suffix: ".min",
+        extname: ".css"
+      }),
       debug({title: 'Checking CSS:'}),
       gulpIf(isDevelopment, sourcemaps.write('.')),
       gulp.dest(paths.css.cssMin)
@@ -108,19 +121,23 @@ gulp.task('assets:css', () => {
   combined.on('error', console.error.bind(console))
   return combined;
 });
+// JS
 gulp.task('assets:js', () => {
   let combined = combiner.obj([
     gulp.src(paths.js.jsMain),
       plumber(),
-      changed(paths.js.jsMain),
-      jshint({esversion: 6}),
+      changed('.'),
+      webpack(),
+      jshint({
+        esversion: 6
+      }),
       jshint.reporter('jshint-stylish'),
       babel({
         presets: ['es2015']
       }),
       jscpd(),
-      concat(paths.js.jsMain),
-      //uglify(),
+      // uglify(),
+      strip(),
       rename({
         dirname: paths.js.jsMin,
         basename: "common",
@@ -133,19 +150,7 @@ gulp.task('assets:js', () => {
   combined.on('error', console.error.bind(console))
   return combined;
 });
-// gulp.task('assets:json', () => {
-//   let combined = combiner.obj([
-//     gulp.src('*.json'),
-//       plumber(),
-//       jsonlint(),
-//       jsonlint.reporter(),
-//       jsonlint.failOnError(),
-//       debug({title: 'Checking JSON:'}),
-//     gulp.dest('.')
-//   ])
-//   combined.on('error', console.error.bind(console))
-//   return combined;
-// });
+// IMG
 gulp.task('assets:image', () => {
   let combined = combiner.obj([
     gulp.src(paths.img.imagesAll),
@@ -181,7 +186,9 @@ gulp.task('browser:sync', () => {
   gulp.watch(paths.css.sassMain, gulp.series('assets:css', 'browser:build', 'browser:rebuild'));
   gulp.watch(paths.css.sassAll, gulp.series('assets:css', 'browser:build', 'browser:rebuild'));
   gulp.watch(paths.js.jsMain, gulp.series('assets:js', 'browser:build', 'browser:rebuild'));
+  gulp.watch(paths.js.jsModules, gulp.series('assets:js', 'browser:build', 'browser:rebuild'));
   gulp.watch(paths.html.includes, gulp.series('browser:build', 'browser:rebuild'));
+  gulp.watch(paths.html.layouts, gulp.series('browser:build', 'browser:rebuild'));
   gulp.watch(paths.html.main, gulp.series('browser:build', 'browser:rebuild'));
   gulp.watch(paths.html.posts, gulp.series('browser:build', 'browser:rebuild'));
   gulp.watch(paths.markdown.posts, gulp.series('browser:build', 'browser:rebuild'));
@@ -195,20 +202,20 @@ gulp.task('clean:del', done => {
 });
 
 // DEPLOY
-// html
+// ========================
+// HTML
 gulp.task('deploy:html', () => {
   let combined = combiner.obj([
     gulp.src(paths.html.includes),
-      rmvHtmlComnts(),
       htmlmin({collapseWhitespace: true}),
+      srip(),
       debug({title: 'Checking HTML:'}),
     gulp.dest(paths.html.includes)
   ])
   combined.on('error', console.error.bind(console))
   return combined;
 });
-
-// image
+// IMG
 gulp.task('deploy:image', () => {
   let combined = combiner.obj([
     gulp.src(paths.img.imagesAll),
@@ -219,11 +226,25 @@ gulp.task('deploy:image', () => {
   combined.on('error', console.error.bind(console))
   return combined;
 });
+// JSON
+gulp.task('deploy:json', () => {
+  let combined = combiner.obj([
+    gulp.src(paths.json.jsonSearch),
+      plumber(),
+      jsonlint(),
+      jsonlint.reporter(),
+      jsonlint.failOnError(),
+      debug({title: 'Checking JSON:'}),
+    gulp.dest('.')
+  ])
+  combined.on('error', console.error.bind(console))
+  return combined;
+});
 
 const browser = gulp.parallel('browser:build', 'browser:rebuild', 'browser:sync');
-const assets = gulp.parallel('assets:js', 'assets:css', /*'assets:json',*/ 'assets:image');
+const assets = gulp.parallel('assets:js', 'assets:css', 'assets:image');
 const clean = gulp.parallel('clean:del');
-const build = gulp.series(clean, gulp.parallel(assets, browser));
-const deploy = gulp.parallel('deploy:image', 'deploy:html');
+const build = gulp.series(clean, gulp.parallel(browser, assets));
+const deploy = gulp.parallel('deploy:image', 'deploy:html', 'deploy:json');
 export { build, clean, assets, browser, deploy };
 export default build;
