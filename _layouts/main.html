@@ -12,27 +12,29 @@
         {{ content }}
         <ul class="actions pagination">
 
-          {% if paginator.previous_page %}
+          {% if paginator.total_pages > 1 %}
 
-            <li><a href="{{ paginator.previous_page_path }}" class="button big previous">{{ site.prev_page }}</a></li>
+            {% if paginator.previous_page %}
 
-          {% else %}
+              <li><a href="{{ paginator.previous_page_path }}" class="button big previous">{{ site.prev_page }}</a></li>
 
-            <li><a href="" class="inactive_link button big previous">{{ site.prev_page }}</a></li>
+            {% endif %}
 
-          {% endif %}
+              <li>{{ paginator.page }} / {{ paginator.total_pages }}</li>
 
-            <li>{{ paginator.page }} / {{ paginator.total_pages }}</li>
+            {% if paginator.next_page %}
 
-          {% if paginator.next_page %}
+              <li><a href="{{ paginator.next_page_path }}" class="button big next">{{ site.next_page }}</a></li>
 
-            <li><a href="{{ paginator.next_page_path }}" class="button big next">{{ site.next_page }}</a></li>
-
-          {% else %}
-
-            <li><a href="#" class="inactive_link button big next" disabled="disabled">{{ site.next_page }}</a></li>
+            {% endif %}
 
           {% endif %}
+
+        <!--
+          <li><a href="{{ paginator.previous_page_path }}" class="button big previous">{{ site.prev_page }}</a></li>
+          <li>{{ paginator.page }} / {{ paginator.total_pages }}</li>
+          <li><a href="{{ paginator.next_page_path }}" class="button big next">{{ site.next_page }}</a></li>
+        -->
 
         </ul>
       </main>
