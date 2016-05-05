@@ -1,0 +1,75 @@
+---
+layout: front-end
+title: Conference
+---
+
+
+
+<div class="front-end-tags">
+  <li><a href="_css">CSS</a></li>
+  <li><a href="_html">HTML</a></li>
+  <li><a href="_javascript">JavaScript</a></li>
+  <li><a href="_frameworks">Frameworks</a></li>
+</div>
+
+{% for post in site.posts %}
+  {% assign category = post.category | downcase  %}
+  {% if category == 'front-end' %}
+
+    <article class="post">
+
+      <!-- POST HEADER -->
+      <header class="article-header">
+
+        <!-- LEFT TITLE -->
+        <div class="title">
+          <h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
+        </div>
+        <!-- LEFT TITLE -->
+
+        <!-- RIGHT CATEGORY -->
+        <div class="meta-desc">
+          <time class="published" datetime="{{ post.date | date: "%F" }}">{{ post.date | date: "%B %d, %Y" }}</time>
+          {% if post.category %}
+            <a href="/{{ post.category | downcase }}">{{ post.category }}</a>
+          {% endif %}
+        </div>
+        <!-- RIGHT CATEGORY -->
+
+      </header>
+      <!-- POST HEADER -->
+
+      <!-- POST BODY -->
+      <div class="article-body">
+        <a href="{{ post.url }}" class="image featured">
+          {% if post.img_src %}
+            <img src="{{ "/assets/img/min/TAG.EXT" | replace: "TAG", post.img_src | replace: "EXT", post.img_extension | prepend: site.baseurl }}" alt="{{ post.tags | join="" }}"/>
+          {% else %}
+            <img src="{{ "/assets/img/min/TAG.svg" | replace: "TAG", post.tags[1] | prepend: site.baseurl }}" alt="{{ post.tags | join="" }}"/>
+          {% endif %}
+        </a>
+        {{ post.excerpt }}
+      </div>
+      <!-- POST BODY -->
+
+
+      <!-- POST FOOTER -->
+      <footer class="article-footer">
+        <ul class="actions">
+          <li><a href="{{ post.url }}" class="button big">{{ site.read_post }}</a></li>
+        </ul>
+        <ul class="post-tags-all">
+          {% for tag in post.tags limit:5 %}
+            {% assign title = post.title | downcase %}
+            {% if tag == title %}
+              <li class="post-tag"><a href="{{ post.url }}">{{ tag }}</a></li>
+            {% else %}
+              <li class="post-tag"><a href="/{{ tag }}">{{ tag }}</a></li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </footer>
+      <!-- POST FOOTER -->
+    </article>
+  {% endif %}
+{% endfor %}
