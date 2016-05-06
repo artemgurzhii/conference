@@ -1,7 +1,7 @@
 describe('getDiv', function() {
-  var wrapper = document.getElementById('wrapper'),
+    var d = document.querySelector('#wrapper');
 
-  it('Should exist', function() {
-    expect(wrapper.nodeName).toBe('DIV');
-  });
+    it('Should exist', function() {
+        expect(d.nodeName).toBe('DIV');
+    });
 });
