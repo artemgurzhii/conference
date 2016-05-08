@@ -9,7 +9,7 @@ describe('Testing XMLHttpRequest function: ', function() {
     xhr = new XMLHttpRequest();
     xhr.open('GET', 'https://github.com/artemgurzhii/conference/blob/v.0.1.0/_site/data/search.json', true);
     xhr.onreadystatechange = function() {
-      console.log("Function returns: "+JSON.stringify(xhr));
+      console.log("Function returns: " + JSON.stringify(xhr));
       if (xhr.readyState === 4 && xhr.status === 200) {
         done();
       }
