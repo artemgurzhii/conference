@@ -19,14 +19,15 @@ import jscpd            from 'gulp-jscpd';
 import debug            from 'gulp-debug';
 import uglify           from 'gulp-uglify';
 import sass             from 'gulp-sass';
+import size             from 'gulp-size';
 import csso             from 'gulp-csso';
 import gulpIf           from 'gulp-if';
 
 // Postcss-plugins
 import colorShort       from 'postcss-color-short';
 import pxtorem          from 'postcss-pxtorem';
+import zindex           from 'postcss-zindex';
 import focus            from 'postcss-focus';
-import size             from 'postcss-size';
 
 // Other
 import imageminPngquant from 'imagemin-pngquant';
@@ -90,16 +91,17 @@ const jekyll = process.platform === 'win32' ? 'jekyll.bat' : 'jekyll',
 // CSS
 gulp.task('assets:css', () => {
   let processors = [
+      zindex,
       cssMqpacker,
       colorShort,
       pxtorem,
-      focus,
-      size
-    ]
+      focus
+  ];
   let combined = combiner.obj([
     gulp.src(paths.css.sassMain),
       plumber(),
-      changed(paths.css.cssMin),
+      changed('.'),
+      size(),
       gulpIf(isDevelopment, sourcemaps.init()),
       sass({
         includePaths: ['assets/css/'],
@@ -108,15 +110,10 @@ gulp.task('assets:css', () => {
       postcss(processors),
       prefix({ browsers: ['> 1%', 'ie 8', 'ie 7', 'ie 6'], cascade: false }),
       // csso(),
-      rename({
-        dirname: paths.css.cssMin,
-        basename: "main",
-        suffix: ".min",
-        extname: ".css"
-      }),
+      rename({ suffix: ".min"}),
       debug({title: 'Checking CSS:'}),
       gulpIf(isDevelopment, sourcemaps.write('.')),
-      gulp.dest(paths.css.cssMin)
+    gulp.dest('assets/css/min')
   ])
   combined.on('error', console.error.bind(console))
   return combined;
@@ -127,6 +124,7 @@ gulp.task('assets:js', () => {
     gulp.src(paths.js.jsMain),
       plumber(),
       changed('.'),
+      size(),
       webpack(),
       jshint({
         esversion: 6
@@ -136,8 +134,8 @@ gulp.task('assets:js', () => {
         presets: ['es2015']
       }),
       jscpd(),
-      // uglify(),
       strip(),
+      //uglify(),
       rename({
         dirname: paths.js.jsMin,
         basename: "common",
@@ -153,8 +151,9 @@ gulp.task('assets:js', () => {
 // IMG
 gulp.task('assets:image', () => {
   let combined = combiner.obj([
-    gulp.src(paths.img.imagesAll),
+    gulp.src(paths.img.imagesAll, {since: gulp.lastRun('assets:image')}),
       changed(paths.img.imagesMin),
+      size(),
       imagemin({
         progressive: true,
         svgoPlugins: [{removeViewBox: false}],
@@ -207,6 +206,7 @@ gulp.task('clean:del', done => {
 gulp.task('deploy:html', () => {
   let combined = combiner.obj([
     gulp.src(paths.html.includes),
+      size(),
       htmlmin({collapseWhitespace: true}),
       srip(),
       debug({title: 'Checking HTML:'}),
@@ -219,6 +219,7 @@ gulp.task('deploy:html', () => {
 gulp.task('deploy:image', () => {
   let combined = combiner.obj([
     gulp.src(paths.img.imagesAll),
+      size(),
       imageminPngquant({quality: '100', speed: 1})(),
       debug({title: 'Checking Images:'}),
     gulp.dest(paths.img.imagesMin)
@@ -230,6 +231,7 @@ gulp.task('deploy:image', () => {
 gulp.task('deploy:json', () => {
   let combined = combiner.obj([
     gulp.src(paths.json.jsonSearch),
+      size(),
       plumber(),
       jsonlint(),
       jsonlint.reporter(),
