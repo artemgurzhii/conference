@@ -18,7 +18,24 @@ url: "http://localhost:3000/"
 # Build settings
 markdown: kramdown
 future: true
-exclude: ["node_modules", "gulpfile.babel.js", "package.json", Gemfile", "Gemfile.lock", "LICENSE", "assets/js/common.js", "assets/js/modules", "assets/css/1-tools", "assets/css/2-modules", "assets/css/main.sass", "data/conferences.json"]
+exclude: [
+  "node_modules",
+  "gulpfile.babel.js",
+  "package.json",
+  "Gemfile",
+  "Gemfile.lock",
+  "LICENSE",
+  "assets/js/common.js",
+  "assets/js/modules",
+  "assets/css/1-tools",
+  "assets/css/2-modules",
+  "assets/css/main.sass",
+  "data/conferences.json",
+  "README.md",
+  "my.tests.js",
+  "tests",
+  "npm-debug.log"
+]
 
 # Site settings
 description: Conferences
@@ -29,7 +46,7 @@ encoding: "utf-8"
 gems: [jekyll-paginate, jekyll, kramdown, bundler]
 
 # how much items on each page
-paginate: 10
+paginate: 3
 
 # Other
 read_post: "Continue Reading"

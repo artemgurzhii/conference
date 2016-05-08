@@ -3,12 +3,16 @@ layout: main
 title: Conference
 ---
 
-<div id="search-demo-container">
+<div class="search-container">
   <input type="text" class="search-input" placeholder="search...">
-  <ul class="search-results-container"></ul>
+  <i class="clear-search-input">&#10006;</i>
+  <ul class="search-results-list"></ul>
 </div>
 
 {% for post in paginator.posts %}
+  {% assign curr_date = site.time | date: "%F" %}
+  {% assign post_date = post.date | date: "%F" %}
+  {% if curr_date < post_date %}
   <article class="post">
 
     <!-- POST HEADER -->
@@ -64,4 +68,5 @@ title: Conference
     </footer>
     <!-- POST FOOTER -->
   </article>
+  {% endif %}
 {% endfor %}

@@ -6,7 +6,7 @@ price:    '$1200'
 title:    'Angular'
 theme:    'angular'
 duration: '4th - 6th'
-date:     '2016-05-07 16:52:07'
+date:     '2016-05-28 16:52:07'
 
 link:     'http://www.ng-conf.org'
 location: 'Salt Lake City, UT'

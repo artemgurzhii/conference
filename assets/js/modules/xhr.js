@@ -1,4 +1,4 @@
-const XHR = function(method, url, asyncLoad, callback) {
+function XHR(method, url, asyncLoad, callback) {
     let request = new XMLHttpRequest();
     request.onload = function (e) {
       if (request.readyState === 4) {

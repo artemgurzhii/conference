@@ -6,18 +6,16 @@
   <body>
     <div id="wrapper">
       {% include header.html %}
+
       <div id="main" class="main-contact">
-
         {{ content }}
-
       </div>
+
       <aside id="sidebar">
         {% include sidebar-header.html %}
         {% include sidebar-post.html %}
-        {% include sidebar-about.html %}
-        {% include sidebar-footer.html %}
+        {% include footer.html %}
       </aside>
-
     </div>
     {% include scripts.html %}
   </body>

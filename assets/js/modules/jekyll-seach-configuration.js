@@ -13,7 +13,7 @@ if (window.location.href === 'http://localhost:3000/') {
     // limit of results
     limit: 10,
     // less restrictive matching (менее подробный поиск)
-    fuzzy: false
+    fuzzy: true
   });
 
 }

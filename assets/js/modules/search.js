@@ -1,5 +1,6 @@
 if (window.location.href === 'http://localhost:3000/') {
   let
+    wrapper      = document.getElementById('wrapper'),
     main         = wrapper.querySelector('#main'),
     searchCont   = main.querySelector('div.search-container'),
     searchInput  = searchCont.querySelector('input.search-input'),

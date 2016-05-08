@@ -3,5 +3,3 @@ node_modules
 Gemfile.lock
 
 Gemfile
-
-.babelrc

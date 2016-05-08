@@ -676,7 +676,6 @@ table {
   text-align: center; }
   .front-end-tags li {
     display: inline-block;
-    border-left: 1px solid #333;
     padding: 5px 10px;
     margin: 0; }
     .front-end-tags li:first-child {
