@@ -1,11 +1,7 @@
-ToDo.txt
-
 node_modules
 
 Gemfile.lock
 
 Gemfile
 
-bower_components
-
-npm-debug.log
+.babelrc

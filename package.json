@@ -8,7 +8,7 @@
   "description": "Programming conferences for front-end and back-end devlopers",
   "main": "gulpfile.babel.js",
   "scripts": {
-    "test": "make test",
+    "test": "mocha --compilers js:babel-core/register",
     "gulp": "./node_modules/gulp/bin/gulp.js"
   },
   "bugs": {
