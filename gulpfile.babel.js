@@ -109,7 +109,7 @@ gulp.task('assets:css', () => {
       }),
       postcss(processors),
       prefix({ browsers: ['> 1%', 'ie 8', 'ie 7', 'ie 6'], cascade: false }),
-      // csso(),
+      csso(),
       rename({ suffix: ".min"}),
       debug({title: 'Checking CSS:'}),
       gulpIf(isDevelopment, sourcemaps.write('.')),
@@ -135,7 +135,7 @@ gulp.task('assets:js', () => {
       }),
       jscpd(),
       strip(),
-      //uglify(),
+      uglify(),
       rename({
         dirname: paths.js.jsMin,
         basename: "common",

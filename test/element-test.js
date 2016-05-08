@@ -1,6 +1,6 @@
 // mocha --compilers js:babel-core/register
-var chai = require('chai');
-var expect = require('chai').expect;
+let chai = require('chai');
+let expect = require('chai').expect;
 
 describe('A basic test', function() {
   describe('First Test', function() {
