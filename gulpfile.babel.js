@@ -7,6 +7,7 @@ import strip            from 'gulp-strip-comments';
 import prefix           from 'gulp-autoprefixer';
 import sourcemaps       from 'gulp-sourcemaps';
 import jsonlint         from 'gulp-jsonlint';
+import duration         from 'gulp-duration';
 import htmlmin          from 'gulp-htmlmin';
 import plumber          from 'gulp-plumber';
 import changed          from 'gulp-changed';
@@ -111,6 +112,7 @@ gulp.task('assets:css', () => {
       prefix({ browsers: ['> 1%', 'ie 8', 'ie 7', 'ie 6'], cascade: false }),
       csso(),
       rename({ suffix: ".min"}),
+      duration('CSS'),
       debug({title: 'Checking CSS:'}),
       gulpIf(isDevelopment, sourcemaps.write('.')),
     gulp.dest('assets/css/min')
@@ -142,6 +144,7 @@ gulp.task('assets:js', () => {
         suffix: ".min",
         extname: ".js"
       }),
+      duration('JS'),
       debug({title: 'Checking JavaScript:'}),
     gulp.dest('./')
   ])
@@ -159,6 +162,7 @@ gulp.task('assets:image', () => {
         svgoPlugins: [{removeViewBox: false}],
         use: [imageminPngquant()]
       }),
+      duration('IMG'),
       debug({title: 'Checking Images:'}),
     gulp.dest(paths.img.imagesMin)
   ])
