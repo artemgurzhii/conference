@@ -11,13 +11,16 @@ before_install:
   - sh -e /etc/init.d/xvfb start
 
 install:
-  - npm install
+  - npm install babel
+  - npm install babel-core
   - npm install babel-register
+  - npm install babel-preset-es2015
+  - npm install blanket
   - npm install mocha
   - npm install chai
 
 script:
-  - mocha --compilers js:babel-core/register
+  - npm run ci
 
 notifications:
   email:
