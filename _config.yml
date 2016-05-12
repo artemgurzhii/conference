@@ -2,6 +2,9 @@
 name: "Conference"
 title: "conference"
 year: 2016
+description: Conferences
+timezone: America/New_York
+encoding: "utf-8"
 
 # social
 author: "Artem Gurzhii"
@@ -32,15 +35,11 @@ exclude: [
   "assets/css/main.sass",
   "data/conferences.json",
   "README.md",
-  "my.tests.js",
-  "tests",
-  "npm-debug.log"
-]
+  "test",
+  "jsdoc.json",
+  "docs"
 
-# Site settings
-description: Conferences
-timezone: America/New_York
-encoding: "utf-8"
+]
 
 # Gems - will require each of these gems automatically
 gems: [jekyll-paginate, jekyll, kramdown, bundler]

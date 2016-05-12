@@ -38,6 +38,7 @@ import imagemin         from 'gulp-imagemin';
 import cp               from 'child_process';
 import cssMqpacker      from 'css-mqpacker';
 import browserSync      from 'browser-sync';
+import jsdoc            from 'gulp-jsdoc3';
 import del              from 'del';
 
 const isDevelopment = !process.env.NODE_ENV || process.env.NODE_ENV === 'devlopment'; // NODE_ENV=production gulp
@@ -137,7 +138,7 @@ gulp.task('assets:js', () => {
       }),
       jscpd(),
       strip(),
-      uglify(),
+      // uglify(),
       rename({
         dirname: paths.js.jsMin,
         basename: "common",
@@ -169,6 +170,18 @@ gulp.task('assets:image', () => {
   combined.on('error', console.error.bind(console))
   return combined;
 });
+// Documentation
+gulp.task('assets:docs', cb => {
+  let config = require('./jsdoc.json');
+  let combined = combiner.obj([
+    gulp.src(['README.md', 'assets/js/modules/*.js'], {read: false}),
+      jsdoc(config, cb),
+      duration('Documentation'),
+      debug({title: 'Writing documentation:'}),
+  ])
+  combined.on('error', console.error.bind(console))
+  return combined;
+});
 
 // Browser
 // ========================
@@ -188,8 +201,8 @@ gulp.task('browser:sync', () => {
   })
   gulp.watch(paths.css.sassMain, gulp.series('assets:css', 'browser:build', 'browser:rebuild'));
   gulp.watch(paths.css.sassAll, gulp.series('assets:css', 'browser:build', 'browser:rebuild'));
-  gulp.watch(paths.js.jsMain, gulp.series('assets:js', 'browser:build', 'browser:rebuild'));
   gulp.watch(paths.js.jsModules, gulp.series('assets:js', 'browser:build', 'browser:rebuild'));
+  gulp.watch(paths.js.jsMain, gulp.series('assets:js', 'browser:build', 'browser:rebuild'));
   gulp.watch(paths.html.includes, gulp.series('browser:build', 'browser:rebuild'));
   gulp.watch(paths.html.layouts, gulp.series('browser:build', 'browser:rebuild'));
   gulp.watch(paths.html.main, gulp.series('browser:build', 'browser:rebuild'));
@@ -203,6 +216,7 @@ gulp.task('clean:del', done => {
   return del(paths.html.site)
   done();
 });
+
 
 // DEPLOY
 // ========================
@@ -248,7 +262,7 @@ gulp.task('deploy:json', () => {
 });
 
 const browser = gulp.parallel('browser:build', 'browser:rebuild', 'browser:sync');
-const assets = gulp.parallel('assets:js', 'assets:css', 'assets:image');
+const assets = gulp.parallel('assets:js', 'assets:css', 'assets:image', 'assets:docs');
 const clean = gulp.parallel('clean:del');
 const build = gulp.series(clean, gulp.parallel(browser, assets));
 const deploy = gulp.parallel('deploy:image', 'deploy:html', 'deploy:json');
