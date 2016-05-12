@@ -1,17 +1,15 @@
 let
-  wrapper      = document.getElementById('wrapper'),
-  main         = wrapper.querySelector('#main'),
-  searchCont   = main.querySelector('div.search-container'),
-  searchInput  = searchCont.querySelector('input.search-input'),
-  searchIcon   = searchCont.querySelector('i.clear-search-input'),
-  searchUl     = searchCont.querySelector('ul.search-results-list');
+    searchWrap   = document.querySelector('div.search-container'),
+    searchInput  = searchWrap.querySelector('input.search-input'),
+    searchIcon   = searchWrap.querySelector('i.clear-search-input'),
+    searchList   = searchWrap.querySelector('ul.search-results-list');
 
-searchIcon.addEventListener('click', deleteSearchList, false);
-document.body.addEventListener('click', deleteSearchList, false);
-
-function deleteSearchList() {
-  while(searchUl.firstChild) {
-    searchUl.removeChild(searchUl.firstChild);
+let deleteSearchList = () => {
+  while(searchList.firstChild) {
+    searchList.removeChild(searchList.firstChild);
   }
   searchInput.value = '';
 }
+
+searchIcon.addEventListener('click', deleteSearchList, false);
+document.body.addEventListener('click', deleteSearchList, false);
