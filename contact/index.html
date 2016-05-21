@@ -3,18 +3,32 @@ layout: contact
 title: Conference
 ---
 
-<form action="https://formspree.io/{{ site.email }}" method="post">
-  <p class="contact-title">If you found a bug or you have any suggestions how to improve this project, please send me email</p>
+<form action="https://formspree.io/{{ site.email }}" method="post" class="feedback-contact">
 
-  <div class="email-form">
+  <p class="contact-title">If you found bugs or you have suggestions how to improve this project, please send me email</p>
+
+  <!-- User Name -->
+  <div class="email-form name">
     <label>Name: *</label>
     <input type="text" name="name" placeholder="Your name" required>
   </div>
+  <!-- User Name -->
 
-  <div class="email-form">
-    <label>Message: *</label>
-    <textarea cols="40" rows="5" name="message" required resize="false"></textarea>
+  <!-- Email Addess -->
+  <div class="email-form email">
+    <label>Email: *</label>
+    <input type="email" name="email" placeholder="Your email" required>
   </div>
+  <!-- Email Addess -->
 
-  <button type="submit">SEND</button>
+  <!-- Text Message -->
+  <div class="email-form message">
+    <label>Message: *</label>
+    <textarea cols="40" rows="5" name="message" placeholder="Text message ..." required resize="false"></textarea>
+  </div>
+  <!-- Text Message -->
+
+  <!-- Submit Button -->
+  <button type="submit" class="submit-feedback">SEND</button>
+  <!-- Submit Button -->
 </form>
