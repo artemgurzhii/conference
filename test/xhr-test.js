@@ -1,20 +1,16 @@
-// mocha --compilers js:babel-core/register
-// 'use strict';
-// let xhr = require('../assets/js/modules/xhr.js');
-// let chai = require('chai');
-// chai.should();
-//
-// describe('Testing XMLHttpRequest function: ', function() {
-//   it('Should get data from *.json file and return value', function () {
-//     let XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
-//     xhr = new XMLHttpRequest();
-//     xhr.open('GET', 'https://github.com/artemgurzhii/conference/blob/v.0.1.0/_site/data/search.json', true);
-//     xhr.onreadystatechange = function() {
-//       console.log("Function returns: " + JSON.stringify(xhr));
-//       if (xhr.readyState === 4 && xhr.status === 200) {
-//         done();
-//       }
-//     }
-//     xhr.send();
-//   });
-// });
+// Testing if XMLHttpRequest returning daa and promise
+// ================
+
+// File to import
+// import xhr from '../assets/js/modules/xhr.js';
+
+// Testing framework
+import chai from 'chai';
+import { expect as expect } from 'chai';
+
+// Test
+describe('Testing XMLHttpRequest function: ', () => {
+  it('Should get data from *.json file and return value', () => {
+
+  });
+});

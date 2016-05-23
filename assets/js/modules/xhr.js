@@ -1,17 +1,24 @@
-const XHR = (method, url, asyncLoad, callback) => {
-  let request = new XMLHttpRequest();
-  request.open(method, url, asyncLoad);
-  request.send();
-  request.onreadystatechange = () => {
-    if (request.readyState === 4) {
-      if (request.status === 200) {
-        console.log(request.responseText);
+const XHR = (method = 'GET', url, asyncLoad = true, callback = null) => {
+  return new Promise((resolve, reject) => {
+    let request = new XMLHttpRequest();
+    request.open(method, url, asyncLoad);
+    request.send();
+    request.onreadystatechange = () => {
+      if (request.readyState === 4) {
+        if (request.status === 200) {
+          let parsed = JSON.parse(request.response);
+          resolve(parsed);
+        } else {
+          reject(request.status + ': ' + request.statusText);
+        }
       } else {
-        console.log(request.status + ': ' + request.statusText);
+        return;
       }
-    } else {
-      return;
-    }
-  };
-}
+    };
+  });
+};
 // XHR('GET', 'http://localhost:3000/data/search.json', true);
+
+// module.exports = {
+//
+// }

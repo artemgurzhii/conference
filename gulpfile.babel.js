@@ -85,7 +85,7 @@ const paths = {
 
 const jekyll = process.platform === 'win32' ? 'jekyll.bat' : 'jekyll',
   messages = {
-    build: '<span style="color: grey">Running:</span> jekyll build'
+    build: '<span>Running:</span> jekyll build'
 };
 
 // Assets
@@ -128,6 +128,7 @@ gulp.task('assets:js', () => {
       plumber(),
       changed('.'),
       size(),
+      gulpIf(isDevelopment, sourcemaps.init()),
       webpack(),
       jshint({
         esversion: 6
@@ -147,6 +148,7 @@ gulp.task('assets:js', () => {
       }),
       duration('JS'),
       debug({title: 'Checking JavaScript:'}),
+      gulpIf(isDevelopment, sourcemaps.write('.')),
     gulp.dest('./')
   ])
   combined.on('error', console.error.bind(console))
@@ -170,9 +172,10 @@ gulp.task('assets:image', () => {
   combined.on('error', console.error.bind(console))
   return combined;
 });
+
 // Documentation
 gulp.task('assets:docs', cb => {
-  let config = require('./jsdoc.json');
+  const config = require('./jsdoc.json');
   let combined = combiner.obj([
     gulp.src(['README.md', 'assets/js/modules/*.js'], {read: false}),
       jsdoc(config, cb),
@@ -187,10 +190,11 @@ gulp.task('assets:docs', cb => {
 // ========================
 gulp.task('browser:build', done => {
   browserSync.notify(messages.build);
-  return cp.spawn( jekyll , ['build'], {stdio: 'inherit'})
-    .on('close', done)
+  return cp.spawn(jekyll, ['build'], {stdio: 'inherit'})
+    .on('close', done);
 });
 gulp.task('browser:rebuild', () => browserSync.reload());
+
 gulp.task('browser:sync', () => {
   browserSync.init({
     server: {
@@ -216,7 +220,6 @@ gulp.task('clean:del', done => {
   return del(paths.html.site)
   done();
 });
-
 
 // DEPLOY
 // ========================
@@ -261,10 +264,10 @@ gulp.task('deploy:json', () => {
   return combined;
 });
 
-const browser = gulp.parallel('browser:build', 'browser:rebuild', 'browser:sync');
-const assets = gulp.parallel('assets:js', 'assets:css', 'assets:image', 'assets:docs');
-const clean = gulp.parallel('clean:del');
-const build = gulp.series(clean, gulp.parallel(browser, assets));
-const deploy = gulp.parallel('deploy:image', 'deploy:html', 'deploy:json');
+const browser = gulp.parallel('browser:sync', 'browser:build', 'browser:rebuild');
+const assets  = gulp.parallel('assets:css', 'assets:js', 'assets:image', 'assets:docs');
+const clean   = gulp.parallel('clean:del');
+const build   = gulp.series(clean, gulp.parallel(browser, assets));
+const deploy  = gulp.parallel('deploy:image', 'deploy:html', 'deploy:json');
 export { build, clean, assets, browser, deploy };
 export default build;
