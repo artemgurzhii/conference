@@ -6,5 +6,6 @@ group :jekyll_plugins do
   gem 'kramdown', '~> 1.10'
   gem 'jekyll', '~> 3.1', '>= 3.1.2'
   gem 'jekyll-sitemap', '~> 0.10.0'
+  # gem 'github-pages', group: :jekyll_plugins
   # gem 'jekyll-feed', '~> 0.5.1'
 end
