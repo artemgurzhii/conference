@@ -1,0 +1,21 @@
+---
+layout:   'main'
+category: 'Front-end'
+
+price:    '$1200'
+title:    'Ng-Conf'
+theme:    'angular'
+duration: '4th - 6th'
+date:     '2016-05-31 16:52:07'
+
+link:     'http://www.ng-conf.org'
+location: 'Salt Lake City, UT'
+
+img_src:       'ng-conf'
+img_extension: 'svg'
+tags:          'ng-conf angular javascript'
+---
+
+Holy smokes are we cooking up something amazing this year. We are upgrading our venue, adding an extra day and packing in more amazing content than ever.
+
+{% include posts/2016-05-04-ng-conf.html %}

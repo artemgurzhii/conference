@@ -1,0 +1,13 @@
+---
+layout: back-end
+title: Conference
+---
+
+{% for post in site.posts %}
+  {% assign category = post.category | downcase  %}
+  {% if category == 'back-end' %}
+
+    {% include post_preview.html %}
+
+  {% endif %}
+{% endfor %}

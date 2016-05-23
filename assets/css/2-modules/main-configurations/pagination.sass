@@ -1,0 +1,77 @@
+ul.actions.pagination
+  cursor: default
+  list-style: none
+  padding-left: 0
+
+  li
+    display: inline-block
+    padding: 0 1.5em 0 0
+    vertical-align: middle
+
+    &:last-child
+      padding-right: 0
+
+  .next
+    text-decoration: none
+
+    &:after
+      -moz-osx-font-smoothing: grayscale
+      -webkit-font-smoothing: antialiased
+      font-family: FontAwesome
+      font-style: normal
+      font-weight: normal
+      text-transform: none !important
+      content: '\f054'
+      padding-left: 10px
+
+  .previous
+    text-decoration: none
+
+    &:before
+      -moz-osx-font-smoothing: grayscale
+      -webkit-font-smoothing: antialiased
+      font-family: FontAwesome
+      font-style: normal
+      font-weight: normal
+      text-transform: none !important
+      content: '\f053'
+      padding-right: 10px
+
+// main dopdown search menu
+.tt-dropdown-menu
+  background-color: $white
+  border: 1px solid $post_border
+  border-radius: 8px
+  padding: 5px 0
+  margin-left: -70px
+  margin-top: 12px
+  width: 250px
+
+// alining results
+.tt-dropdown-menu, .gist
+  text-align: left
+
+// each list item
+.tt-suggestion
+  font-size: 14px
+  padding: 3px 5px
+  width: 250px
+  border-radius: 3px
+
+  // list item selected, hovered, focused, activeted
+  &.tt-cursor
+    background-color: $four
+    color: $white
+
+  // styles for search results
+  p
+    letter-spacing: 1px
+    text-transform: none
+    margin: 0
+
+// search tree
+// tt-dropdown-menu span wrapper for list
+  // tt-dataset-0 | main container
+    // tt-suggestions | wrapper for all suggestions
+      // tt-suggestion | wrapper for each item
+        // p | content result text

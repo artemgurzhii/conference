@@ -3,24 +3,20 @@
   <head>
     {% include head.html %}
   </head>
-	<body>
-			<div id="wrapper">
-				{% include header.html %}
-        <div id="main">
-          <p>
-            Contact page
-          </p>
-          {{ content }}
-          
-        </div>
-        <section id="sidebar">
-          {% include intro.html %}
-          {% include miniposts.html %}
-          {% include about.html %}
-          {% include footer.html %}
-        </section>
+  <body>
+    <div id="wrapper">
+      {% include header.html %}
 
-			</div>
-		{% include scripts.html %}
-	</body>
+      <div id="main" class="main-contact">
+        {{ content }}
+      </div>
+
+      <aside id="sidebar">
+        {% include sidebar-header.html %}
+        {% include sidebar-post.html %}
+        {% include footer.html %}
+      </aside>
+    </div>
+    {% include scripts.html %}
+  </body>
 </html>
