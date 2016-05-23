@@ -139,7 +139,7 @@ gulp.task('assets:js', () => {
       }),
       jscpd(),
       strip(),
-      // uglify(),
+      uglify(),
       rename({
         dirname: paths.js.jsMin,
         basename: "common",
@@ -163,7 +163,7 @@ gulp.task('assets:image', () => {
       imagemin({
         progressive: true,
         svgoPlugins: [{removeViewBox: false}],
-        use: [imageminPngquant()]
+        use: [imageminPngquant({quality: '50', speed: 1})]
       }),
       duration('IMG'),
       debug({title: 'Checking Images:'}),
@@ -229,21 +229,9 @@ gulp.task('deploy:html', () => {
     gulp.src(paths.html.includes),
       size(),
       htmlmin({collapseWhitespace: true}),
-      srip(),
+      strip(),
       debug({title: 'Checking HTML:'}),
     gulp.dest(paths.html.includes)
-  ])
-  combined.on('error', console.error.bind(console))
-  return combined;
-});
-// IMG
-gulp.task('deploy:image', () => {
-  let combined = combiner.obj([
-    gulp.src(paths.img.imagesAll),
-      size(),
-      imageminPngquant({quality: '100', speed: 1})(),
-      debug({title: 'Checking Images:'}),
-    gulp.dest(paths.img.imagesMin)
   ])
   combined.on('error', console.error.bind(console))
   return combined;
@@ -268,6 +256,6 @@ const browser = gulp.parallel('browser:sync', 'browser:build', 'browser:rebuild'
 const assets  = gulp.parallel('assets:css', 'assets:js', 'assets:image', 'assets:docs');
 const clean   = gulp.parallel('clean:del');
 const build   = gulp.series(clean, gulp.parallel(browser, assets));
-const deploy  = gulp.parallel('deploy:image', 'deploy:html', 'deploy:json');
+const deploy  = gulp.parallel('deploy:html', 'deploy:json');
 export { build, clean, assets, browser, deploy };
 export default build;
