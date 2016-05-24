@@ -18,7 +18,3 @@ const XHR = (method = 'GET', url, asyncLoad = true, callback = null) => {
   });
 };
 // XHR('GET', 'http://localhost:3000/data/search.json', true);
-
-// module.exports = {
-//
-// }
