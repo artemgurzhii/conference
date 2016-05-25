@@ -1,6 +1,6 @@
 {
   "name": "Conferences",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": {
     "name": "Artem Gurzhii",
     "email": "artem.gurzhii@gmail.com",
@@ -10,6 +10,8 @@
   "main": "gulpfile.babel.js",
   "homepage": "http://artemgurzhii.github.io/conference/",
   "scripts": {
+    "start": "gulp -w",
+    "assets": "gulp assets:css assets:js assets:image assets:docs",
     "test": "mocha --compilers js:babel-core/register --reporter list --recursive --throw-deprecation -w",
     "ci": "mocha --compilers js:babel-core/register"
   },
@@ -29,17 +31,16 @@
     "gulp-autoprefixer": "^3.1.0",
     "gulp-babel": "^6.1.2",
     "gulp-changed": "^1.3.0",
-    "gulp-concat": "^2.6.0",
     "gulp-csso": "^2.0.0",
     "gulp-debug": "^2.1.2",
-    "gulp-duration": "0.0.0",
+    "gulp-duration": "^0.0.0",
     "gulp-htmlmin": "^2.0.0",
     "gulp-if": "^2.0.1",
     "gulp-imagemin": "^3.0.0",
-    "gulp-jscpd": "0.0.7",
+    "gulp-jscpd": "^0.0.7",
     "gulp-jsdoc3": "^0.2.1",
     "gulp-jshint": "^2.0.0",
-    "gulp-jsonlint": "^1.1.2",
+    "gulp-load-plugins": "^1.2.4",
     "gulp-notify": "^2.2.0",
     "gulp-plumber": "^1.1.0",
     "gulp-postcss": "^6.1.1",
@@ -47,7 +48,6 @@
     "gulp-sass": "^2.3.1",
     "gulp-size": "^2.1.0",
     "gulp-sourcemaps": "^1.6.0",
-    "gulp-strip-comments": "^2.4.3",
     "gulp-uglify": "^1.5.3",
     "imagemin-pngquant": "^5.0.0",
     "ink-docstrap": "^1.1.4",
@@ -56,13 +56,11 @@
     "mocha": "^2.4.5",
     "mocha-phantomjs": "^4.0.2",
     "npm": "^3.9.0",
-    "postcss-color-short": "^0.2.2",
     "postcss-focus": "^1.0.0",
     "postcss-pxtorem": "^3.3.1",
     "postcss-zindex": "^2.1.1",
     "stream-combiner2": "^1.1.1",
-    "webpack-stream": "^3.2.0",
-    "xmlhttprequest": "^1.8.0"
+    "webpack-stream": "^3.2.0"
   },
   "repository": {
     "type": "git",

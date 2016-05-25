@@ -26,7 +26,7 @@ email: "gyga98@mail.ru"
 host: localhost
 port: 3000
 baseurl: ""
-url: "http://artemgurzhii.github.io/conference/"
+url: "http://artemgurzhii.github.io/conference"
 
 # Future Posts
 future: true
@@ -49,7 +49,8 @@ exclude: [
   "assets/js/modules",
   "assets/css/1-tools",
   "assets/css/2-modules",
-  "assets/css/main.sass"
+  "assets/css/main.sass",
+  "gulp"
 ]
 
 # Gems - will require each of these gems automatically
