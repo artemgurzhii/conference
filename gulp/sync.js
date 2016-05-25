@@ -10,6 +10,7 @@ const paths = {
   },
   js: {
     jsModules: 'assets/js/modules/*.js',
+    jsLibs:    'assets/js/libs/*.js',
     jsMain:    'assets/js/common.js'
   },
   html: {
@@ -38,6 +39,7 @@ module.exports = options => {
     browserSync.watch(paths.css.sassAll).on('change', gulp.series('assets:css', 'browser:build', browserSync.reload));
     browserSync.watch(paths.js.jsModules).on('change', gulp.series('assets:js', 'browser:build', browserSync.reload));
     browserSync.watch(paths.js.jsMain).on('change', gulp.series('assets:js', 'browser:build', browserSync.reload));
+    browserSync.watch(paths.js.jsLibs).on('change', gulp.series('assets:js', 'browser:build', browserSync.reload));
     browserSync.watch(paths.html.includes).on('change', gulp.series('browser:build', browserSync.reload));
     browserSync.watch(paths.html.layouts).on('change', gulp.series('browser:build', browserSync.reload));
     browserSync.watch(paths.html.main).on('change', gulp.series('browser:build', browserSync.reload));
