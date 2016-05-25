@@ -1,68 +1,68 @@
-<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimal-ui"/>
+<title>{{ site.site_title }}</title>
+<meta name="copyright" lang="en" content="{{ site.author }}"/>
+<meta name="description" content="{{ site.site_description }}">
+<meta name="document-state" content="Dynamic"/>
+<meta name="keywords" content="{{ site.site_keywords }}"/>
+<meta http-equiv="x-dns-prefetch-control" content="on">
 
-  <meta charset="utf-8"/>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimal-ui"/>
-  <title>{{ site.site_title }}</title>
-  <meta name="author" lang="en" content="{{ site.author }}"/>
-  <meta name="copyright" lang="en" content="{{ site.author }}"/>
-  <meta name="description" content="{{ site.site_description }}">
-  <meta name="document-state" content="Dynamic"/>
-  <meta name="keywords" content="{{ site.site_keywords }}"/>
+<!-- ICONS -->
+<link rel="icon" href="{{ "/assets/img/min/favicon.png" | prepend: site.baseurl }}" sizes="16x16" type="image/png">
+<link rel="icon" href="{{ "/assets/img/min/favicon.png" | prepend: site.baseurl }}" sizes="32x32" type="image/png">
+<link rel="icon" href="{{ "/assets/img/min/favicon.png" | prepend: site.baseurl }}" sizes="48x48" type="image/png">
+<link rel="icon" href="{{ "/assets/img/min/favicon.png" | prepend: site.baseurl }}" sizes="62x62" type="image/png">
+<!-- ICONS -->
 
-  <!-- ICONS -->
-  <link rel="icon" href="{{ "/assets/img/min/favicon.png" | prepend: site.baseurl }}" sizes="16x16" type="image/png">
-  <link rel="icon" href="{{ "/assets/img/min/favicon.png" | prepend: site.baseurl }}" sizes="32x32" type="image/png">
-  <link rel="icon" href="{{ "/assets/img/min/favicon.png" | prepend: site.baseurl }}" sizes="48x48" type="image/png">
-  <link rel="icon" href="{{ "/assets/img/min/favicon.png" | prepend: site.baseurl }}" sizes="62x62" type="image/png">
-  <!-- ICONS -->
+<!-- FACEBOOK -->
+<meta property="og:url" content="{{ site.baseurl }}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ site.site_title }}">
+<meta property="og:image" content="{{ "/assets/img/min/favicon.png" | prepend: site.baseurl }}">
+<meta property="og:description" content="{{ site.site_description }}">
+<meta property="og:site_name" content="{{ site.site_title }}">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="{{ site.author }}">
+<!-- FACEBOOK -->
 
-  <!-- FACEBOOK -->
-  <meta property="og:url" content="{{ site.baseurl }}">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="{{ site.site_title }}">
-  <meta property="og:image" content="{{ "/assets/img/min/favicon.png" | prepend: site.baseurl }}">
-  <meta property="og:description" content="{{ site.site_description }}">
-  <meta property="og:site_name" content="{{ site.site_title }}">
-  <meta property="og:locale" content="en_US">
-  <meta property="article:author" content="{{ site.author }}">
-  <!-- FACEBOOK -->
+<!-- TWITTER -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:creator" content="@{{ site.author | replace: " ", "" }}">
+<meta name="twitter:url" content="{{ site.baseurl }}">
+<meta name="twitter:title" content="{{ site.site_title }}">
+<meta name="twitter:description" content="{{ site.site_description }}">
+<meta name="twitter:image" content="{{ "/assets/img/min/favicon.png" | prepend: site.baseurl }}">
+<!-- TWITTER -->
 
-  <!-- TWITTER -->
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:creator" content="@{{ site.author | replace: " ", "" }}">
-  <meta name="twitter:url" content="{{ site.baseurl }}">
-  <meta name="twitter:title" content="{{ site.site_title }}">
-  <meta name="twitter:description" content="{{ site.site_description }}">
-  <meta name="twitter:image" content="{{ "/assets/img/min/favicon.png" | prepend: site.baseurl }}">
-  <!-- TWITTER -->
+<!-- SKYPE -->
+<meta name="skype_toolbar" content="skype_toolbar_parser_compatible">
+<!-- SKYPE -->
 
-  <!-- GOOGLE PLUS -->
-  <meta itemprop="name" content="{{ site.site_title }}"/>
-  <meta itemprop="description" content="{{ site.site_description }}">
-  <meta itemprop="image" content="{{ "/assets/img/min/favicon.png" | prepend: site.baseurl }}"/>
-  <!-- GOOGLE PLUS -->
+<!-- Prefetching, preloading, prebrowsing -->
+<link rel="dns-prefetch" href="{{ site.url }}">
+<link rel="preconnect" href="{{ site.url }}">
+<link rel="prefetch" href="{{ site.url }}">
+<link rel="prerender" href="{{ site.url }}">
+<link rel="subresource" href="{{ "/assets/css/min/main.min.css" | prepend: site.baseurl }}">
+<link rel='subresource' href="{{ "/assets/js/min/common.min.js" | prepend: site.baseurl }}">
+<link rel="preload" href="{{ "/assets/css/min/main.min.css" | prepend: site.baseurl }}" as="style">
+<link rel="preload" href="{{ "/assets/img/min/favicon.png" | prepend: site.baseurl }}" as="image">
+<link rel="preload" href='https://fonts.googleapis.com/css?family=Open+Sans' crossorigin as="font">
+<!-- Prefetching, preloading, prebrowsing -->
 
-  <!-- HTTP-EQUIV -->
-  <meta http-equiv="Content-language" content="en"/>
-  <meta http-equiv="Cache-Control" content="max-age=259200, must-revalidate">
-  <!-- HTTP-EQUIV -->
+<!-- APPLE -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="format-detection" content="telephone=no">
 
-  <!-- IE -->
-  <meta http-equiv="cleartype" content="on">
-  <meta name="skype_toolbar" content="skype_toolbar_parser_compatible">
-  <!-- IE -->
+<link rel="apple-touch-startup-image" href="{{ "/assets/img/min/favicon.png" | prepend: site.baseurl }}">
+<link rel="apple-touch-icon" href="{{ "/assets/img/min/favicon.png" | prepend: site.baseurl }}"/>
+<link rel="apple-touch-icon" href="{{ "/assets/img/min/favicon.png" | prepend: site.baseurl }}" sizes="72x72"/>
+<link rel="apple-touch-icon" href="{{ "/assets/img/min/favicon.png" | prepend: site.baseurl }}" sizes="114x114"/>
+<link rel="apple-touch-icon" href="{{ "/assets/img/min/favicon.png" | prepend: site.baseurl }}" sizes="144x144"/>
+<!-- APPLE -->
 
-  <!-- APPLE -->
-  <link rel="apple-touch-startup-image" href="{{ "/assets/img/min/favicon.png" | prepend: site.baseurl }}">
-  <link rel="apple-touch-icon" href="{{ "/assets/img/min/favicon.png" | prepend: site.baseurl }}"/>
-  <link rel="apple-touch-icon" href="{{ "/assets/img/min/favicon.png" | prepend: site.baseurl }}" sizes="72x72"/>
-  <link rel="apple-touch-icon" href="{{ "/assets/img/min/favicon.png" | prepend: site.baseurl }}" sizes="114x114"/>
-  <link rel="apple-touch-icon" href="{{ "/assets/img/min/favicon.png" | prepend: site.baseurl }}" sizes="144x144"/>
-  <!-- APPLE -->
-
-  <!-- LINKS -->
-  <link rel="stylesheet" href="{{ "/assets/css/min/main.min.css" | prepend: site.baseurl }}">
-  <!-- LINKS -->
-
-</head>
+<!-- LINKS -->
+<link href="{{ "/assets/css/min/main.min.css" | prepend: site.baseurl }}" rel="stylesheet">
+<!-- LINKS -->

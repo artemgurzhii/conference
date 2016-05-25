@@ -1,4 +1,9 @@
 <section class="sidebar-posts-all">
+
+  <header class="upcoming-conferences">
+    <h2>Upcoming conferences</h2>
+  </header>
+
   {% for post in site.posts limit:5 %}
     {% assign curr_date = site.time | date: "%F" %}
     {% assign post_date = post.date | date: "%F" %}
