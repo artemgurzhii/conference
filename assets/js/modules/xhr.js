@@ -1,4 +1,4 @@
-const XHR = (method = 'GET', url, asyncLoad = true, callback = null) => {
+const XHR = (method = 'GET', url = 'http://localhost:3000/data/search.json', asyncLoad = true, callback = null) => {
   return new Promise((resolve, reject) => {
     let request = new XMLHttpRequest();
     request.open(method, url, asyncLoad);
@@ -17,4 +17,8 @@ const XHR = (method = 'GET', url, asyncLoad = true, callback = null) => {
     };
   });
 };
-// XHR('GET', 'http://localhost:3000/data/search.json', true);
+// XHR()
+//   .then(
+//     result => alert(result),
+//     error => alert(error)
+//   );

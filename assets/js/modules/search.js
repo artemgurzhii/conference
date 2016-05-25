@@ -9,6 +9,6 @@ let remove_searchList = () => {
     _searchList.removeChild(_searchList.firstChild);
   }
   _searchInput.value = '';
-}
+};
 
 _searchIcon.addEventListener('click', remove_searchList, false);
