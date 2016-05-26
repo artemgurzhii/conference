@@ -9,10 +9,10 @@
 <meta http-equiv="x-dns-prefetch-control" content="on">
 
 <!-- ICONS -->
-<link rel="icon" href="{{ "/assets/img/min/favicon.png" | prepend: site.baseurl }}" sizes="16x16" type="image/png">
-<link rel="icon" href="{{ "/assets/img/min/favicon.png" | prepend: site.baseurl }}" sizes="32x32" type="image/png">
-<link rel="icon" href="{{ "/assets/img/min/favicon.png" | prepend: site.baseurl }}" sizes="48x48" type="image/png">
-<link rel="icon" href="{{ "/assets/img/min/favicon.png" | prepend: site.baseurl }}" sizes="62x62" type="image/png">
+<link rel="icon" href="{{ site.logo | prepend: site.baseurl }}" sizes="16x16" type="image/png">
+<link rel="icon" href="{{ site.logo | prepend: site.baseurl }}" sizes="32x32" type="image/png">
+<link rel="icon" href="{{ site.logo | prepend: site.baseurl }}" sizes="48x48" type="image/png">
+<link rel="icon" href="{{ site.logo | prepend: site.baseurl }}" sizes="62x62" type="image/png">
 <!-- ICONS -->
 
 <!-- FACEBOOK -->
@@ -32,7 +32,7 @@
 <meta name="twitter:url" content="{{ site.baseurl }}">
 <meta name="twitter:title" content="{{ site.site_title }}">
 <meta name="twitter:description" content="{{ site.site_description }}">
-<meta name="twitter:image" content="{{ "/assets/img/min/favicon.png" | prepend: site.baseurl }}">
+<meta name="twitter:image" content="{{ site.logo | prepend: site.baseurl }}">
 <!-- TWITTER -->
 
 <!-- SKYPE -->
@@ -44,10 +44,10 @@
 <link rel="preconnect" href="{{ site.url }}">
 <link rel="prefetch" href="{{ site.url }}">
 <link rel="prerender" href="{{ site.url }}">
-<link rel="subresource" href="{{ "/assets/css/min/main.min.css" | prepend: site.baseurl }}">
-<link rel='subresource' href="{{ "/assets/js/min/common.min.js" | prepend: site.baseurl }}">
-<link rel="preload" href="{{ "/assets/css/min/main.min.css" | prepend: site.baseurl }}" as="style">
-<link rel="preload" href="{{ "/assets/img/min/favicon.png" | prepend: site.baseurl }}" as="image">
+<link rel="subresource" href="{{ site.css | prepend: site.baseurl }}">
+<link rel='subresource' href="{{ site.js | prepend: site.baseurl }}">
+<link rel="preload" href="{{ site.css | prepend: site.baseurl }}" as="style">
+<link rel="preload" href="{{ site.logo | prepend: site.baseurl }}" as="image">
 <link rel="preload" href='https://fonts.googleapis.com/css?family=Open+Sans' crossorigin as="font">
 <!-- Prefetching, preloading, prebrowsing -->
 
@@ -56,13 +56,13 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="format-detection" content="telephone=no">
 
-<link rel="apple-touch-startup-image" href="{{ "/assets/img/min/favicon.png" | prepend: site.baseurl }}">
-<link rel="apple-touch-icon" href="{{ "/assets/img/min/favicon.png" | prepend: site.baseurl }}"/>
-<link rel="apple-touch-icon" href="{{ "/assets/img/min/favicon.png" | prepend: site.baseurl }}" sizes="72x72"/>
-<link rel="apple-touch-icon" href="{{ "/assets/img/min/favicon.png" | prepend: site.baseurl }}" sizes="114x114"/>
-<link rel="apple-touch-icon" href="{{ "/assets/img/min/favicon.png" | prepend: site.baseurl }}" sizes="144x144"/>
+<link rel="apple-touch-startup-image" href="{{ site.logo | prepend: site.baseurl }}">
+<link rel="apple-touch-icon" href="{{ site.logo | prepend: site.baseurl }}"/>
+<link rel="apple-touch-icon" href="{{ site.logo | prepend: site.baseurl }}" sizes="72x72"/>
+<link rel="apple-touch-icon" href="{{ site.logo | prepend: site.baseurl }}" sizes="114x114"/>
+<link rel="apple-touch-icon" href="{{ site.logo | prepend: site.baseurl }}" sizes="144x144"/>
 <!-- APPLE -->
 
 <!-- LINKS -->
-<link href="{{ "/assets/css/min/main.min.css" | prepend: site.baseurl }}" rel="stylesheet">
+<link href="{{ site.css | prepend: site.baseurl }}" rel="stylesheet">
 <!-- LINKS -->
