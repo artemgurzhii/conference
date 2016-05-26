@@ -10,24 +10,24 @@ import { expect as expect } from 'chai';
 
 // Test
 let filter = /^(([^<>+()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-describe('Validating email form', () => {
-  it('normal email - gmail', () => {
+describe('Email input validation:  ', () => {
+  it('- gmail', () => {
     let testing = filter.test('user.email@gmail.com');
     expect(testing).to.be.true;
   });
-  it('normal email - ukr', () => {
+  it('- ukr', () => {
     let testing = filter.test('user.email@ukr.net');
     expect(testing).to.be.true;
   });
-  it('normal email - mail', () => {
+  it('- mail', () => {
     let testing = filter.test('user.email@mail.com');
     expect(testing).to.be.true;
   });
-  it('normal email - hotmail', () => {
+  it('- hotmail', () => {
     let testing = filter.test('user.email_@hotmail.com');
     expect(testing).to.be.true;
   });
-  it('normal email - icloud', () => {
+  it('- icloud', () => {
     let testing = filter.test('user.email-@icloud.com');
     expect(testing).to.be.true;
   });
