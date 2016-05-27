@@ -19,6 +19,6 @@ let removeClass = (el, className) => {
     el.classList.remove(className);
   } else if (hasClass(el, className)) {
     let reg = new RegExp('(\\s|^)' + className + '(\\s|$)');
-    el.className=el.className.replace(reg, ' ');
+    el.className = el.className.replace(reg, ' ');
   }
 };
