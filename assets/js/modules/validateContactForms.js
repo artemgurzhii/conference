@@ -34,20 +34,20 @@ let
 
 // validate form function
 // ================
-let validateForm = (e, filter, inputField, invalidText) => {
-  let testing = filter.test(inputField.value);         // returning boolean value from testing
-  let _para = document.createElement('p');             // creating paragraph
-      _para.textContent = invalidText;                 // and adding text content for NOT valid name
+let validateForm = (e, filter, inputField, invalidText, validClass, invalidClass) => {
+  let testing = filter.test(inputField.value);  // returning boolean value from testing
+  let _para = document.createElement('p');      // creating paragraph
+      _para.textContent = invalidText;          // and adding text content for NOT valid name
 
-  if (inputField.value.length) {                       // if input not empty
-    if (!testing) {                                    // and if it DIDN'T pass test
-      e.preventDefault();                              // prevent form from submission
-      if (hasClass(inputField, 'valid-input-value')) { // if it has 'valid-input-value' class
-        removeClass(inputField, 'valid-input-value');  // remove it
+  if (inputField.value.length) {                // if input not empty
+    if (!testing) {                             // and if it DIDN'T pass test
+      e.preventDefault();                       // prevent form from submission
+      if (hasClass(inputField, validClass)) {   // if it has 'valid-input-value' class
+        removeClass(inputField, validClass);    // remove it
       }
 
-      if (!hasClass(inputField, 'invalid-input-value')) {                  // if it doesn't have 'invalid-input-value' class
-        addClass(inputField, 'invalid-input-value');                       // add it (red border)
+      if (!hasClass(inputField, invalidClass)) {                           // if it doesn't have 'invalid-input-value' class
+        addClass(inputField, invalidClass);                                // add it (red border)
         inputField.parentNode.insertBefore(_para, inputField.nextSibling); // and add notify meassage
       }
 
@@ -58,7 +58,7 @@ let validateForm = (e, filter, inputField, invalidText) => {
         removeClass(inputField, 'invalid-input-value');                            // and remove 'invalid-input-value' class
       }
 
-      addClass(inputField, 'valid-input-value');                                   // and add 'valid-input-value' class (green border)
+      addClass(inputField, validClass);                                            // and add 'valid-input-value' class (green border)
 
     }
 
@@ -68,12 +68,12 @@ let validateForm = (e, filter, inputField, invalidText) => {
 
 // name validation function
 let validateName = () => {
-  validateForm(event, /^[a-zA-Z а-яА-Я ]{4,30}$/, _name, 'Invalid name');
+  validateForm(event, /^[a-zA-Z а-яА-Я ]{4,30}$/, _name, 'Invalid name', 'valid-input-value', 'invalid-input-value');
 }
 
 // email validation function
 let validateEmail = () => {
-  validateForm(event, /^(([^<>+()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, _email, 'Invalid email');
+  validateForm(event, /^(([^<>+()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, _email, 'Invalid email', 'valid-input-value', 'invalid-input-value');
 }
 
 _submitButton.addEventListener('click', validateName, false);  // adding event on 'name' input submit
