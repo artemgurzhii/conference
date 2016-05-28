@@ -1,20 +1,17 @@
 ---
-layout: front-end
+layout: others
 title: Conference
 ---
-<!--
-<div class="front-end-tags">
-  <li><a href="#">CSS</a></li>
-  <li><a href="#">HTML</a></li>
-  <li><a href="#">JavaScript</a></li>
-  <li><a href="#">Frameworks</a></li>
-</div> -->
 
 {% for post in site.posts %}
   {% assign category = post.category | downcase  %}
   {% if category == 'front-end' %}
 
-    {% include post_preview.html %}
+    <article class="post">
+      {% include main_post/post_header.html %}
+      {% include main_post/post_body.html %}
+      {% include main_post/post_footer.html %}
+    </article>
 
   {% endif %}
 {% endfor %}

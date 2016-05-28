@@ -1,5 +1,5 @@
 ---
-layout: back-end
+layout: others
 title: Conference
 ---
 
@@ -7,7 +7,11 @@ title: Conference
   {% assign category = post.category | downcase  %}
   {% if category == 'back-end' %}
 
-    {% include post_preview.html %}
+    <article class="post">
+      {% include main_post/post_header.html %}
+      {% include main_post/post_body.html %}
+      {% include main_post/post_footer.html %}
+    </article>
 
   {% endif %}
 {% endfor %}
