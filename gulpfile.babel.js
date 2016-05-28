@@ -67,6 +67,6 @@ const browser = gulp.parallel('browser:sync', 'browser:build');
 const assets  = gulp.parallel('assets:css', 'assets:js', 'assets:img');
 const clean   = gulp.parallel('clean');
 const build   = gulp.series(clean, gulp.parallel(browser, assets));
-const deploy  = gulp.parallel( 'browser:build', 'deploy:css', 'deploy:js', 'deploy:img', 'deploy:html', 'deploy:docs');
+const deploy  = gulp.parallel('browser:sync', 'browser:build', 'deploy:css', 'deploy:js', 'deploy:img', 'deploy:html', 'deploy:docs');
 export { build, clean, assets, browser, deploy };
 export default build;
