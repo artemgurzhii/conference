@@ -1,0 +1,20 @@
+<p class="contact-title">If you found bugs or you have suggestions how to improve this project, please contact me</p>
+<form action="https://formspree.io/{{ site.email }}" method="post" class="feedback-contact">
+
+  <div class="email-form name">
+    <label>Name: *</label>
+    <input type="text" name="name" required placeholder="Your name">
+  </div>
+
+  <div class="email-form email">
+    <label>Email: *</label>
+    <input type="email" name="email" required placeholder="Your email">
+  </div>
+
+  <div class="email-form message">
+    <label>Message: *</label>
+    <textarea cols="40" rows="5" name="message" placeholder="Text message ..." required resize="false"></textarea>
+  </div>
+
+  <button type="submit" class="submit-feedback">SEND</button>
+</form>
