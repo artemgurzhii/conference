@@ -9,7 +9,7 @@ import chai from 'chai';
 import { expect as expect } from 'chai';
 
 // Test
-let filter = /^[a-zA-Z ]{4,30}$/;
+let filter = /^[a-zA-Z а-яА-Я ]{4,30}$/;
 describe('Name input validation:  ', () => {
   it('normal name', () => {
     let testing = filter.test('User Admin');
@@ -34,5 +34,9 @@ describe('Name input validation:  ', () => {
   it('Too long name', () => {
     let testing = filter.test('Charles Philip Arthur George and me');
     expect(testing).to.be.false;
+  });
+  it('Using cyrillic alphabet', () => {
+    let testing = filter.test('Пользователь');
+    expect(testing).to.be.true;
   });
 });

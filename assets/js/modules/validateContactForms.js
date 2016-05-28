@@ -11,7 +11,7 @@ let addClass = (el, className) => {
   if (el.classList) {
     el.classList.add(className);
   } else if (!hasClass(el, className)) {
-    el.className += " " + className;
+    el.className += ' ' + className;
   }
 };
 
@@ -37,18 +37,18 @@ let
 let validateForm = (e, filter, inputField, invalidText, validClass, invalidClass) => {
   let testing = filter.test(inputField.value);  // returning boolean value from testing
   let _para = document.createElement('p');      // creating paragraph
-      _para.textContent = invalidText;          // and adding text content for NOT valid name
+      _para.textContent = invalidText;          // and adding text content for invalid input value
 
   if (inputField.value.length) {                // if input not empty
     if (!testing) {                             // and if it DIDN'T pass test
       e.preventDefault();                       // prevent form from submission
       if (hasClass(inputField, validClass)) {   // if it has 'valid-input-value' class
-        removeClass(inputField, validClass);    // remove it
+        removeClass(inputField, validClass);    // remove it (green border)
       }
 
       if (!hasClass(inputField, invalidClass)) {                           // if it doesn't have 'invalid-input-value' class
         addClass(inputField, invalidClass);                                // add it (red border)
-        inputField.parentNode.insertBefore(_para, inputField.nextSibling); // and add notify meassage
+        inputField.parentNode.insertBefore(_para, inputField.nextSibling); // and add notify message
       }
 
     } else {                                                                       // if it DID pass test
@@ -69,12 +69,12 @@ let validateForm = (e, filter, inputField, invalidText, validClass, invalidClass
 // name validation function
 let validateName = () => {
   validateForm(event, /^[a-zA-Z а-яА-Я ]{4,30}$/, _name, 'Invalid name', 'valid-input-value', 'invalid-input-value');
-}
+};
 
 // email validation function
 let validateEmail = () => {
   validateForm(event, /^(([^<>+()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, _email, 'Invalid email', 'valid-input-value', 'invalid-input-value');
-}
+};
 
 _submitButton.addEventListener('click', validateName, false);  // adding event on 'name' input submit
 _submitButton.addEventListener('click', validateEmail, false); // adding event on 'email' input submit
