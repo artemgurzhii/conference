@@ -1,6 +1,6 @@
 {
   "name": "Conferences",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "author": {
     "name": "Artem Gurzhii",
     "email": "artem.gurzhii@gmail.com",
@@ -10,8 +10,6 @@
   "main": "gulpfile.babel.js",
   "homepage": "http://artemgurzhii.github.io/conference/",
   "scripts": {
-    "start": "gulp -w",
-    "assets": "gulp assets:css assets:js assets:image assets:docs",
     "test": "mocha --compilers js:babel-core/register --reporter list --recursive --throw-deprecation -w",
     "ci": "mocha --compilers js:babel-core/register"
   },

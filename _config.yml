@@ -10,6 +10,7 @@ encoding: "utf-8"
 site_description: "Programming conferences for front-end and back-end devlopers"
 site_title: "Web Conferences"
 site_keywords: "Front-end Back-end Conference CSS HTML JavaScript HTML5 CSS3 Ruby Jekyll"
+social_keywords: "Conference Programming Icon Social JS JavaScript HTML CSS"
 
 # Dependencies
 markdown: kramdown
@@ -68,3 +69,9 @@ paginate: 3
 read_post: "Continue Reading"
 prev_page: "Previous Page"
 next_page: "Next Page"
+
+
+# Links
+logo: "/assets/img/min/favicon.png"
+css: "/assets/css/min/main.min.css"
+js: "/assets/js/min/common.min.js"
