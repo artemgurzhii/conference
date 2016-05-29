@@ -5,12 +5,7 @@
   </ul>
   <ul class="post-tags-all">
     {% for tag in post.tags limit:5 %}
-      {% assign title = post.title | downcase %}
-      {% if tag == title %}
-        <li class="post-tag"><a href="{{ post.url }}">{{ tag }}</a></li>
-      {% else %}
-        <li class="post-tag"><a href="/{{ tag }}">{{ tag }}</a></li>
-      {% endif %}
+      <li class="post-tag"><a href="/tag/{{ tag }}">{{ tag }}</a></li>
     {% endfor %}
   </ul>
 
