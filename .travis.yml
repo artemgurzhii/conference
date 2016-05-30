@@ -1,38 +1,32 @@
 language: node_js
 
 node_js:
-  - '5'
-  - '4'
-  - '0.12'
-  - '0.10'
-  - iojs
+  - "5"
+  - "4"
+  - "0.12"
+  - "0.10"
+  - "iojs"
 
 branches:
   only:
     - tests
-    - v.0.1.0
 git:
   depth: 3
 
 cache:
   directories:
-  - node_modules
+    - node_modules
 
 before_install:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
-  
+
 install:
   - npm install babel babel-core babel-register babel-preset-es2015 mocha chai
 
 script:
   - npm run ci
-  - bundle exec rake deploy
 
 notifications:
   email:
     - artem.gurzhii@gmail.com
-
-env:
-  global:
-    secure: X2iyTF2lYEUO2MQqjfzo8obOHvhLSG5JztsNuY76SuUEF+KgMi6ycySBe7+pvPimeYeXPWszyG90q9baVnz2sAUsYEEqMVdBJ775FOy7GPCPxGoPDUaT9UjOiD0t6NLt1LRhYTYbCklSZI95fAiWLkk0lwLVt1mGIoptU3QyOLNYvdeoCTujW1qP5UKnjr2RCDId/yGfKPKiZNAYd7r54xn3VcGCQar7qhBZp/3irg21NYqa+GwUIH2cGUpt0/rJq4rDfbDWYz/xyiPidozv1ckKHzgK1MI0Kve0OzYHerVmYdNBpHKPimMF5a4dqIvgYeT3NYFL8w0pMN9icHqa7EhfcZwHhacqxjRW0JWUWSJN2b2rGYfzq82LPzSljnV6mrrMTijtBePow7FPY9jS8Kek7mRCZDjY42QPQvH7iEkCx/CfCl+aNQ85SM/ZIONjTg8jwlBN7UCB3CfbSglJeERCQP02Zm7ovfLblLFe2M5AJIzawgrLSrjZ458XW0AdFp1uGA2lECL/BPe8a7f5DbyJm/+2I1cYHyc2qpNrSbieAfDKEe9jGjivNwcNwsjANC6YWXlWQcH3d2YI5lTGhZbb+/pSYeOVLDhOa0dLZ5m1cFM9fBMBYu0cDa9gBrQ1Wz4A1bcEZW6UG22I/kEvCMrNd/IqxzgpoPFgOx3eV8s=
