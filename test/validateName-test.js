@@ -23,7 +23,7 @@ describe('Name input validation:  ', () => {
     let testing = filter.test('User Admin123124');
     expect(testing).to.be.false;
   });
-  it('Invalid + character in nam field', () => {
+  it('Invalid + character in name field', () => {
     let testing = filter.test('User+Admin');
     expect(testing).to.be.false;
   });
