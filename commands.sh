@@ -35,6 +35,8 @@ alias nr='npm run '
 # BUILD
 # Gulp Watch
 alias gw='gulp -w'
+# Gulp Deploy
+alias gd='gulp deploy'
 # Jekyll Serve
 alias js='jekyll serve'
 # Kill Server
