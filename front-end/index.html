@@ -1,11 +1,16 @@
 ---
 title: Front-end
 type: category
+layout: others
 ---
 
 {% for post in site.posts %}
+
   {% assign category = post.category | downcase  %}
-  {% if category == 'front-end' %}
+  {% assign curr_date = site.time | date: "%F" %}
+  {% assign post_date = post.date | date: "%F" %}
+
+  {% if category == 'front-end' and curr_date < post_date %}
 
     <article class="post">
       {% include main_post/post_header.html %}
