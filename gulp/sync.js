@@ -22,7 +22,7 @@ const paths = {
     posts:       '_includes/posts/*.html'
   },
   markdown: {
-    posts: '_posts/*.markdown'
+    posts: '_posts/*.md'
   }
 }
 

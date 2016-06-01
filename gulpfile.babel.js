@@ -12,9 +12,6 @@ const paths = {
   md:    'README.md'
 }
 
-const jekyll = process.platform === 'win32' ? 'jekyll.bat' : 'jekyll';
-const msgBuild = '<span>Running:</span> jekyll build';
-
 let lazyRequireTask = (taskName, path, options = {}) => {
   options.taskName = taskName;
   path = './gulp/' + path;
