@@ -5,7 +5,6 @@
 // import xhr from '../assets/js/modules/xhr.js';
 
 // Testing framework
-import chai from 'chai';
 import { expect as expect } from 'chai';
 
 // Test

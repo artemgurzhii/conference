@@ -1,77 +1,93 @@
-# main
-name: "Conference"
-title: "conference"
-year: 2016
-description: "Conferences"
-timezone: "America/New_York"
-encoding: "utf-8"
+# Handling Reading
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - node_modules
+  - package.json
+  - gulpfile.babel.js
+  - README.md
+  - test
+  - jsdoc.json
+  - docs
+  - assets/js/libs
+  - assets/js/common.js
+  - assets/js/modules
+  - assets/css/1-tools
+  - assets/css/2-modules
+  - assets/css/main.sass
+  - gulp
 
-# Meta Tags
-site_description: "Programming conferences for front-end and back-end devlopers"
-site_title: "Web Conferences"
-site_keywords: "Front-end Back-end Conference CSS HTML JavaScript HTML5 CSS3 Ruby Jekyll"
-social_keywords: "Conference Programming Icon Social JS JavaScript HTML CSS"
+markdown_ext: md
+encoding: utf-8
 
-# Dependencies
+
+# Conversion
 markdown: kramdown
 highlighter: rouge
+future: true
 
-# Permalinks
-permalink: pretty
 
-# social
-author: "Artem Gurzhii"
-email: "gyga98@mail.ru"
-
-# Server
+# Serving
 host: localhost
 port: 3000
 baseurl: ""
-url: "http://artemgurzhii.github.io/conference"
 
-# Future Posts
-future: true
 
-# Build settings
-exclude: [
-  "Gemfile",
-  "Gemfile.lock",
-  "LICENSE",
-  "node_modules",
-  "package.json",
-  "gulpfile.babel.js",
-  "data/conferences.json",
-  "README.md",
-  "test",
-  "jsdoc.json",
-  "docs",
-  "assets/js/libs",
-  "assets/js/common.js",
-  "assets/js/modules",
-  "assets/css/1-tools",
-  "assets/css/2-modules",
-  "assets/css/main.sass",
-  "gulp"
-]
+# Outputting
+permalink: /:title/
+paginate: 1
+paginate_path: /page/:num
+timezone: America/New_York
 
-# Gems - will require each of these gems automatically
+
+# Plugins
 gems:
   - jekyll-paginate
   - jekyll
   - kramdown
   - bundler
-  - jekyll-sitemap
+  - jekyll-feed
 
-# how much items on each page
-paginate: 3
 
 # Other
-read_post: "Continue Reading"
-prev_page: "Previous Page"
-next_page: "Next Page"
+read_post: Continue Reading
+prev_page: Previous Page
+next_page: Next Page
 
 
 # Links
-logo: "/assets/img/min/favicon.png"
-css: "/assets/css/min/main.min.css"
-js: "/assets/js/min/common.min.js"
+logo: /assets/img/min/favicon.png
+css: /assets/css/min/main.min.css
+js: /assets/js/min/common.min.js
+
+
+# Main
+name: Conference
+year: 2016
+
+
+# Meta Tags
+site_description: Programming conferences for front-end and back-end devlopers
+site_title: Web Conferences
+site_keywords: Front-end Back-end Conference CSS HTML JavaScript HTML5 CSS3 Ruby Jekyll
+social_keywords: Conference Programming Icon Social JS JavaScript HTML CSS
+
+
+# Social
+author: Artem Gurzhii
+email: gyga98@mail.ru
+github: https://github.com/artemgurzhii
+twiiter: https://twitter.com/ArtemGurzhii
+facebook: https://facebook.com/artem.gurzhii
+
+
+# Default Settings
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      comments: true

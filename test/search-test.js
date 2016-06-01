@@ -5,7 +5,6 @@
 // import search from '../assets/js/modules/search';
 
 // Testing framework
-import chai from 'chai';
 import { expect as expect } from 'chai';
 
 // Test

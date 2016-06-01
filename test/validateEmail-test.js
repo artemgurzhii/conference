@@ -5,7 +5,6 @@
 // import validator from '../assets/js/modules/validateEmail';
 
 // Testing framework
-import chai from 'chai';
 import { expect as expect } from 'chai';
 
 // Test
