@@ -9,7 +9,7 @@ const XHR = (method = 'GET', url = 'http://localhost:3000/data/search.json', asy
           let parsed = JSON.parse(request.response);
           resolve(parsed);
         } else {
-          reject(request.status + ': ' + request.statusText);
+          reject(`${request.status}: ${request.statusText}`);
         }
       } else {
         return;
@@ -22,27 +22,3 @@ const XHR = (method = 'GET', url = 'http://localhost:3000/data/search.json', asy
 //     result => alert(result),
 //     error => alert(error)
 //   );
-
-
-//
-// let postDate = post.date;
-// let today = curr.date;
-// if (postDate > today) {
-//   let sort = (post1, post2) => {
-//     if (post1.date > post2.date) {
-//       return post2.date;
-//     } else {
-//       return post1.date;
-//     }
-//   }
-// }
-//
-// let getAllPostsDate = post => {
-//   let dates = [];
-//   dates.push(post.date);
-// }
-//
-//
-//
-// let dates;
-// let sort = ()

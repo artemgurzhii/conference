@@ -1,13 +1,16 @@
-.post .article-body
-  .image.featured
-    overflow: hidden
-    display: block
-    margin: 0 0 2.5em 0
-    width: 100%
+.post
+  padding: 2em 3em 0 3em
+  background: $white
+  border: 1px solid $post_border
+  margin-bottom: 3em
+  position: relative
 
-    img
-      transition: transform 0.2s ease-out
-      width: 100%
-      margin: 0 auto
-      height: 200px
-      max-width: 400px
+  .article-body
+    display: flex
+
+    a.image
+      margin-right: 60px
+      max-width: 50%
+
+    p
+      max-width: 60%

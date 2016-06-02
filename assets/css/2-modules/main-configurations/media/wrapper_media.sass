@@ -1,23 +1,12 @@
-@media screen and (min-width: 1680px)
+@media (max-width: 991px)
   #wrapper
-    padding: 4.5em
+    padding: 2em
 
-@media screen and (max-width: 1280px)
-  #wrapper
-    display: block
-
-@media screen and (max-width: 736px)
+@media (max-width: 881px)
   #wrapper
     padding: 1.5em
 
-@media screen and (max-width: 1280px)
-  ul.actions.pagination
-    text-align: center
-
-    &.next, ul.actions.pagination .previous
-      min-width: 20em
-
-@media screen and (max-width: 736px)
-  ul.actions.pagination .next,
-  ul.actions.pagination .previous
-    min-width: 18em
+@media (max-width: 768px)
+  #wrapper
+    flex-direction: column-reverse
+    padding: 1.5em

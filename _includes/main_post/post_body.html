@@ -1,12 +1,9 @@
 <div class="article-body">
 
   <a href="{{ post.url }}" class="image">
-    {% if post.img_extension %}
-      <img src="{{ "/assets/img/min/TAG.EXT" | replace: "TAG", post.img_src | replace: "EXT", post.img_extension | prepend: site.baseurl }}" alt="{{ post.tags | join="" }}"/>
-    {% else %}
-      <img src="{{ "/assets/img/min/TAG.svg" | replace: "TAG", post.tags[0] | prepend: site.baseurl }}" alt="{{ post.tags | join="" }}"/>
-    {% endif %}
+    <img src="{{ "/assets/img/min/" | prepend: site.baseurl | append: post.img_src }}" alt="{{ post.tags | join="" }}"/>
   </a>
+
   {{ post.excerpt }}
 
 </div>
