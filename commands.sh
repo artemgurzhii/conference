@@ -6,7 +6,7 @@ alias gc='git clone '
 # Git Status
 alias gs='git status'
 # Git Commit Message
-alias gcm='git commit -m "$1"'
+alias gcm='git commit -m'
 # Git Add All
 alias gaa='git add .'
 # Git Add Something

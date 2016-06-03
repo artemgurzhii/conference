@@ -149,6 +149,9 @@ input[type="radio"] + label:before {
   pointer-events: none;
   box-shadow: inset 0px 0px 30px rgba(159, 159, 159, 0.2); }
 
+:root {
+  font-size: 0.75rem; }
+
 *, *:before, *:after {
   box-sizing: border-box;
   text-decoration: none; }
@@ -162,8 +165,6 @@ body {
   background: #f4f4f4;
   margin: 0;
   padding: 3.5em 0 0 0;
-  font-size: 0.875rem;
-  line-height: 1.6;
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   overflow-x: hidden !important; }
 
@@ -644,6 +645,12 @@ body {
   color: #4f819f; }
   .tags-results a:hover, .tags-results a:focus {
     border: 1px solid #9f9f9f; }
+  @media (min-width: 400px) and (max-width: 800px) {
+  :root {
+    font-size: calc( 0.75rem + (24 - 12) * ( (100vw - 25rem) / ( 800 - 400) )); } }
+  @media (min-width: 800px) {
+  :root {
+    font-size: 1rem; } }
   @media (max-width: 991px) {
   #wrapper {
     padding: 2em; }

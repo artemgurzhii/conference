@@ -17,6 +17,7 @@ exclude:
   - assets/css/2-modules
   - assets/css/main.sass
   - gulp
+  - commands.sh
 
 markdown_ext: md
 encoding: utf-8
