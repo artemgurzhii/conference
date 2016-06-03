@@ -2,7 +2,7 @@
 
 # GIT
 # Git Clone
-alias gc='git clone '
+alias gc='git clone'
 # Git Status
 alias gs='git status'
 # Git Commit Message
@@ -10,7 +10,9 @@ alias gcm='git commit -m'
 # Git Add All
 alias gaa='git add .'
 # Git Add Something
-alias gas='git add "$1"'
+alias gas='git add'
+# Git Checkout Branch
+alias gcb='git checkout'
 # Git Push Origin
 alias gpo='git push origin'
 # Gi Log Oneline
@@ -22,7 +24,7 @@ alias glcg="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%
 # Npm Install
 alias ni='npm install'
 # Npm Install --Save
-alias nis="npm i -S"
+alias nis='npm i -S'
 # Npm Install --save-Dev
 alias nid='npm i -D'
 # Npm Install Global
