@@ -647,7 +647,7 @@ body {
     border: 1px solid #9f9f9f; }
   @media (min-width: 400px) and (max-width: 800px) {
   :root {
-    font-size: calc( 0.75rem + (24 - 12) * ( (100vw - 25rem) / ( 800 - 400) )); } }
+    font-size: calc( 0.75rem + (24 - 12) * ( (60vw - 25rem) / ( 800 - 400) )); } }
   @media (min-width: 800px) {
   :root {
     font-size: 1rem; } }
@@ -669,6 +669,15 @@ body {
     -webkit-box-direction: reverse;
     flex-direction: column-reverse;
     padding: 1.5em; }
+  .footer-aside {
+    margin: 0 auto; }
+  ul.actions.pagination {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center; }
   #sidebar#sidebar {
     margin: 50px auto 0 auto; }
   #sidebar#sidebar .sidebar-posts-all {
