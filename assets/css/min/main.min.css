@@ -474,8 +474,7 @@ body {
     -webkit-box-flex: 1;
     flex-grow: 1; }
     .post .article-header .title h2 {
-      margin: 41px;
-      font-size: 1.5em; }
+      margin: 3vw; }
   .post .article-header .meta-desc {
     padding: 2em;
     border-left: solid 1px rgba(159, 159, 159, 0.3);
@@ -678,6 +677,13 @@ body {
     justify-content: center;
     -webkit-box-align: center;
     align-items: center; }
+  .post .article-body {
+    display: block; }
+  .post .article-body a.image {
+    width: 100%;
+    max-width: 100%; }
+  .post .article-body p {
+    max-width: 100%; }
   #sidebar#sidebar {
     margin: 50px auto 0 auto; }
   #sidebar#sidebar .sidebar-posts-all {
