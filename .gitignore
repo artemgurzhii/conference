@@ -2,7 +2,6 @@ node_modules
 _site
 Gemfile
 Gemfile.lock
-.babelrc
 jsdoc.json
 LICENSE
 docs
