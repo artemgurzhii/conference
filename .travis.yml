@@ -26,7 +26,3 @@ install:
 
 script:
   - npm run ci
-
-notifications:
-  email:
-    - artem.gurzhii@gmail.com
