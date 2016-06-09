@@ -19,6 +19,7 @@ const XHR = (method = 'GET', url = 'http://localhost:3000/data/search.json', asy
 };
 // XHR()
 //   .then(
-//     result => alert(result),
-//     error => alert(error)
-//   );
+//     result => console.log(result);
+//   ).catch(
+//     error => console.log(error);
+//   )

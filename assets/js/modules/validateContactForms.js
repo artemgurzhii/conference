@@ -1,28 +1,6 @@
-// Classes manipulation
-let hasClass = (el, className) => {
-  if (el.classList) {
-    return el.classList.contains(className);
-  } else {
-    return !!el.className.match(new RegExp('(\\s|^)' + className + '(\\s|$)'));
-  }
-};
-
-let addClass = (el, className) => {
-  if (el.classList) {
-    el.classList.add(className);
-  } else if (!hasClass(el, className)) {
-    el.className += ' ' + className;
-  }
-};
-
-let removeClass = (el, className) => {
-  if (el.classList) {
-    el.classList.remove(className);
-  } else if (hasClass(el, className)) {
-    let reg = new RegExp('(\\s|^)' + className + '(\\s|$)');
-    el.className = el.className.replace(reg, ' ');
-  }
-};
+let addClass = require('./classes').addClass;
+let hasClass = require('./classes').hasClass;
+let removeClass = require('./classes').removeClass;
 
 // Main variables
 let
@@ -68,12 +46,14 @@ let validateForm = (e, filter, inputField, invalidText, validClass, invalidClass
 
 // name validation function
 let validateName = () => {
-  validateForm(event, /^[a-zA-Z а-яА-Я ]{4,30}$/, _name, 'Invalid name', 'valid-input-value', 'invalid-input-value');
+  let validateNameFilter = /^[a-zA-Z а-яА-Я ]{4,30}$/;
+  validateForm(event, validateNameFilter, _name, 'Invalid name', 'valid-input-value', 'invalid-input-value');
 };
 
 // email validation function
 let validateEmail = () => {
-  validateForm(event, /^(([^<>+()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, _email, 'Invalid email', 'valid-input-value', 'invalid-input-value');
+  let validateEmailFilter = /^(([^<>+()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  validateForm(event, validateEmailFilter, _email, 'Invalid email', 'valid-input-value', 'invalid-input-value');
 };
 
 _submitButton.addEventListener('click', validateName, false);  // adding event on 'name' input submit
