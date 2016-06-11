@@ -19,7 +19,7 @@ const XHR = (method = 'GET', url = 'http://localhost:3000/data/search.json', asy
 };
 
 module.exports = {
-  XHR: XHR
+  XHR
 };
 
 
