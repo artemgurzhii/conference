@@ -24,7 +24,7 @@ const removeClass = (el, className) => {
 };
 
 module.exports = {
-  addClass: addClass,
-  hasClass: hasClass,
-  removeClass: removeClass
+  addClass,
+  hasClass,
+  removeClass
 };
