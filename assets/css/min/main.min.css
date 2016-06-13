@@ -459,6 +459,14 @@ body {
     right: 10px;
     cursor: pointer; }
 
+.sidebar-tags {
+  margin: 100px 0; }
+  .sidebar-tags h3 {
+    text-align: center; }
+  .sidebar-tags .tags-results {
+    display: -webkit-box;
+    display: flex; }
+
 /* 2 - Modules MAIN MEDIA */
 
 /* 2 - Modules-POST */
@@ -548,12 +556,10 @@ body {
   margin-right: 3em;
   min-width: 22em;
   width: 22em; }
-  #sidebar > * {
-    margin: 0; }
-    #sidebar > *:first-child {
-      border-top: 0;
-      margin-top: 0;
-      padding-top: 0; }
+  #sidebar > *:first-child {
+    border-top: 0;
+    margin-top: 0;
+    padding-top: 0; }
 
 .sidebar-posts-all {
   margin: 0 0 2em 0; }
