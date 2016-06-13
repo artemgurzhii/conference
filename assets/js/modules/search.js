@@ -1,3 +1,5 @@
+const addEvent = require('./events').addEvent;
+
 let
     _searchWrap   = document.querySelector('div.search-container'),
     _searchInput  = _searchWrap.querySelector('input.search-input'),
@@ -11,4 +13,4 @@ let remove_searchList = () => {
   _searchInput.value = '';
 };
 
-_searchIcon.addEventListener('click', remove_searchList, false);
+addEvent(_searchIcon, 'click', remove_searchList);
