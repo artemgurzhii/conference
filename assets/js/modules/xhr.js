@@ -1,4 +1,4 @@
-const XHR = (method = 'GET', url = 'http://localhost:3000/data/search.json', asyncLoad = true, callback = null) => {
+const XHR = (method = 'GET', url = 'http://localhost:3000/data/search.json', asyncLoad = true, callback = undefined) => {
   return new Promise((resolve, reject) => {
     let request = new XMLHttpRequest();
     request.open(method, url, asyncLoad);
