@@ -2,27 +2,27 @@
   function s(o, u) {
     if (!n[o]) {
       if (!t[o]) {
-        let a = typeof require === "function" && require;
+        const a = typeof require === "function" && require;
         if (!u && a) {
           return a(o, !0);
         }
         if (i) {
           return i(o, !0);
         }
-        throw new Error("Cannot find module '" + o + "'");
+        throw new Error(`Cannot find module '${o}'`);
       }
-      let f = n[o] = {
+      const f = n[o] = {
         exports: {}
       };
       t[o][0].call(f.exports, e => {
-        let n = t[o][1][e];
+        const n = t[o][1][e];
         return s(n ? n : e);
       }, f, f.exports, e, t, n, r);
     }
     return n[o].exports;
   }
-  let i = typeof require === "function" && require,
-      rLength = r.length;
+  var i = typeof require === "function" && require;
+  const rLength = r.length;
 
   for (let o = 0; o < rLength; o += 1) {
     s(r[o]);
@@ -31,13 +31,13 @@
 })({
   1: [(require, module, exports) => {
 
-      let XHR = (xhr, callback)  => {
+      const XHR = (xhr, callback)  => {
         return () => {
           if (xhr.readyState === 4) {
             if (xhr.status === 200) {
               callback(null, JSON.parse(xhr.responseText));
             } else {
-              callback(xhr.status + ': ' + xhr.statusText);
+              callback(`${xhr.status}: ${xhr.statusText}`);
             }
           } else {
             return;
@@ -46,14 +46,14 @@
       };
 
       const load = (location, callback) => {
-        let request = new XMLHttpRequest();
+        const request = new XMLHttpRequest();
         request.open('GET', location, true);
         request.send();
         request.onreadystatechange = XHR(request, callback);
       };
 
       module.exports = {
-        load: load
+        load
       };
 
   }, {}],
@@ -61,7 +61,7 @@
 
       module.exports = function OptsValidate(params) {
 
-        let validateParams = params => {
+        const validateParams = params => {
           if (!params) {
             return false;
           }
@@ -75,14 +75,14 @@
           return new OptsValidate(params);
         }
 
-        let requiredOptions = params.required;
+        const requiredOptions = params.required;
 
         this.getRequiredOptions = () => {
           return requiredOptions;
         };
 
         this.validate = param =>  {
-          let errors = [];
+          const errors = [];
           requiredOptions.forEach((requiredName) => {
             if (param[requiredName] === undefined) {
               errors.push(requiredName);
@@ -95,17 +95,17 @@
   }, {}],
   3: [(require, module, exports) => {
 
-      let fuzzySearch = require('./searchType/fuzzySearch');
-      let literalSearch = require('./searchType/literalSearch');
+      const fuzzySearch = require('./searchType/fuzzySearch');
+      const literalSearch = require('./searchType/literalSearch');
 
-      let data = [];
-      let opt = {};
+      const data = [];
+      const opt = {};
       opt.fuzzy = false;
       opt.limit = 10;
       opt.searchStrategy = opt.fuzzy ? fuzzySearch : literalSearch;
 
 
-      let put = data => {
+      const put = data => {
         if (isObject(data)) {
           return addObject(data);
         }
@@ -115,32 +115,32 @@
         return undefined;
       };
 
-      let clear = () => {
+      const clear = () => {
         data.length = 0;
         return data;
       };
 
-      let get = () => {
+      const get = () => {
         return data;
       };
 
-      let isObject = obj => {
+      var isObject = obj => {
         return !!obj && Object.prototype.toString.call(obj) === '[object Object]';
       };
 
-      let isArray = obj => {
+      var isArray = obj => {
         return !!obj && Object.prototype.toString.call(obj) === '[object Array]';
       };
 
-      let addObject = _data => {
+      var addObject = _data => {
         data.push(_data);
         return data;
       };
 
-      let addArray = _data => {
-        let added = [],
-            dataLength =_data.length,
-            i;
+      var addArray = _data => {
+        const added = [];
+        const dataLength =_data.length;
+        let i;
         for (i = 0; i < dataLength; i++) {
           if (isObject(_data[i])) {
             added.push(addObject(_data[i]));
@@ -149,26 +149,26 @@
         return added;
       };
 
-      let search = crit => {
+      const search = crit => {
         if (!crit) {
           return [];
         }
         return findMatches(data, crit, opt.searchStrategy, opt);
       };
 
-      let setOptions = (_opt = {}) => {
+      const setOptions = (_opt = {}) => {
         opt.fuzzy = _opt.fuzzy || false;
         opt.limit = _opt.limit || 10;
         opt.searchStrategy = _opt.fuzzy ? fuzzySearch: literalSearch;
       };
 
-      let findMatches = (data, crit, strategy, opt) => {
-        let matches = [];
+      var findMatches = (data, crit, strategy, opt) => {
+        const matches = [];
         let i;
-        let dataLength = data.length;
-        let matchesLength = matches.length;
+        const dataLength = data.length;
+        const matchesLength = matches.length;
         for (i = 0; i < dataLength && matchesLength < opt.limit; i++) {
-          let match = findMatchesInObject(data[i], crit, strategy, opt);
+          const match = findMatchesInObject(data[i], crit, strategy, opt);
           if (match) {
             matches.push(match);
           }
@@ -176,8 +176,8 @@
         return matches;
       };
 
-      let findMatchesInObject = (obj, crit, strategy, opt) => {
-        for (let key in obj) {
+      var findMatchesInObject = (obj, crit, strategy, opt) => {
+        for (const key in obj) {
           if (obj.hasOwnProperty(key)) {
             if (!isExcluded(obj[key], opt.exclude) && strategy.matches(obj[key], crit)) {
               return obj;
@@ -186,12 +186,12 @@
         }
       };
 
-      let isExcluded = (term, excludedTerms = []) => {
-        let excluded = false,
-            excTermsLength = excludedTerms.length,
-            i;
+      var isExcluded = (term, excludedTerms = []) => {
+        let excluded = false;
+        const excTermsLength = excludedTerms.length;
+        let i;
         for (i = 0; i < excTermsLength; i++) {
-          let excludedTerm = excludedTerms[i];
+          const excludedTerm = excludedTerms[i];
           if (!excluded && new RegExp(term).test(excludedTerm)) {
             excluded = true;
           }
@@ -200,11 +200,11 @@
       };
 
       module.exports = {
-        put: put,
-        clear: clear,
-        get: get,
-        search: search,
-        setOptions: setOptions
+        put,
+        clear,
+        get,
+        search,
+        setOptions
       };
 
   }, {
@@ -219,7 +219,7 @@
             return false;
           }
           let fuzzy = crit.split("")
-            .reduce((a, b) => a + '[^' + b + ']*' + b);
+            .reduce((a, b) => `${a}[^${b}]*${b}`);
           fuzzy = new RegExp(fuzzy, 'gi');
           return !!fuzzy.test(string);
         };
@@ -245,21 +245,21 @@
   }, {}],
   6: [(require, module, exports) => {
 
-      let options = {};
+      const options = {};
       options.pattern = /\{(.*?)\}/g;
       options.template = '';
       options.middleware = () => {};
 
-      let setOptions = _options => {
+      const setOptions = _options => {
         options.template = _options.template || options.template;
         if (typeof _options.middleware === 'function') {
           options.middleware = _options.middleware;
         }
       };
 
-      let compile = data => {
+      const compile = data => {
         return options.template.replace(options.pattern, (match, prop) => {
-          let value = options.middleware(prop, data[prop], options.template);
+          const value = options.middleware(prop, data[prop], options.template);
           if (value !== undefined) {
             return value;
           }
@@ -268,8 +268,8 @@
       };
 
       module.exports = {
-        compile: compile,
-        setOptions: setOptions
+        compile,
+        setOptions
       };
 
   }, {}],
@@ -288,21 +288,21 @@
           exclude: []
         };
 
-        let requiredOptions = ['input', 'results', 'json'];
-        let templater = require('./Template');
-        let repository = require('./Repo');
-        let jsonLoader = require('./JSONLoad');
-        let optionsValidator = require('./OptsValidate')({
+        const requiredOptions = ['input', 'results', 'json'];
+        const templater = require('./Template');
+        const repository = require('./Repo');
+        const jsonLoader = require('./JSONLoad');
+        const optionsValidator = require('./OptsValidate')({
           required: requiredOptions
         });
-        let utils = require('./utils');
+        const utils = require('./utils');
 
-        let initWithJSON = json => {
+        const initWithJSON = json => {
           repository.put(json);
           registerInput();
         };
 
-        let initWithURL = url => {
+        const initWithURL = url => {
           jsonLoader.load(url, (err, json) => {
             if (err) {
               throwError(`failed to get JSON (${url})`);
@@ -312,7 +312,7 @@
         };
 
         window.jekyllSearch = _options => {
-          let errors = optionsValidator.validate(_options);
+          const errors = optionsValidator.validate(_options);
           if (errors.length) {
             throwError(`You must specify the following required options: ${requiredOptions}`);
           }
@@ -343,17 +343,17 @@
           window.SimpleJekyllSearchInit.call(this, window.jekyllSearch);
         }
 
-        let emptyResultsContainer = () => {
+        const emptyResultsContainer = () => {
           options.results.innerHTML = '';
         };
 
-        let appendToResultsContainer = text => {
+        const appendToResultsContainer = text => {
           options.results.innerHTML += text;
         };
 
-        let render = results => {
-          let resLength = results.length,
-              i;
+        const render = results => {
+          const resLength = results.length;
+          let i;
           if (resLength === 0) {
             return appendToResultsContainer(options.noResults);
           }
@@ -362,11 +362,11 @@
           }
         };
 
-        let isValidQuery = query => {
+        const isValidQuery = query => {
           return query && query.length > 0;
         };
 
-        let isWhitelistedKey = key => {
+        const isWhitelistedKey = key => {
           return [13, 16, 20, 37, 38, 39, 40, 91].indexOf(key) === -1;
         };
 
@@ -376,8 +376,8 @@
 
         function registerInput() {
           options.input.addEventListener('keyup', e => {
-            let key = e.which;
-            let query = e.target.value;
+            const key = e.which;
+            const query = e.target.value;
             if (isWhitelistedKey(key) && isValidQuery(query)) {
               emptyResultsContainer();
               render(repository.search(query));
@@ -398,9 +398,9 @@
   }],
   8: [(require, module, exports) => {
 
-      let merge = (defaultParams, mergeParams) => {
-        let mergedOptions = {};
-        for (let option in defaultParams) {
+      const merge = (defaultParams, mergeParams) => {
+        const mergedOptions = {};
+        for (const option in defaultParams) {
           if (defaultParams.hasOwnProperty(option)) {
             mergedOptions[option] = defaultParams[option];
             if (mergeParams[option] !== undefined) {
@@ -411,7 +411,7 @@
         return mergedOptions;
       };
 
-      let isJSON = json => {
+      const isJSON = json => {
         try {
           if (json instanceof Object && JSON.parse(JSON.stringify(json))) {
             return true;
@@ -423,8 +423,8 @@
       };
 
       module.exports = {
-        merge: merge,
-        isJSON: isJSON,
+        merge,
+        isJSON,
       };
 
   }, {}]
