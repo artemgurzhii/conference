@@ -9,10 +9,10 @@ const XHR = (method = 'GET', url = 'http://localhost:3000/data/search.json', asy
           let parsed = JSON.parse(request.response);
           resolve(parsed);
         } else {
-          reject(`${request.status}: ${request.statusText}`);
+          reject(`XHR request was rejected with ${request.status}: ${request.statusText}`);
         }
       } else {
-        return;
+        reject(`XHR request was rejected with ${request.status}: ${request.statusText}`);
       }
     };
   });
