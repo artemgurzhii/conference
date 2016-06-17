@@ -6,6 +6,15 @@ const addEvent = (elem, type, func) => {
   }
 };
 
+const removeEvent = (elem, type, func) => {
+  if (elem.removeEventListener) {
+    elem.removeEventListener(type, func, false);
+  } else {
+    elem.detachEvent(`on${type}`, func);
+  }
+};
+
 module.exports = {
-  addEvent
+  addEvent,
+  removeEvent
 };
