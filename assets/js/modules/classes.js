@@ -1,25 +1,25 @@
-const hasClass = (el, className) => {
-  if (el.classList) {
-    return el.classList.contains(className);
+const hasClass = (elem, className) => {
+  if (elem.classList) {
+    return elem.classList.contains(className);
   } else {
-    return !!el.className.match(new RegExp(`(\\s|^)${className}(\\s|$)`));
+    return !!elem.className.match(new RegExp(`(\\s|^)${className}(\\s|$)`));
   }
 };
 
-const addClass = (el, className) => {
-  if (el.classList) {
-    el.classList.add(className);
-  } else if (!hasClass(el, className)) {
-    el.className += ` ${className}`;
+const addClass = (elem, className) => {
+  if (elem.classList) {
+    elem.classList.add(className);
+  } else if (!hasClass(elem, className)) {
+    elem.className += ` ${className}`;
   }
 };
 
-const removeClass = (el, className) => {
-  if (el.classList) {
-    el.classList.remove(className);
-  } else if (hasClass(el, className)) {
+const removeClass = (elem, className) => {
+  if (elem.classList) {
+    elem.classList.remove(className);
+  } else if (hasClass(elem, className)) {
     const reg = new RegExp(`(\\s|^)${className}(\\s|$)`);
-    el.className = el.className.replace(reg, ' ');
+    elem.className = elem.className.replace(reg, ' ');
   }
 };
 
