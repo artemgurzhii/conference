@@ -34,6 +34,7 @@ future: true
 host: localhost
 port: 3000
 baseurl: ""
+url: "artemgurzhii.github.io/conference"
 
 
 # Outputting
