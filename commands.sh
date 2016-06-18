@@ -22,13 +22,21 @@ alias glcg="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%
 
 # NPM
 # Npm Install
-alias ni='npm install'
+alias ni='npm i'
 # Npm Install --Save
 alias nis='npm i -S'
 # Npm Install --save-Dev
 alias nid='npm i -D'
 # Npm Install Global
 alias nig='npm i -g'
+# Npm Uninstall
+alias nu='npm uninstall'
+# Npm Uninstall --Save
+alias nus='npm uninstall -S'
+# Npm Uninstall --save-Dev
+alias nud='npm uninstall -D'
+# Npm Uninstall Global
+alias nug='npm uninstall -g'
 # Npm Run test
 alias nrt='npm run test'
 # Npm Run
