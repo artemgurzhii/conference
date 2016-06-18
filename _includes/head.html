@@ -37,14 +37,12 @@
 
 <!-- Prefetching, preloading, prebrowsing -->
 <link rel="dns-prefetch" href="{{ site.url }}">
-<link rel="preconnect" href="{{ site.url }}">
 <link rel="prefetch" href="{{ site.url }}">
 <link rel="prerender" href="{{ site.url }}">
-<link rel="subresource" href="{{ site.css | prepend: site.baseurl }}">
-<link rel='subresource' href="{{ site.js | prepend: site.baseurl }}">
+<link rel='preload' href="{{ site.js | prepend: site.baseurl }}" as="script">
 <link rel="preload" href="{{ site.css | prepend: site.baseurl }}" as="style">
 <link rel="preload" href="{{ site.logo | prepend: site.baseurl }}" as="image">
-<link rel="preload" href='https://fonts.googleapis.com/css?family=Open+Sans' crossorigin as="font">
+<link rel="preconnect" href='https://fonts.googleapis.com/css?family=Open+Sans' crossorigin>
 <link rel="alternate" type="application/rss+xml" title="{{ site.site_title }}" href="{{ site.baseul }}/feed.xml">
 <!-- Prefetching, preloading, prebrowsing -->
 
