@@ -7,7 +7,7 @@ const hasClass = (elem, className) => {
 };
 
 const addClass = (elem, className) => {
-  if (elem.classList) {
+  if (elem.classList && !hasClass(elem, className)) {
     elem.classList.add(className);
   } else if (!hasClass(elem, className)) {
     elem.className += ` ${className}`;
@@ -15,7 +15,7 @@ const addClass = (elem, className) => {
 };
 
 const removeClass = (elem, className) => {
-  if (elem.classList) {
+  if (elem.classList && hasClass(elem, className)) {
     elem.classList.remove(className);
   } else if (hasClass(elem, className)) {
     const reg = new RegExp(`(\\s|^)${className}(\\s|$)`);
