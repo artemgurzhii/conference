@@ -9,16 +9,20 @@ let _searchList   = _searchWrap.querySelector('ul.search-results-list');
 
 // remove childs from body function
 let removeChilds = (elemToRemove, clearValue) => {
+  // removing childs while there is childs
   while(elemToRemove.firstChild) {
     elemToRemove.removeChild(elemToRemove.firstChild);
   }
+  // if there any field that needs to be cleared
   if (clearValue) {
     clearValue.value = '';
   }
 };
 
+// defining remove_searchList function
 let remove_searchList = () => {
   removeChilds(_searchList, _searchInput);
 }
 
+// calling function
 addEvent(_searchIcon, 'click', remove_searchList);
