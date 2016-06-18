@@ -1,16 +1,24 @@
+// importing addEvent function
 const addEvent = require('./events').addEvent;
 
-let
-    _searchWrap   = document.querySelector('div.search-container'),
-    _searchInput  = _searchWrap.querySelector('input.search-input'),
-    _searchIcon   = _searchWrap.querySelector('i.clear-search-input'),
-    _searchList   = _searchWrap.querySelector('ul.search-results-list');
+// main variables
+let _searchWrap   = document.querySelector('div.search-container');
+let _searchInput  = _searchWrap.querySelector('input.search-input');
+let _searchIcon   = _searchWrap.querySelector('i.clear-search-input');
+let _searchList   = _searchWrap.querySelector('ul.search-results-list');
+
+// remove childs from body function
+let removeChilds = (elemToRemove, clearValue) => {
+  while(elemToRemove.firstChild) {
+    elemToRemove.removeChild(elemToRemove.firstChild);
+  }
+  if (clearValue) {
+    clearValue.value = '';
+  }
+};
 
 let remove_searchList = () => {
-  while(_searchList.firstChild) {
-    _searchList.removeChild(_searchList.firstChild);
-  }
-  _searchInput.value = '';
-};
+  removeChilds(_searchList, _searchInput);
+}
 
 addEvent(_searchIcon, 'click', remove_searchList);
