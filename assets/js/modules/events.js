@@ -1,3 +1,5 @@
+// arguments - node element, event to trigger and function to execute
+// addEvent function
 const addEvent = (elem, type, func) => {
   if (elem.addEventListener) {
     elem.addEventListener(type, func, false);
@@ -6,6 +8,7 @@ const addEvent = (elem, type, func) => {
   }
 };
 
+// removeEvent function
 const removeEvent = (elem, type, func) => {
   if (elem.removeEventListener) {
     elem.removeEventListener(type, func, false);
@@ -14,6 +17,7 @@ const removeEvent = (elem, type, func) => {
   }
 };
 
+// exporting functions
 module.exports = {
   addEvent,
   removeEvent
