@@ -1,3 +1,5 @@
+// arguments - node element and className to remove,add and check if has
+// hasClass function
 const hasClass = (elem, className) => {
   if (elem.classList) {
     return elem.classList.contains(className);
@@ -6,6 +8,7 @@ const hasClass = (elem, className) => {
   }
 };
 
+// addClass function
 const addClass = (elem, className) => {
   if (elem.classList && !hasClass(elem, className)) {
     elem.classList.add(className);
@@ -14,6 +17,7 @@ const addClass = (elem, className) => {
   }
 };
 
+// removeClass function
 const removeClass = (elem, className) => {
   if (elem.classList && hasClass(elem, className)) {
     elem.classList.remove(className);
@@ -23,6 +27,7 @@ const removeClass = (elem, className) => {
   }
 };
 
+// exporting functions
 module.exports = {
   addClass,
   hasClass,
