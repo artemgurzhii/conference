@@ -7,11 +7,13 @@
     <div id="wrapper">
       {% include header.html %}
 
-      <main id="main">
+      <main id="main" class="post-main-page">
 
         {{ content }}
 
-        {% include disqus.html disqus_identifier=page.disqus_identifier %}
+        <div class="disqus-chat">
+          {% include disqus.html disqus_identifier=page.disqus_identifier %}
+        </div>
 
       </main>
 
