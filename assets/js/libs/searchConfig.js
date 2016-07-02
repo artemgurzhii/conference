@@ -1,13 +1,13 @@
 let jsonUrl;
-if (window.location.href === 'http://localhost:3000/') {
-  jsonUrl = 'data/search.json';
-} else {
+if (document.location.href.indexOf('page' > -1)) {
   jsonUrl = '../../data/search.json';
+} else {
+  jsonUrl = 'data/search.json';
 }
 
 jekyllSearch({
-  input: document.getElementsByClassName('search-input')[0],
-  results: document.getElementsByClassName('search-results-list')[0],
+  input: document.querySelector('.search-input'),
+  results: document.querySelector('.search-results-list'),
   template: '<li><a href="{url}">{title} - {date}</a></li>',
   json: jsonUrl,
   noResults: '<li>No results found</li>',

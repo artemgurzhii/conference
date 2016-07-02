@@ -400,7 +400,7 @@
 
       const merge = (defaultParams, mergeParams) => {
         const mergedOptions = {};
-        for (const option in defaultParams) {
+        for (let option in defaultParams) {
           if (defaultParams.hasOwnProperty(option)) {
             mergedOptions[option] = defaultParams[option];
             if (mergeParams[option] !== undefined) {
