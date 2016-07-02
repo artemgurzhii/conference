@@ -6,6 +6,6 @@ if (window.location.href === 'http://localhost:3000/' || window.location.href.in
   if (window.location.href.indexOf('contact') > -1) {
     require('./modules/validateContactForms');
   } else {
-    require('./modules/postRead');
+    require('./modules/post-read');
   }
 }
