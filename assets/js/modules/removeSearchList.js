@@ -1,20 +1,22 @@
-// importing addEvent and removeChilds functions
+// importing functions
 const addEvent = require('./events').addEvent;
 const removeChilds = require('./removeChilds').removeChilds;
 
-// main variables
-const _searchWrap   = document.querySelector('.search-container');       // storing main div variable so it's not gonna search for entire body
-const _searchInput  = _searchWrap.querySelector('.search-input');        // input to be cleared
-const _searchIcon   = _searchWrap.querySelector('.clear-search-input');  // icon to click to remove childs
-const _searchList   = _searchWrap.querySelector('.search-results-list'); // parent node where to remove childs
+// DOM Elements
+const _searchWrap  = document.querySelector('.search-container');
+const _searchInput = _searchWrap.querySelector('.search-input');
+const _searchIcon  = _searchWrap.querySelector('.clear-search-input');
+const _searchList  = _searchWrap.querySelector('.search-results-list');
 
-const remove_searchList = () => {            // defining remove_searchList function
-  removeChilds(_searchList, _searchInput);  // defining elements
+// defining remove_searchList function
+const remove_searchList = () => {
+  removeChilds(_searchList, _searchInput);
 };
 
-addEvent(_searchIcon, 'click', remove_searchList);  // calling function
+// adding eventlistener on close icon click
+addEvent(_searchIcon, 'click', remove_searchList);
 
-
+// exporting function
 module.exports = {
   removeChilds
 };

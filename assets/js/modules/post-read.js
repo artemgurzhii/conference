@@ -1,30 +1,30 @@
-// Main Variables
-// Selecting Elements
-const store = document.querySelector('.post-main-page');// Storing container class so it will not search for entire document body
-const txt = store.querySelectorAll('.text-count');     // Getting number of words in post
-const charCount = store.querySelector('.chars-length'); // Getting span element where to put number of CHARACTERS
-const readTime = store.querySelector('.read-time');     // Getting span element where to put reading time
+// DOM Elements
+const _store = document.querySelector('.post-main-page');
+const _txt = _store.querySelectorAll('.text-count');
+const _charCount = _store.querySelector('.chars-length');
+const _readTime = _store.querySelector('.read-time');
 
 // iterations
-let i;                  // iterated variable
-let newTxtString;       // creating new string where is gonna be all text
-const len = txt.length; // storing txt array length so it didn't recalculate each time
-
+let i;
+let newTxtString;
+const len = _txt.length;
 for (i = 0; i < len; i++) {
-  newTxtString += txt[i].textContent;
+  newTxtString += _txt[i].textContent;
 }
 
-// Math operations with time
+// Math operations with time to get time in minutes and seconds
 let seconds = Math.floor(newTxtString.match(/\b[-?(\w+)?]+\b/gi).length * 60 / 275);
 let minutes = Math.floor(seconds / 60);
 
-charCount.textContent = newTxtString
-  .replace(/ /gi, '') // removing space from text
-  .length;            // getting length of text after cleaning
+// removing spaces from string and setting number of characters in string to new string length
+_charCount.textContent = newTxtString
+  .replace(/ /gi, '')
+  .length;
 
+// display seconds/minutes and seconds if needed
 if (seconds > 60) {
   seconds = seconds - minutes * 60;
-  readTime.innerHTML = `${minutes}m ${seconds}s`;
+  _readTime.textContent = `${minutes}m ${seconds}s`;
 } else {
-  readTime.innerHTML = `${seconds}s`;
+  _readTime.textContent = `${seconds}s`;
 }

@@ -1,9 +1,11 @@
-let removeChilds = (removeElem, clearVal) => {     // remove childs from body function
-  while(removeElem.firstChild) {                   // while parent have childs
-    removeElem.removeChild(removeElem.firstChild); // remove them
+// defining removeChilds function
+// this function will remove all childrens from element and clear input value if needed
+let removeChilds = (removeElem, clearVal) => {
+  while(removeElem.firstElementChild) {
+    removeElem.removeChild(removeElem.firstElementChild);
   }
-  if (clearVal) {         // if there any field that needs to be cleared
-    clearVal.value = '';  // clear it
+  if (clearVal) {
+    clearVal.value = '';
   }
 };
 

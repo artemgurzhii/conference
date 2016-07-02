@@ -1,5 +1,5 @@
 // arguments - node element and className to remove,add and check if has
-// hasClass function
+// defining hasClass function
 const hasClass = (elem, className) => {
   if (elem.classList) {
     return elem.classList.contains(className);
@@ -8,7 +8,7 @@ const hasClass = (elem, className) => {
   }
 };
 
-// addClass function
+// defining addClass function
 const addClass = (elem, className) => {
   if (elem.classList && !hasClass(elem, className)) {
     elem.classList.add(className);
@@ -17,12 +17,12 @@ const addClass = (elem, className) => {
   }
 };
 
-// removeClass function
+// defining removeClass function
 const removeClass = (elem, className) => {
   if (elem.classList && hasClass(elem, className)) {
     elem.classList.remove(className);
   } else if (hasClass(elem, className)) {
-    const reg = new RegExp(`(\\s|^)${className}(\\s|$)`);
+    const reg = /(\s|^)${className}(\s|$)/;
     elem.className = elem.className.replace(reg, ' ');
   }
 };

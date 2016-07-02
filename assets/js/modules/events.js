@@ -8,7 +8,7 @@ const addEvent = (elem, type, func) => {
   }
 };
 
-// removeEvent function
+// defining removeEvent function
 const removeEvent = (elem, type, func) => {
   if (elem.removeEventListener) {
     elem.removeEventListener(type, func, false);

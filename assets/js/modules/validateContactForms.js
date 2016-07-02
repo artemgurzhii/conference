@@ -1,37 +1,43 @@
-// imports
+// importing functions
 const addClass = require('./classes').addClass;
 const hasClass = require('./classes').hasClass;
 const removeClass = require('./classes').removeClass;
 const addEvent = require('./events').addEvent;
 
-// Main variables
+// DOM Elements
 const _form = document.querySelector('.feedback-contact');
 const _submitBtn = _form.querySelector('.submit-feedback');
 const _name = _form.querySelector('input[type="text"]');
 const _email = _form.querySelector('input[type="email"]');
 
-// validate form function
+// defining validateForm function
+// this function will addClass Valid if input value passed test, and Invalid class if didn't
 const validateForm = (e, filter, inputField, invalidText, validClass, invalidClass) => {
-  let testing = filter.test(inputField.value);  // returning boolean value from testing
-  const _para = document.createElement('p');    // creating paragraph
-        _para.textContent = invalidText;        // and adding text content for invalid input value
+  let testing = filter.test(inputField.value);
+  const _para = document.createElement('p');
 
-  if (inputField.value.length) {              // if input not empty
-    if (!testing) {                           // and if it DIDN'T pass test
-      e.preventDefault();                     // prevent form from submission
-      if (hasClass(inputField, validClass)) { // if it has 'valid-input-value' class
-        removeClass(inputField, validClass);  // remove it (green border)
+  if (inputField.value.length) {
+    if (!testing) {
+      if (typeof e.preventDefault === 'function') {
+        e.preventDefault();
+      } else {
+        e.returnValue = false;
       }
-      if (!hasClass(inputField, invalidClass)) {                           // if it doesn't have 'invalid-input-value' class
-        addClass(inputField, invalidClass);                                // add it (red border)
-        inputField.parentNode.insertBefore(_para, inputField.nextSibling); // and add notify message
+
+      if (hasClass(inputField, validClass)) {
+        removeClass(inputField, validClass);
       }
-    } else {                                                                       // if it DID pass test
-      if (inputField.parentNode.children.length === 3) {                           // and if it already have notify message
-        inputField.parentNode.removeChild(inputField.parentNode.lastElementChild); // remove message
-        removeClass(inputField, 'invalid-input-value');                            // and remove 'invalid-input-value' class
+      if (!hasClass(inputField, invalidClass)) {
+        addClass(inputField, invalidClass);
+        _para.textContent = invalidText;
+        inputField.parentNode.insertBefore(_para, inputField.nextElementSibling);
       }
-      addClass(inputField, validClass);                                            // and add 'valid-input-value' class (green border)
+    } else {
+      if (inputField.parentNode.children.length === 3) {
+        inputField.parentNode.removeChild(inputField.parentNode.lastElementChild);
+        removeClass(inputField, 'invalid-input-value');
+      }
+      addClass(inputField, validClass);
     }
   }
 };
@@ -48,5 +54,6 @@ const validateEmail = () => {
   validateForm(event, validateEmailFilter, _email, 'Invalid email', 'valid-input-value', 'invalid-input-value');
 };
 
-addEvent(_submitBtn, 'click', validateName);  // adding event on 'name' input submit
-addEvent(_submitBtn, 'click', validateEmail); // adding event on 'email' input submit
+// adding eventlisteners on submit-button-click
+addEvent(_submitBtn, 'click', validateName);
+addEvent(_submitBtn, 'click', validateEmail);
