@@ -1,3 +1,4 @@
+
 #!/bin/bash
 
 # GIT
@@ -30,13 +31,13 @@ alias nid='npm i -D'
 # Npm Install Global
 alias nig='npm i -g'
 # Npm Uninstall
-alias nu='npm uninstall'
+alias nu='npm r'
 # Npm Uninstall --Save
-alias nus='npm uninstall -S'
+alias nus='npm r -S'
 # Npm Uninstall --save-Dev
-alias nud='npm uninstall -D'
+alias nud='npm r -D'
 # Npm Uninstall Global
-alias nug='npm uninstall -g'
+alias nug='npm r -g'
 # Npm Run test
 alias nrt='npm run test'
 # Npm Run
