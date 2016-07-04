@@ -1,22 +1,18 @@
-// defining XHR function
-//
-const XHR = (url = 'http://localhost:3000/data/search.json', callback = undefined) => {
+// defining XHR(request) function
+const XHR = url => {
   return new Promise((resolve, reject) => {
     let request = new XMLHttpRequest();
     request.open('GET', url, true);
     request.send();
-    request.onreadystatechange = () => {
-      if (request.readyState === 4) {
-        if (request.status === 200) {
-          let parsed = JSON.parse(request.response);
-          resolve(parsed);
-        } else {
-          reject(`XHR rejected ${request.status}: ${request.statusText}`);
+    request.addEventListener('readystatechange', () => {
+      if (request.status === 200) {
+        if (request.readyState === 4) {
+          resolve(JSON.parse(request.response));
         }
       } else {
-        reject(`XHR rejected ${request.status}: ${request.statusText}`);
+        reject(`XMLHttpRequest rejected with status ${request.status}: ${request.statusText}`);
       }
-    };
+    }, false);
   });
 };
 
@@ -26,7 +22,6 @@ module.exports = {
 };
 
 // Usage
-// XHR()
-//   .then(result => console.log(result)
-//   .then(result2 => console.log(result2)
-//   .catch(error => console.log(error);
+// XHR('http://localhost:3000/data/search.json')
+//   .then(result => console.log(JSON.stringify(result, null, 2)))
+//   .catch(error => new Error(error));
