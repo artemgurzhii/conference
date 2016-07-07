@@ -1,0 +1,67 @@
+<meta charset="{{ site.encoding }}"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimal-ui"/>
+<title>{{ site.site_title }}</title>
+<meta name="copyright" lang="en" content="{{ site.author }}"/>
+<meta name="description" content="{{ site.site_description }}">
+<meta name="document-state" content="Dynamic"/>
+<meta http-equiv="x-dns-prefetch-control" content="on">
+<meta name="application-name" content="Conferences">
+<meta name="google" content="nositelinkssearchbox">
+<meta name="url" content="https://artemgurzhii.github.io/conference/">
+<meta name="coverage" content="Worldwide">
+
+
+<!-- ICONS -->
+<link rel="icon" href="{{ site.logo | prepend: site.baseurl }}" sizes="16x16" type="image/png">
+<link rel="icon" href="{{ site.logo | prepend: site.baseurl }}" sizes="32x32" type="image/png">
+<link rel="icon" href="{{ site.logo | prepend: site.baseurl }}" sizes="48x48" type="image/png">
+<link rel="icon" href="{{ site.logo | prepend: site.baseurl }}" sizes="62x62" type="image/png">
+<!-- ICONS -->
+
+<!-- FACEBOOK -->
+<meta property="og:url" content="{{ site.baseurl }}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ site.site_title }}">
+<meta property="og:image" content="{{ "/assets/img/min/favicon.png" | prepend: site.baseurl }}">
+<meta property="og:description" content="{{ site.site_description }}">
+<meta property="og:site_name" content="{{ site.site_title }}">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="{{ site.author }}">
+<!-- FACEBOOK -->
+
+<!-- TWITTER -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:creator" content="@{{ site.author | replace: " ", "" }}">
+<meta name="twitter:url" content="{{ site.baseurl }}">
+<meta name="twitter:title" content="{{ site.site_title }}">
+<meta name="twitter:description" content="{{ site.site_description }}">
+<meta name="twitter:image" content="{{ site.logo | prepend: site.baseurl }}">
+<!-- TWITTER -->
+
+<!-- Prefetching, preloading, prebrowsing -->
+<link rel="dns-prefetch" href="{{ site.url }}">
+<link rel="prefetch" href="{{ site.url }}">
+<link rel="prerender" href="{{ site.url }}">
+<link rel='preload' href="{{ site.js | prepend: site.baseurl }}" as="script">
+<link rel="preload" href="{{ site.css | prepend: site.baseurl }}" as="style">
+<link rel="preload" href="{{ site.logo | prepend: site.baseurl }}" as="image">
+<link rel="preconnect" href='https://fonts.googleapis.com/css?family=Open+Sans' crossorigin>
+<link rel="alternate" type="application/rss+xml" title="{{ site.site_title }}" href="{{ site.baseul }}/feed.xml">
+<!-- Prefetching, preloading, prebrowsing -->
+
+<!-- APPLE -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="format-detection" content="telephone=no">
+
+<link rel="apple-touch-startup-image" href="{{ site.logo | prepend: site.baseurl }}">
+<link rel="apple-touch-icon" href="{{ site.logo | prepend: site.baseurl }}"/>
+<link rel="apple-touch-icon" href="{{ site.logo | prepend: site.baseurl }}" sizes="72x72"/>
+<link rel="apple-touch-icon" href="{{ site.logo | prepend: site.baseurl }}" sizes="114x114"/>
+<link rel="apple-touch-icon" href="{{ site.logo | prepend: site.baseurl }}" sizes="144x144"/>
+<!-- APPLE -->
+
+<!-- LINKS -->
+<link href="{{ site.css | prepend: site.baseurl }}" rel="stylesheet">
+<!-- LINKS -->

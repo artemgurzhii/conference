@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    {% include head.html %}
+  </head>
+  <body>
+    <div id="wrapper">
+      {% include header.html %}
+
+      <main id="main">
+
+        <div class="tags-results">
+      		 <p>Results by tag: </p>
+           <a href="/tag/{{ page.tag }}">{{ page.tag }}</a>
+      	</div>
+
+      	{% for post in site.tags[page.tag] %}
+          <article class="post">
+            {% include main_post/post_header.html %}
+            {% include main_post/post_body.html %}
+            {% include main_post/post_footer.html %}
+          </article>
+      	{% endfor %}
+
+      </main>
+
+      <aside id="sidebar">
+        {% include sidebar.html %}
+        {% include footer.html %}
+      </aside>
+
+    </div>
+    {% include scripts.html %}
+  </body>
+</html>

@@ -1,0 +1,13 @@
+<div class="sidebar-tags">
+  <h3>Common Tags</h3>
+  {% assign all = site.pages | map: "tag" %}
+  <div class="tags-results">
+    {% for item in all %}
+      {% if item.size >= 1 %}
+        <div class="tag">
+          <a href="/tag/{{item | prepend: site.baseurl }}">{{ item }}</a>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>

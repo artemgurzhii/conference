@@ -430,6 +430,13 @@ ul.actions.pagination {
     ul.actions.pagination li a {
       text-decoration: none; }
 
+<<<<<<< HEAD
+=======
+* {
+  -webkit-font-smoothing: antialiased;
+  font-smooth: always; }
+
+>>>>>>> tests
 body {
   overflow-x: hidden; }
 
@@ -459,9 +466,23 @@ body {
     right: 10px;
     cursor: pointer; }
 
+<<<<<<< HEAD
 /* 2 - Modules MAIN MEDIA */
 
 /* 2 - Modules-POST */
+=======
+.sidebar-tags {
+  margin: 100px 0; }
+  .sidebar-tags h3 {
+    text-align: center; }
+  .sidebar-tags .tags-results {
+    display: -webkit-box;
+    display: flex; }
+
+/* 2 - Modules MAIN MEDIA */
+
+/* 2 - Modules-POST-Index Page */
+>>>>>>> tests
 .post .article-header {
   display: -webkit-box;
   display: flex;
@@ -537,6 +558,18 @@ body {
         margin-left: 0;
         padding-left: 0; }
 
+<<<<<<< HEAD
+=======
+/* 2 - Modules-POST-Post-Main Page */
+.post-main-page ul {
+  float: right;
+  margin-right: 100px;
+  color: #313131;
+  font-size: 1rem; }
+  .post-main-page ul li span {
+    font-weight: bold; }
+
+>>>>>>> tests
 /* 2 - Modules-SIDEBAR */
 .sidebar-header h2 {
   font-size: 1.4em;
@@ -548,12 +581,19 @@ body {
   margin-right: 3em;
   min-width: 22em;
   width: 22em; }
+<<<<<<< HEAD
   #sidebar > * {
     margin: 0; }
     #sidebar > *:first-child {
       border-top: 0;
       margin-top: 0;
       padding-top: 0; }
+=======
+  #sidebar > *:first-child {
+    border-top: 0;
+    margin-top: 0;
+    padding-top: 0; }
+>>>>>>> tests
 
 .sidebar-posts-all {
   margin: 0 0 2em 0; }
