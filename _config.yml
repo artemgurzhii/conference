@@ -60,9 +60,9 @@ next_page: Next Page
 
 
 # Links
-logo: /assets/img/min/favicon.png
-css: /assets/css/min/main.min.css
-js: /assets/js/min/common.min.js
+logo: ./assets/img/min/favicon.png
+css: ./assets/css/min/main.min.css
+js: ./assets/js/min/common.min.js
 
 
 # Main
