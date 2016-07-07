@@ -5,7 +5,7 @@
     {% for item in all %}
       {% if item.size >= 1 %}
         <div class="tag">
-          <a href="/tag/{{item | prepend: site.baseurl }}">{{ item }}</a>
+          <a href="{{ site.baseurl | append: '/tag/' | append: item }}">{{ item }}</a>
         </div>
       {% endif %}
     {% endfor %}

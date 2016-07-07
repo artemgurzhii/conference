@@ -1,11 +1,14 @@
 <footer class="article-footer">
 
   <ul class="actions">
-    <li><a href="{{ post.url }}" class="button big">{{ site.read_post }}</a></li>
+    <li><a href="{{ post.url | prepend: site.baseurl }}" class="button big">{{ site.read_post }}</a></li>
   </ul>
+
   <ul class="post-tags-all">
     {% for tag in post.tags limit:5 %}
-      <li class="post-tag"><a href="/tag/{{ tag }}">{{ tag }}</a></li>
+      <li class="post-tag">
+        <a href="{{ site.baseurl | append: "/tag/" | append: tag }}">{{ tag }}</a>
+      </li>
     {% endfor %}
   </ul>
 
