@@ -4,11 +4,11 @@
     <li>
       <article>
         <header>
-          <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+          <h3><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h3>
           <time datetime="{{ post.date | date: "%F" }}">{{ post.date | date: "%F" }}</time>
-          <a href="/{{ post.category | downcase }}">{{ post.category }}</a>
+          <a href="/{{ post.category | downcase | prepend: site.baseurl }}">{{ post.category }}</a>
         </header>
-        <a href="{{ post.url }}">
+        <a href="{{ post.url | prepend: site.baseurl }}">
           {% if post.img_extension %}
             <img src="{{ "/assets/img/min/TAG.EXT" | replace: "TAG", post.tags[0] | replace: "EXT", post.img_extension | prepend: site.baseurl }}" alt="{{ post.tags | join="" }}"/>
           {% else %}

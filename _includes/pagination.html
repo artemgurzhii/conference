@@ -2,7 +2,7 @@
   <ul class="actions pagination">
 
     {% if paginator.previous_page %}
-      <li><a class="button big previous" href="{{ paginator.previous_page_path }}">{{ site.prev_page }}</a></li>
+      <li><a class="button big previous" href="{{ paginator.previous_page_path | prepend: site.baseurl }}">{{ site.prev_page }}</a></li>
     {% else if %}
       <li><a class="button big previous disable" href="#">{{ site.prev_page }}</a></li>
     {% endif %}
@@ -10,7 +10,7 @@
       <li>{{ paginator.page }} / {{ paginator.total_pages }}</li>
 
     {% if paginator.next_page %}
-      <li><a class="button big next" href="{{ paginator.next_page_path }}">{{ site.next_page }}</a></li>
+      <li><a class="button big next" href="{{ paginator.next_page_path | prepend: site.baseurl }}">{{ site.next_page }}</a></li>
     {% else if %}
       <li><a class="button big previous disable" href="#">{{ site.next_page }}</a></li>
     {% endif %}
