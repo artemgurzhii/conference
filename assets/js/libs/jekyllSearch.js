@@ -21,7 +21,7 @@
     }
     return n[o].exports;
   }
-  var i = typeof require === "function" && require;
+  let i = typeof require === "function" && require;
   const rLength = r.length;
 
   for (let o = 0; o < rLength; o += 1) {
@@ -124,20 +124,20 @@
         return data;
       };
 
-      var isObject = obj => {
+      let isObject = obj => {
         return !!obj && Object.prototype.toString.call(obj) === '[object Object]';
       };
 
-      var isArray = obj => {
+      let isArray = obj => {
         return !!obj && Object.prototype.toString.call(obj) === '[object Array]';
       };
 
-      var addObject = _data => {
+      let addObject = _data => {
         data.push(_data);
         return data;
       };
 
-      var addArray = _data => {
+      let addArray = _data => {
         const added = [];
         const dataLength =_data.length;
         let i;
@@ -162,7 +162,7 @@
         opt.searchStrategy = _opt.fuzzy ? fuzzySearch: literalSearch;
       };
 
-      var findMatches = (data, crit, strategy, opt) => {
+      let findMatches = (data, crit, strategy, opt) => {
         const matches = [];
         let i;
         const dataLength = data.length;
@@ -176,7 +176,7 @@
         return matches;
       };
 
-      var findMatchesInObject = (obj, crit, strategy, opt) => {
+      let findMatchesInObject = (obj, crit, strategy, opt) => {
         for (const key in obj) {
           if (obj.hasOwnProperty(key)) {
             if (!isExcluded(obj[key], opt.exclude) && strategy.matches(obj[key], crit)) {
@@ -186,7 +186,7 @@
         }
       };
 
-      var isExcluded = (term, excludedTerms = []) => {
+      let isExcluded = (term, excludedTerms = []) => {
         let excluded = false;
         const excTermsLength = excludedTerms.length;
         let i;

@@ -33,8 +33,8 @@ future: true
 # Serving
 host: localhost
 port: 3000
-baseurl: ""
-# url: "artemgurzhii.github.io/conference"
+baseurl: "https://artemgurzhii.github.io/conference/"
+url: "https://artemgurzhii.github.io/conference/"
 
 
 # Outputting
@@ -83,7 +83,6 @@ email: gyga98@mail.ru
 github: https://github.com/artemgurzhii
 twiiter: https://twitter.com/ArtemGurzhii
 facebook: https://facebook.com/artem.gurzhii
-
 
 # Default Settings
 defaults:

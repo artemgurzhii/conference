@@ -5,7 +5,11 @@ if (window.location.href === 'http://localhost:3000/' || window.location.href.in
 } else {
   if (window.location.href.indexOf('contact') > -1) {
     require('./modules/validateContactForms');
+  } else if (window.location.href.indexOf('about') > -1) {
+
   } else {
     require('./modules/post-read');
   }
 }
+
+require('./modules/xhr');
