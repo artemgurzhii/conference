@@ -12,6 +12,7 @@
         <div class="tags-results">
       		 <p>Results by tag: </p>
            <a href="/tag/{{ page.tag }}">{{ page.tag }}</a>
+           <a href="{{ site.baseurl | append: '/tag/' | append: page.tag }}">{{ page.tag }}</a>
       	</div>
 
       	{% for post in site.tags[page.tag] %}
