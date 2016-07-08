@@ -3,7 +3,7 @@ const XHR = url => {
   return new Promise((resolve, reject) => {
     let request = new XMLHttpRequest();
     request.open('GET', url, true);
-    request.send();
+    request.send(null);
     request.addEventListener('readystatechange', () => {
       if (request.status === 200) {
         if (request.readyState === 4) {
