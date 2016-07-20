@@ -14,7 +14,8 @@ module.exports = options => {
       gulp.src(options.src),
         webpack(),
         $.babel({
-          presets: ['es2015']
+          presets: ['es2015'],
+          compact: true
         }),
         $.uglify(),
         $.rename({

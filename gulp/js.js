@@ -26,7 +26,8 @@ module.exports = options => {
         }),
         $.jshint.reporter('jshint-stylish'),
         $.babel({
-          presets: ['es2015']
+          presets: ['es2015'],
+          compact: true
         }),
         $.jscpd(),
         $.rename({
