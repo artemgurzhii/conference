@@ -176,9 +176,11 @@
         return matches;
       };
 
+      const has = Object.prototype.hasOwnProperty;
+
       let findMatchesInObject = (obj, crit, strategy, opt) => {
         for (const key in obj) {
-          if (obj.hasOwnProperty(key)) {
+          if (has.call(obj, key)) {
             if (!isExcluded(obj[key], opt.exclude) && strategy.matches(obj[key], crit)) {
               return obj;
             }
@@ -398,10 +400,11 @@
   }],
   8: [(require, module, exports) => {
 
+      const has = Object.prototype.hasOwnProperty;
       const merge = (defaultParams, mergeParams) => {
         const mergedOptions = {};
         for (let option in defaultParams) {
-          if (defaultParams.hasOwnProperty(option)) {
+          if (has.call(defaultParams, option)) {
             mergedOptions[option] = defaultParams[option];
             if (mergeParams[option] !== undefined) {
               mergedOptions[option] = mergeParams[option];
