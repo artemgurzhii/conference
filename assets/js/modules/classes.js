@@ -1,6 +1,6 @@
-// arguments - node element and className to remove,add and check if has
+// arguments - node element and className to remove, add and check if has
 // defining hasClass function
-const hasClass = (el, className) => {
+function hasClass(el, className) {
   if (el instanceof HTMLElement) {
     if (el.classList) {
       return el.classList.contains(className);
@@ -8,12 +8,12 @@ const hasClass = (el, className) => {
       return !!el.className.match(new RegExp(`(\\s|^)${className}(\\s|$)`));
     }
   } else {
-    throw new Error('Error occurred: Problem with arguments or el type');
+    throw new Error('Argument at first position is not instance of HTMLElement');
   }
-};
+}
 
 // defining addClass function
-const addClass = (el, className) => {
+function addClass(el, className) {
   if (el instanceof HTMLElement) {
     if (el.classList && !hasClass(el, className)) {
       el.classList.add(className);
@@ -21,12 +21,12 @@ const addClass = (el, className) => {
       el.className += ` ${className}`;
     }
   } else {
-    throw new Error('Error occurred: Problem with arguments or el type');
+    throw new Error('Argument at first position is not instance of HTMLElement');
   }
-};
+}
 
 // defining removeClass function
-const removeClass = (el, className) => {
+function removeClass(el, className) {
   if (el instanceof HTMLElement) {
     if (el.classList && hasClass(el, className)) {
       el.classList.remove(className);
@@ -35,13 +35,19 @@ const removeClass = (el, className) => {
       el.className = el.className.replace(reg, ' ');
     }
   } else {
-    throw new Error('Error occurred: Problem with arguments or element type');
+    throw new Error('Argument at first position is not instance of HTMLElement');
   }
-};
+}
+
+// defining toggleClass function
+function toggleClass(el, className) {
+  return hasClass(el, className) ? removeClass(el, className) : addClass(el, className);
+}
 
 // exporting functions
 module.exports = {
   addClass,
   hasClass,
-  removeClass
+  removeClass,
+  toggleClass
 };
