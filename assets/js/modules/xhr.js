@@ -1,10 +1,13 @@
+// importing functions
+const addEvent = reuqire('./events').addEvent;
+
 // defining XHR(request) function
-const XHR = url => {
+function XHR(url) {
   return new Promise((resolve, reject) => {
     let request = new XMLHttpRequest();
     request.open('GET', url, true);
     request.send(null);
-    request.addEventListener('readystatechange', () => {
+    addEvent(request, 'readystatechange', () => {
       if (request.status === 200) {
         if (request.readyState === 4) {
           resolve(JSON.parse(request.response));
@@ -14,7 +17,7 @@ const XHR = url => {
       }
     }, false);
   });
-};
+}
 
 // exporting function
 module.exports = {
