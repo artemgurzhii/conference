@@ -1,15 +1,8 @@
 // Plugins
 const $ = require('gulp-load-plugins')();
 import {obj as combiner} from 'stream-combiner2';
-import webpack           from 'webpack-stream';
-import browserSync       from 'browser-sync';
-import gulp              from 'gulp';
-
-// Dev
-const isDevelopment = !process.env.NODE_ENV || process.env.NODE_ENV === 'devlopment'; // NODE_ENV=production gulp
-
-// Path
-const jsMin = 'assets/js/min';
+import webpack from 'webpack-stream';
+import gulp    from 'gulp';
 
 // Module
 module.exports = options => {
@@ -19,7 +12,7 @@ module.exports = options => {
         $.plumber(),
         $.changed('.'),
         $.size(),
-        $.if(isDevelopment, $.sourcemaps.init()),
+        $.sourcemaps.init(),
         webpack(),
         $.jshint({
           esversion: 6
@@ -39,8 +32,8 @@ module.exports = options => {
         $.debug({
           title: 'Checking JavaScript:'
         }),
-        $.if(isDevelopment, $.sourcemaps.write('.')),
-      gulp.dest(jsMin)
+        $.sourcemaps.write('.'),
+      gulp.dest(options.dest)
     ).on('error', $.notify.onError());
     return combined;
   };

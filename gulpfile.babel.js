@@ -1,19 +1,19 @@
-import gulp             from 'gulp';
-
-const isDevelopment = !process.env.NODE_ENV || process.env.NODE_ENV === 'devlopment'; // NODE_ENV=production gulp
+import gulp from 'gulp';
 
 const paths = {
+  cssMin:'assets/css/min',
   css:   'assets/css/main.sass',
   js:    'assets/js/common.js',
   jsM:   'assets/js/modules/*.js',
+  jsMin: 'assets/js/min',
   img:   'assets/img/*.*',
+  imgMin: 'assets/img/min/',
   clean: '_site',
   site:  '_site/index.html',
   md:    'README.md'
-}
+};
 
 let lazyRequireTask = (taskName, path, options = {}) => {
-  options.taskName = taskName;
   path = './gulp/' + path;
   gulp.task(taskName, callback => {
     let task = require(path).call(this, options);
@@ -22,15 +22,18 @@ let lazyRequireTask = (taskName, path, options = {}) => {
 };
 
 lazyRequireTask('assets:css', 'css', {
-  src: paths.css
+  src: paths.css,
+  dest: paths.cssMin
 });
 
 lazyRequireTask('assets:js', 'js', {
-  src: paths.js
+  src: paths.js,
+  dest: paths.jsMin
 });
 
 lazyRequireTask('assets:img', 'img', {
-  src: paths.img
+  src: paths.img,
+  dest: paths.imgMin
 });
 
 lazyRequireTask('clean', 'clean', {
@@ -38,15 +41,18 @@ lazyRequireTask('clean', 'clean', {
 });
 
 lazyRequireTask('deploy:js', 'deploy/js', {
-  src: paths.js
+  src: paths.js,
+  dest: paths.jsMin
 });
 
 lazyRequireTask('deploy:css', 'deploy/css', {
-  src: paths.css
+  src: paths.css,
+  dest: paths.cssMin
 });
 
 lazyRequireTask('deploy:img', 'deploy/img', {
-  src: paths.img
+  src: paths.img,
+  dest: paths.imgMin
 });
 
 lazyRequireTask('deploy:docs', 'deploy/docs', {
@@ -54,7 +60,8 @@ lazyRequireTask('deploy:docs', 'deploy/docs', {
 });
 
 lazyRequireTask('deploy:html', 'deploy/html', {
-  src: paths.site
+  src: paths.site,
+  dest: paths.clean
 });
 
 lazyRequireTask('browser:sync', 'sync');

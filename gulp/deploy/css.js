@@ -1,11 +1,11 @@
 // Plugins
 const $ = require('gulp-load-plugins')();
 import {obj as combiner} from 'stream-combiner2';
-import pxtorem           from 'postcss-pxtorem';
-import zindex            from 'postcss-zindex';
-import focus             from 'postcss-focus';
-import cssMqpacker       from 'css-mqpacker';
-import gulp              from 'gulp';
+import pxtorem     from 'postcss-pxtorem';
+import zindex      from 'postcss-zindex';
+import focus       from 'postcss-focus';
+import cssMqpacker from 'css-mqpacker';
+import gulp        from 'gulp';
 
 // Path
 const cssMin = 'assets/css/min';
@@ -20,12 +20,12 @@ module.exports = options => {
         }),
         $.postcss([ zindex, pxtorem, focus, cssMqpacker ]),
         $.autoprefixer({
-          browsers: ['> 1%', 'ie 8', 'ie 7'],
+          browsers: ['> 1%', 'ie 8'],
           cascade: false
         }),
         $.csso(),
         $.rename({
-          suffix: ".min"
+          suffix: '.min'
         }),
       gulp.dest(cssMin)
     ).on('error', $.notify.onError());
