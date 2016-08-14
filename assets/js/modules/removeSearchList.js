@@ -9,9 +9,7 @@ const _searchIcon  = _searchWrap.querySelector('.clear-search-input');
 const _searchList  = _searchWrap.querySelector('.search-results-list');
 
 // defining remove_searchList function
-const remove_searchList = () => {
-  removeChilds(_searchList, _searchInput);
-};
+const remove_searchList = () => removeChilds(_searchList, _searchInput);
 
 // adding eventlistener on close icon click
 addEvent(_searchIcon, 'click', remove_searchList);
