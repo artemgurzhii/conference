@@ -1,6 +1,3 @@
-
-#!/bin/bash
-
 # GIT
 # Git Clone
 alias gc='git clone'
