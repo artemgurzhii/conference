@@ -9,3 +9,7 @@ if (window.location.href.indexOf('page') > -1 || window.location.href === 'https
 } else {
   require('./modules/post-read');
 }
+
+if ( 'serviceWorker' in navigator && (typeof Cache !== 'undefined' && Cache.prototype.addAll) ) {
+  navigator.serviceWorker.register('/ServiceWorker.js');
+}
