@@ -1,4 +1,4 @@
-if (window.location.href.indexOf('page') > -1 || window.location.href === 'https://artemgurzhii.github.io/conference/') {
+if (window.location.href.includes('page') || window.location.href === 'https://artemgurzhii.github.io/conference/') {
   require('./libs/jekyllSearch');
   require('./libs/searchConfig');
   require('./modules/removeSearchList');
