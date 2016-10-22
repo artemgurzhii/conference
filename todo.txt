@@ -1,2 +1,0 @@
-Add service workers
-Remove support for IE8

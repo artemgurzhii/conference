@@ -9,7 +9,3 @@ if (window.location.href.includes('page') || window.location.href === 'https://a
 } else {
   require('./modules/post-read');
 }
-
-if ( 'serviceWorker' in navigator && (typeof Cache !== 'undefined' && Cache.prototype.addAll) ) {
-  navigator.serviceWorker.register('/ServiceWorker.js');
-}

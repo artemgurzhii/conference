@@ -33,8 +33,8 @@ future: true
 # Serving
 host: localhost
 port: 3000
-baseurl: "https://artemgurzhii.github.io/conference"
-url: "https://artemgurzhii.github.io/conference"
+baseurl: "https://artemgurzhii.github.io/jekyll-theme"
+url: "https://artemgurzhii.github.io/jekyll-theme"
 
 
 # Outputting
@@ -71,18 +71,16 @@ year: 2016
 
 
 # Meta Tags
-site_description: Programming conferences for front-end and back-end devlopers
-site_title: Web Conferences
-site_keywords: Front-end Back-end Conference CSS HTML JavaScript HTML5 CSS3 Ruby Jekyll
-social_keywords: Conference Programming Icon Social JS JavaScript HTML CSS
+site_description: Simple Jekyll theme
+site_title: Jekyll theme
+site_keywords: Front-end Back-end CSS HTML JavaScript HTML5 CSS3 Ruby Jekyll
+social_keywords: Programming Jekyll Ruby JS JavaScript HTML CSS
 
 
 # Social
 author: Artem Gurzhii
-email: gyga98@mail.ru
+email: artemgurzhii@gmail.com
 github: https://github.com/artemgurzhii
-twiiter: https://twitter.com/ArtemGurzhii
-facebook: https://facebook.com/artem.gurzhii
 
 # Default Settings
 defaults:
