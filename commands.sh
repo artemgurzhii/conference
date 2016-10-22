@@ -39,8 +39,6 @@ alias nug='npm r -g'
 alias nrt='npm run test'
 # Npm Run
 alias nr='npm run'
-# Npm Outdated
-alias no='npm outdated'
 # Npm Update --save-Dev
 alias nud='npm update --save-dev'
 
