@@ -13,7 +13,7 @@ module.exports = options => {
           progressive: true,
           svgoPlugins: [{removeViewBox: false}],
           use: [imageminPngquant({
-            quality: '100',
+            quality: '80',
             speed: 1
           })]
         }),

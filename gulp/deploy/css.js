@@ -20,7 +20,7 @@ module.exports = options => {
         }),
         $.postcss([ zindex, pxtorem, focus, cssMqpacker ]),
         $.autoprefixer({
-          browsers: ['> 1%', 'ie 8'],
+          browsers: ['> 1%'],
           cascade: false
         }),
         $.csso(),
